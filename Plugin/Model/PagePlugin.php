@@ -11,6 +11,10 @@ class PagePlugin
      * @var RemotePageRepository
      */
     private $pageRepository;
+    /**
+     * @var array
+     */
+    private $remotePageContentCache = [];
 
     public function __construct(RemotePageRepository $pageRepository)
     {
@@ -19,17 +23,25 @@ class PagePlugin
 
     public function aroundGetContent(Page $subject, callable $proceed)
     {
-        if (empty($subject->getData('wordpress_page_id'))) {
+        $remotePageId = $subject->getData('wordpress_page_id');
+
+        if (empty($remotePageId)) {
             return $proceed();
         }
 
-        [$siteId, $pageId] = explode('_', $subject->getData('wordpress_page_id'));
+        if (isset($this->remotePageContentCache[$remotePageId])) {
+            return $this->remotePageContentCache[$remotePageId];
+        }
+
+        [$siteId, $pageId] = explode('_', $remotePageId);
 
         $remotePage = $this->pageRepository->get((int) $siteId, (int) $pageId);
 
         if ($remotePage === null || empty($remotePage['content'])) {
             return  $proceed();
         }
+
+        $this->remotePageContentCache[$remotePageId] = $remotePage['content']['rendered'];
 
         return $remotePage['content']['rendered'];
     }
