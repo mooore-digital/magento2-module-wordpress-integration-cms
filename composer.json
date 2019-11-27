@@ -1,10 +1,10 @@
 {
-    "name": "mooore/wordpressintegrationcms",
+    "name": "mooore/magento2-module-wordpress-integration-cms",
     "description": "",
     "require": {
-        "guzzlehttp/guzzle": "6.0",
+        "guzzlehttp/guzzle": "^6.0",
         "magento/module-cms": "103.*",
-        "mooore/wordpressintegration": "^1.0"
+        "mooore/magento2-module-wordpress-integration": "^1.0"
     },
     "type": "magento2-module",
     "autoload": {
