@@ -56,6 +56,6 @@ class LayoutLoadBefore implements ObserverInterface
         /** @var Layout $layout */
         $layout = $observer->getData('layout');
 
-        $layout->getUpdate()->addHandle('cms_wp-content');
+        $layout->getUpdate()->addHandle('cms_wp_content');
     }
 }
