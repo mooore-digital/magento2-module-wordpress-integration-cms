@@ -26,6 +26,11 @@ class WordpressPage implements OptionSourceInterface
     {
         $options = [];
 
+        $options[] = [
+            'label' => __('Select a page...'),
+            'value' => ''
+        ];
+
         foreach ($this->remotePageRepository->getList() as $site) {
             foreach ($site['data'] as $page) {
                 $options[] = [
