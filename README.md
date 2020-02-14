@@ -33,10 +33,9 @@ cp vendor/mooore/magento2-module-wordpress-integration-cms/view/frontend/styles 
 
 ### LESS (Magento)
 
-The LESS version is not available via the traditional options.
-As we feel you must not load the styles on all pages.
+The LESS version is not available via the traditional options, as we feel you must not load the styles on all pages.
 
-If you feel the need to use it directly in your theme import the css file.
+If you feel the need to use it directly in your theme, import the css file.
 
 _We are working on a LESS version._
 
