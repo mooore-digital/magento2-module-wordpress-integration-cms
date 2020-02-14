@@ -1,0 +1,30 @@
+.wp-block-separator {
+    max-width: 100px;
+    margin: 3rem auto;
+    border: 0;
+    border-bottom: 2px solid map-get($pallet-gray, 500);
+
+    // Wide style
+    &.is-style-wide {
+        max-width: none;
+        border-bottom-width: 1px;
+    }
+
+    // Dots style
+    &.is-style-dots {
+        max-width: none;
+        height: auto;
+        border: 0;
+        line-height: 1;
+        text-align: center;
+
+        &::before {
+            content: "· · ·";
+            padding-left: 2em;
+            color: map-get($pallet-gray, 800);
+            font-family: sans-serif, serif;
+            font-size: 3rem;
+            letter-spacing: 2em;
+        }
+    }
+}

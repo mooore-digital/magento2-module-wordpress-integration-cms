@@ -1,18 +1,27 @@
 {
-    "name": "mooore/magento2-module-wordpress-integration-cms",
-    "description": "",
-    "require": {
-        "guzzlehttp/guzzle": "^6.0",
-        "magento/module-cms": "103.*",
-        "mooore/magento2-module-wordpress-integration": "dev-master"
-    },
-    "type": "magento2-module",
-    "autoload": {
-        "files": [
-            "registration.php"
-        ],
-        "psr-4": {
-            "Mooore\\WordpressIntegrationCms\\": ""
-        }
+  "name": "mooore/magento2-module-wordpress-integration-cms",
+  "description": "Magento 2 module for integrating Wordpress pages in Magento CMS pages.",
+  "require": {
+    "guzzlehttp/guzzle": "^6.0",
+    "magento/module-cms": "103.*",
+    "mooore/magento2-module-wordpress-integration": "dev-master"
+  },
+  "type": "magento2-module",
+  "authors": [
+    {
+      "name": "Mooore e-commerce",
+      "email": "info@mooore.nl",
+      "homepage": "https://www.mooore.nl",
+      "role": "Developer"
     }
+  ],
+  "readme": "README.md",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Mooore\\WordpressIntegrationCms\\": ""
+    }
+  }
 }

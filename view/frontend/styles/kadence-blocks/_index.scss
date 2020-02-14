@@ -1,0 +1,17 @@
+@import "helper";
+
+// Layout
+@import "buttons";
+@import "spacer";
+@import "row/index";
+
+// blocks
+@import "socials";
+@import "infobox";
+
+@media ($sm-max) {
+    .wp-block-kadence-advancedheading {
+        word-wrap: break-word;
+        hyphens: auto;
+    }
+}
