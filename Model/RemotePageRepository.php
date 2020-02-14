@@ -6,6 +6,7 @@ namespace Mooore\WordpressIntegrationCms\Model;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientFactory;
+use GuzzleHttp\Exception\ClientException;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Cache\StateInterface;
 use Magento\Framework\App\CacheInterface;
@@ -62,8 +63,14 @@ class RemotePageRepository
         $pages = [];
 
         foreach ($this->getSites() as $site) {
-            $baseUrl = trim($site->getBaseurl());
-            $response = $this->client->get($baseUrl . '/wp-json/wp/v2/pages');
+            $baseUrl = trim($site->getBaseurl(), '/');
+
+            try {
+                $response = $this->client->get($baseUrl . '/wp-json/wp/v2/pages');
+            } catch (ClientException $e) {
+                return [];
+            }
+
             $pages[$site->getSiteId()]['name'] = $site->getName();
             $pages[$site->getSiteId()]['id'] = $site->getSiteId();
             $pages[$site->getSiteId()]['data'] = json_decode($response->getBody()->getContents(), true);
@@ -83,8 +90,13 @@ class RemotePageRepository
 
         try {
             $site = $this->siteRepository->get($siteId);
-            $baseUrl = trim($site->getBaseurl());
-            $response = $this->client->get($baseUrl . '/wp-json/wp/v2/pages/' . $pageId);
+            $baseUrl = trim($site->getBaseurl(), '/');
+
+            try {
+                $response = $this->client->get($baseUrl . '/wp-json/wp/v2/pages/' . $pageId);
+            } catch (ClientException $e) {
+                return null;
+            }
 
             $result = json_decode($response->getBody()->getContents(), true);
 
