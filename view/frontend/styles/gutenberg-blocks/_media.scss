@@ -1,0 +1,100 @@
+// stylelint-disable no-descending-specificity
+
+.wp-block-image {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+
+    &.aligncenter {
+        text-align: center;
+    }
+
+    &.alignfull img,
+    &.alignwide img {
+        width: 100%;
+    }
+
+    // Floats get an extra wrapping <aside> element,
+    // so the <figure> becomes a child.
+    .alignleft,
+    .alignright,
+    .aligncenter,
+    &.is-resized {
+        display: table;
+
+        // The figure is born with left and right margin.
+        // We remove this by default,
+        // and then customize it for left, right, and center.
+        margin-left: 0;
+        margin-right: 0;
+
+        > figcaption {
+            display: table-caption;
+            caption-side: bottom;
+        }
+    }
+
+    .alignleft {
+        float: left;
+        margin-right: 1em;
+    }
+
+    .alignright {
+        float: right;
+        margin-left: 1em;
+    }
+
+    .aligncenter {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    figcaption {
+        @extend %caption-style;
+    }
+}
+
+// Audio
+.wp-block-audio {
+    figcaption {
+        @extend %caption-style;
+    }
+}
+
+// Video
+.wp-block-video {
+    margin-right: 0;
+    margin-left: 0;
+
+    video {
+        max-width: 100%;
+    }
+
+    &.aligncenter {
+        text-align: center;
+    }
+
+    figcaption {
+        @extend %caption-style;
+    }
+}
+
+@supports (position: sticky) {
+    .wp-block-video [poster] {
+        object-fit: cover;
+    }
+}
+
+// Emoji
+// stylelint-disable declaration-no-important
+img.wp-smiley,
+img.emoji {
+    display: inline !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: 1em !important;
+    width: 1em !important;
+    margin: 0 .07em !important;
+    vertical-align: -.1em !important;
+    background: none !important;
+    padding: 0 !important;
+}

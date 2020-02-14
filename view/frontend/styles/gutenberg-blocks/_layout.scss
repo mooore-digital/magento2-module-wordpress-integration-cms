@@ -1,0 +1,99 @@
+// stylelint-disable no-descending-specificity
+
+.entry-header,
+.entry-meta,
+.entry-content > * {
+    @extend %container !optional;
+    max-width: $wp-container-width;
+}
+
+.entry-content {
+    > .alignfull {
+        max-width: none;
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    > .alignwide {
+        max-width: $wp-container-width-wide;
+
+        @media (min-width: $wp-container-width-wide) {
+            padding-right: 0;
+            padding-left: 0;
+        }
+    }
+
+    > ul,
+    > ol {
+        margin: 1.5em auto;
+
+        > li {
+            margin-left: 2.5em;
+            margin-bottom: 6px;
+        }
+    }
+
+    > .wp-block-quote,
+    > .has-background {
+        $container-gap-x: if(
+            length($container-gap) > 1,
+            nth($container-gap, 2),
+            $container-gap
+        );
+        max-width: calc(#{$wp-container-width} - #{($container-gap-x * 2)});
+    }
+
+    > .wp-block-pullquote,
+    > .wp-block-cover,
+    > .wp-block-cover-image {
+        $container-gap-x: if(
+            length($container-gap) > 1,
+            nth($container-gap, 2),
+            $container-gap
+        );
+        max-width: calc(#{$wp-container-width} - #{($container-gap-x * 2)});
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+.wp-block-editor-blocks-wrapper {
+    background-position: center;
+    background-size: cover;
+
+    &.right .wrapper-inner-blocks {
+        margin-right: 0;
+    }
+
+    &.left .wrapper-inner-blocks {
+        margin-left: 0;
+    }
+
+    .wrapper-inner {
+        @extend %container !optional;
+        position: relative;
+
+        &-blocks {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    &.has-background-dim::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(black, .5);
+    }
+
+    @for $i from 1 to 10 {
+        $ix: ($i * 10);
+        $ic: ($i * .1);
+        &.has-background-dim.has-background-dim-#{$ix}::before {
+            background-color: rgba(black, $ic);
+        }
+    }
+}

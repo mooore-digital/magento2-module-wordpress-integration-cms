@@ -1,0 +1,53 @@
+// stylelint-disable
+
+.kt-row-layout-inner > .kb-blocks-bg-slider {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 0;
+    margin: 0;
+    .kb-blocks-bg-slider-init {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        padding: 0;
+        margin: 0;
+    }
+    .slick-dotted.slick-slider {
+        margin: 0;
+    }
+    .slick-track,
+    .slick-list,
+    .slick-slide,
+    .kb-bg-slide-contain {
+        height: 100%;
+    }
+    .slick-list {
+        height: 100% !important;
+    }
+    .kb-bg-slide-contain div.kb-bg-slide {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .kb-blocks-bg-slider-init:not(.slick-initialized) .kb-bg-slide-contain {
+        display: none;
+        &:first-child {
+            display: block;
+        }
+    }
+    .kb-bg-slide-contain div {
+        position: relative;
+        height: 100%;
+    }
+    .slick-dots {
+        bottom: 0;
+        li {
+            z-index: 11;
+        }
+    }
+}

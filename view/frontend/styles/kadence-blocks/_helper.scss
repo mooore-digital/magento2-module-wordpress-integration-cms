@@ -1,0 +1,22 @@
+$gap-size: 1rem !default;
+
+$wp-container-width: 640px !default;
+$container-width: 1200px !default;
+$container-gap: $gap-size !default;
+
+$breakpoints: (
+    xs: 0,
+    sm: 480px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
+) !default;
+
+$sm-min: "min-width: #{map-get($breakpoints, sm)}" !default;
+$sm-max: "max-width: #{(map-get($breakpoints, sm) - 1)}" !default;
+$md-min: "min-width: #{map-get($breakpoints, md)}" !default;
+$md-max: "max-width: #{(map-get($breakpoints, md) - 1)}" !default;
+$lg-min: "min-width: #{map-get($breakpoints, lg)}" !default;
+$lg-max: "max-width: #{(map-get($breakpoints, lg) - 1)}" !default;
+$xl-min: "min-width: #{map-get($breakpoints, xl)}" !default;
+$xl-max: "max-width: #{(map-get($breakpoints, xl) - 1)}" !default;
