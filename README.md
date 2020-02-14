@@ -1,6 +1,6 @@
 # Mooore WordpressIntegrationCms
 
-![Packagist Version](https://img.shields.io/packagist/v/mooore/magento2-module-wordpress-integration-cms)
+[![Packagist Version](https://img.shields.io/packagist/v/mooore/magento2-module-wordpress-integration-cms)](https://packagist.org/packages/mooore/magento2-module-wordpress-integration-cms)
 
 Magento 2 module for integrating Wordpress pages in Magento CMS pages.
 
