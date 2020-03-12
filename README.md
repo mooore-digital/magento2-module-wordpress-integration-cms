@@ -19,4 +19,4 @@ bin/magento setup:upgrade
 By default the module will load the default styles from the `web/css` folder.
 These styles will only be loaded you're on a CMS page with Wordpress content.
 
-For information on how to customize the styling see the [wiki](./wiki/Styling)
+For information on how to customize the styling see the [wiki](https://github.com/mooore-digital/magento2-module-wordpress-integration-cms//wiki/Styling)
