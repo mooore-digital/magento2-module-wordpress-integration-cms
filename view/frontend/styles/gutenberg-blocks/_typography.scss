@@ -45,6 +45,18 @@ p.has-background {
     color: currentColor;
 }
 
+.has-text-align {
+    &-center {
+        text-align: center;
+    }
+    &-right {
+        text-align: right;
+    }
+    &-left {
+        text-align: left;
+    }
+}
+
 // Headers
 .wp-block-subhead {
     font-size: 1.1em;
