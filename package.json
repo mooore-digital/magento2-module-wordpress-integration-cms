@@ -15,8 +15,8 @@
     "headless"
   ],
   "scripts": {
-    "dev": "sass view/frontend/styles/gutenberg.scss view/frontend/web/css/gutenberg.css --watch ",
-    "build": "sass view/frontend/styles/gutenberg.scss view/frontend/web/css/gutenberg.css -s compressed"
+    "dev": "sass view/frontend/web/css/gutenberg.scss view/frontend/web/css/gutenberg.css --watch ",
+    "build": "sass view/frontend/web/css/gutenberg.scss view/frontend/web/css/gutenberg.css -s compressed"
   },
   "dependencies": {
     "sass": "^1.25.0"
