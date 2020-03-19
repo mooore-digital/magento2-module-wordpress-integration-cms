@@ -8,8 +8,10 @@
 // blocks
 @import "socials";
 @import "infobox";
-@import "tabs/index";
-@import "advanced-gallery/index";
+
+// Js Blocks
+@import "tabs/module";
+@import "advanced-gallery/module";
 
 @media ($sm-max) {
     .wp-block-kadence-advancedheading {
