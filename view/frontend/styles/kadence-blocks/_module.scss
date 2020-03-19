@@ -9,6 +9,10 @@
 @import "socials";
 @import "infobox";
 
+// Js Blocks
+@import "tabs/module";
+@import "advanced-gallery/module";
+
 @media ($sm-max) {
     .wp-block-kadence-advancedheading {
         word-wrap: break-word;
