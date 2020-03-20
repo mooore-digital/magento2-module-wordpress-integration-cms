@@ -1,8 +1,6 @@
 // All gutenberg styles
-
-@import "helper";
-@import "gutenberg-blocks/index";
-@import "kadence-blocks/index";
+@import "gutenberg-blocks/module";
+@import "kadence-blocks/module";
 
 @import "formidable/index";
 

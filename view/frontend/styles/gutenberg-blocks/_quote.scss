@@ -1,3 +1,5 @@
+$enable-quote-border: true !default;
+
 .wp-block-pullquote {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -59,7 +61,9 @@
     }
 }
 
-.wp-block-quote:not(.is-large):not(.is-style-large) {
-    border-left: 4px solid currentColor;
-    padding-left: 1em;
+@if $enable-quote-border {
+    .wp-block-quote:not(.is-large):not(.is-style-large) {
+        border-left: 4px solid currentColor;
+        padding-left: 1em;
+    }
 }
