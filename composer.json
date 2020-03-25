@@ -7,6 +7,7 @@
     "mooore/magento2-module-wordpress-integration": "0.1.0"
   },
   "type": "magento2-module",
+  "license": "MIT",
   "authors": [
     {
       "name": "Mooore e-commerce",
