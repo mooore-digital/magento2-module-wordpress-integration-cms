@@ -4,7 +4,7 @@
   "require": {
     "guzzlehttp/guzzle": "^6.0",
     "magento/module-cms": "103.*",
-    "mooore/magento2-module-wordpress-integration": "dev-master"
+    "mooore/magento2-module-wordpress-integration": "0.1.0"
   },
   "type": "magento2-module",
   "authors": [
