@@ -1,6 +1,7 @@
 // All gutenberg styles
 @import "gutenberg-blocks/module";
 @import "kadence-blocks/module";
+@import "mooore-blocks/module";
 
 .entry-content {
     box-sizing: border-box;
@@ -65,4 +66,3 @@
 .wp-block-kadence-advancedheading {
     font-weight: 400;
 }
-
