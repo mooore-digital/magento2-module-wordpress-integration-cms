@@ -65,12 +65,6 @@ class RemotePageRepository
     {
         $pages = [];
 
-//        throw new LocalizedException(
-//            __('Something went wrong with requesting Wordpress resource. See logs for more information.')
-//            $exception,
-//            $exception->getCode()
-//        );
-
         foreach ($this->getSites() as $site) {
             $client = $this->clientFactory->get($site->getBaseurl());
 
