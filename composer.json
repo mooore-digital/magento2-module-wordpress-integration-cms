@@ -2,7 +2,7 @@
   "name": "mooore/magento2-module-wordpress-integration-cms",
   "description": "Magento 2 module for integrating Wordpress pages in Magento CMS pages.",
   "require": {
-    "guzzlehttp/guzzle": "^6.0",
+    "symfony/http-client": "^4.4",
     "magento/module-cms": "103.*",
     "mooore/magento2-module-wordpress-integration": "0.1.0"
   },
