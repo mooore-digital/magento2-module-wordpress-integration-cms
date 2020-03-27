@@ -31,11 +31,11 @@ class WordpressPage implements OptionSourceInterface
      */
     public function toOptionArray()
     {
-        $options = [];
-
-        $options[] = [
-            'label' => __('Select a page...'),
-            'value' => ''
+        $options = [
+            [
+                'label' => __('Select a page...'),
+                'value' => ''
+            ]
         ];
 
         try {
