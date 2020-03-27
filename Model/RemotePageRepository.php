@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Mooore\WordpressIntegrationCms\Model;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\ClientFactory;
-use GuzzleHttp\Exception\ClientException;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Cache\StateInterface;
 use Magento\Framework\App\CacheInterface;
@@ -14,17 +11,15 @@ use Magento\Framework\Exception\LocalizedException;
 use Mooore\WordpressIntegration\Api\Data\SiteInterface;
 use Mooore\WordpressIntegration\Api\SiteRepositoryInterface;
 use Mooore\WordpressIntegration\Model\Cache\Type as CacheType;
+use Psr\Log\LoggerInterface;
+use Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
 
 class RemotePageRepository
 {
     /**
-     * @var Client
+     * @var ClientFactory
      */
-    private $client;
-    /**
-     * @var Configuration
-     */
-    private $config;
+    private $clientFactory;
     /**
      * @var SiteRepositoryInterface
      */
@@ -41,44 +36,63 @@ class RemotePageRepository
      * @var CacheInterface
      */
     private $cache;
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
 
     public function __construct(
         ClientFactory $clientFactory,
-        Configuration $config,
         SiteRepositoryInterface $siteRepository,
         SearchCriteriaBuilder $searchCriteriaBuilder,
         StateInterface $cacheState,
-        CacheInterface $cache
+        CacheInterface $cache,
+        LoggerInterface $logger
     ) {
-        $this->client = $clientFactory->create();
-        $this->config = $config;
+        $this->clientFactory = $clientFactory;
         $this->siteRepository = $siteRepository;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->cacheState = $cacheState;
         $this->cache = $cache;
+        $this->logger = $logger;
     }
 
+    /**
+     * @return array
+     * @throws LocalizedException
+     */
     public function getList(): array
     {
         $pages = [];
 
         foreach ($this->getSites() as $site) {
-            $baseUrl = trim($site->getBaseurl(), '/');
+            $client = $this->clientFactory->get($site->getBaseurl());
 
             try {
-                $response = $this->client->get($baseUrl . '/wp-json/wp/v2/pages');
-            } catch (ClientException $e) {
-                return [];
-            }
+                $response = $client->request('GET', '/wp-json/wp/v2/pages');
+                $pages[$site->getSiteId()]['name'] = $site->getName();
+                $pages[$site->getSiteId()]['id'] = $site->getSiteId();
+                $pages[$site->getSiteId()]['data'] = json_decode($response->getContent(), true);
+            } catch (ExceptionInterface $exception) {
+                $this->logger->error($exception->getMessage());
 
-            $pages[$site->getSiteId()]['name'] = $site->getName();
-            $pages[$site->getSiteId()]['id'] = $site->getSiteId();
-            $pages[$site->getSiteId()]['data'] = json_decode($response->getBody()->getContents(), true);
+                throw new LocalizedException(
+                    __('Something went wrong with requesting a Wordpress resource. See logs for more information.'),
+                    $exception,
+                    $exception->getCode()
+                );
+            }
         }
 
         return $pages;
     }
 
+    /**
+     * @param int $siteId
+     * @param int $pageId
+     * @return array|null
+     * @throws LocalizedException
+     */
     public function get(int $siteId, int $pageId): ?array
     {
         $cacheKey = sprintf('wordpress_page_%s_%s', $siteId, $pageId);
@@ -88,26 +102,27 @@ class RemotePageRepository
             return json_decode($cacheEntry, true);
         }
 
+        $site = $this->siteRepository->get($siteId);
+        $client = $this->clientFactory->get($site->getBaseurl());
+
         try {
-            $site = $this->siteRepository->get($siteId);
-            $baseUrl = trim($site->getBaseurl(), '/');
+            $response = $client->request('GET', '/wp-json/wp/v2/pages/' . $pageId);
+            $result = json_decode($response->getContent(), true);
+        } catch (ExceptionInterface $exception) {
+            $this->logger->error($exception->getMessage());
 
-            try {
-                $response = $this->client->get($baseUrl . '/wp-json/wp/v2/pages/' . $pageId);
-            } catch (ClientException $e) {
-                return null;
-            }
-
-            $result = json_decode($response->getBody()->getContents(), true);
-
-            if ($cacheEnabled) {
-                $this->cache->save(json_encode($result), $cacheKey, [CacheType::TYPE_IDENTIFIER]);
-            }
-
-            return $result;
-        } catch (LocalizedException $e) {
-            return null;
+            throw new LocalizedException(
+                __('Something went wrong with requesting a Wordpress resource. See logs for more information.'),
+                $exception,
+                $exception->getCode()
+            );
         }
+
+        if ($cacheEnabled) {
+            $this->cache->save(json_encode($result), $cacheKey, [CacheType::TYPE_IDENTIFIER]);
+        }
+
+        return $result;
     }
 
     /**

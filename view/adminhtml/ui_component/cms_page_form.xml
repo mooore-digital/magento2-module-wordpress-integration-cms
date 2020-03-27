@@ -9,8 +9,7 @@
             <formElements>
                 <select>
                     <settings>
-<!--                        <options class="Magento\Cms\Model\Page\Source\PageLayout"/>-->
-                        <options class="Mooore\WordpressIntegrationCms\Model\Page\Source\WordpressPage"/>
+                        <options class="Mooore\WordpressIntegrationCms\Model\Adminhtml\Page\Source\WordpressPage"/>
                     </settings>
                 </select>
             </formElements>
