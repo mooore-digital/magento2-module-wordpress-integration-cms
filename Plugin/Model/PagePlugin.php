@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mooore\WordpressIntegrationCms\Plugin\Model;
 
 use Magento\Cms\Model\Page;
