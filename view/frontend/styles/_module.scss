@@ -1,6 +1,7 @@
 // All gutenberg styles
 @import "gutenberg-blocks/module";
 @import "kadence-blocks/module";
+@import "mooore-blocks/module";
 
 @import "formidable/module";
 
@@ -67,4 +68,3 @@
 .wp-block-kadence-advancedheading {
     font-weight: 400;
 }
-

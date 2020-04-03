@@ -2,10 +2,14 @@
 
 [![Packagist Version](https://img.shields.io/packagist/v/mooore/magento2-module-wordpress-integration-cms)](https://packagist.org/packages/mooore/magento2-module-wordpress-integration-cms)
 
+> :warning: This module is still in its alpha phase.
+
 Magento 2 module for integrating Wordpress pages in Magento CMS pages.
 
 - [Installation](#installation)
 - [Styles](#styles)
+
+![Magento screenshot](docs/magento-screenshot.png)
 
 ## Installation
 

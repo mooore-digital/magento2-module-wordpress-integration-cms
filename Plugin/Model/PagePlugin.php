@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mooore\WordpressIntegrationCms\Plugin\Model;
 
 use Magento\Cms\Model\Page;
+use Magento\Framework\Exception\LocalizedException;
 use Mooore\WordpressIntegrationCms\Model\RemotePageRepository;
 
 class PagePlugin
@@ -35,10 +38,14 @@ class PagePlugin
 
         [$siteId, $pageId] = explode('_', $remotePageId);
 
-        $remotePage = $this->pageRepository->get((int) $siteId, (int) $pageId);
+        try {
+            $remotePage = $this->pageRepository->get((int) $siteId, (int) $pageId);
+        } catch (LocalizedException $e) {
+            return $proceed();
+        }
 
         if ($remotePage === null || empty($remotePage['content'])) {
-            return  $proceed();
+            return $proceed();
         }
 
         $this->remotePageContentCache[$remotePageId] = $remotePage['content']['rendered'];

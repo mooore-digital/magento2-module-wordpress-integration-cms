@@ -57,6 +57,10 @@
     }
 }
 
+*[class*="_inner-container"] > :last-child {
+    margin-bottom: 0;
+}
+
 .wp-block-editor-blocks-wrapper {
     background-position: center;
     background-size: cover;
