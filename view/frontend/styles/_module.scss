@@ -2,7 +2,6 @@
 @import "gutenberg-blocks/module";
 @import "kadence-blocks/module";
 @import "mooore-blocks/module";
-
 @import "formidable/module";
 
 .entry-content {
@@ -62,9 +61,4 @@
             margin-right: auto;
         }
     }
-}
-
-// Kadence typography
-.wp-block-kadence-advancedheading {
-    font-weight: 400;
 }
