@@ -1,6 +1,4 @@
 define(['jquery', 'recaptcha'], function (jQuery) {
-    console.log(grecaptcha);
-
     /* Load recaptcha on pageload */
     jQuery(document).ready(function ($) {
         window.onCaptchaLoaded = function() {
