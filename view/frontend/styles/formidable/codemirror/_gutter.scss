@@ -1,0 +1,17 @@
+.CodeMirror-gutters {
+    border-right: 1px solid #ddd;
+    background-color: #f7f7f7;
+    white-space: nowrap;
+  }
+  .CodeMirror-linenumbers {}
+  .CodeMirror-linenumber {
+    padding: 0 3px 0 5px;
+    min-width: 20px;
+    text-align: right;
+    color: #999;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+  }
+
+  .CodeMirror-guttermarker { color: black; }
+  .CodeMirror-guttermarker-subtle { color: #999; }
