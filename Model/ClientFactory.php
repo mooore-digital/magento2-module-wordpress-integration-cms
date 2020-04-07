@@ -19,7 +19,11 @@ class ClientFactory
         $baseUri = trim($baseUri, '/');
 
         if (!array_key_exists($baseUri, $this->instanceCache)) {
-            $this->instanceCache[$baseUri] = HttpClient::createForBaseUri($baseUri);
+            $this->instanceCache[$baseUri] = HttpClient::createForBaseUri($baseUri, [
+                'headers' => [
+                    'User-Agent' => 'Magento Wordpress Integration Client'
+                ]
+            ]);
         }
 
         return $this->instanceCache[$baseUri];
