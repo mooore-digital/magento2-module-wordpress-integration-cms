@@ -53,6 +53,11 @@
     }
 }
 
+.is-style-circle-mask img,
+.is-style-rounded img {
+    border-radius: 50%;
+}
+
 // Audio
 .wp-block-audio {
     figcaption {
