@@ -17,9 +17,9 @@ use Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
 class RemotePageRepository
 {
     /**
-     * @var ClientFactory
+     * @var HttpClient\Page
      */
-    private $clientFactory;
+    private $pageClient;
     /**
      * @var SiteRepositoryInterface
      */
@@ -42,14 +42,14 @@ class RemotePageRepository
     private $logger;
 
     public function __construct(
-        ClientFactory $clientFactory,
+        HttpClient\Page $pageClient,
         SiteRepositoryInterface $siteRepository,
         SearchCriteriaBuilder $searchCriteriaBuilder,
         StateInterface $cacheState,
         CacheInterface $cache,
         LoggerInterface $logger
     ) {
-        $this->clientFactory = $clientFactory;
+        $this->pageClient = $pageClient;
         $this->siteRepository = $siteRepository;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->cacheState = $cacheState;
@@ -68,33 +68,15 @@ class RemotePageRepository
         $pageSize = 10; // @Hardcoded value: create a configuration for this value.
 
         foreach ($this->getSites() as $site) {
-            $client = $this->clientFactory->get($site->getBaseurl());
+            $this->pageClient->setBaseUrl($site->getBaseurl());
 
             try {
-                $pageNumber = 1;
-                $pageList = [];
-
-                $peekResponse = $client->request('HEAD', '/wp-json/wp/v2/pages?per_page=' . $pageSize);
-                $peekHeaders = $peekResponse->getHeaders();
-                $totalPages = (int) $peekHeaders['x-wp-total'][0] ?? 0;
-
-                while (count($pageList) < $totalPages) {
-                    $response = $client->request(
-                        'GET',
-                        '/wp-json/wp/v2/pages?' . http_build_query([
-                            'page' => $pageNumber++,
-                            'per_page' => $pageSize
-                        ])
-                    );
-                    $pageData = json_decode($response->getContent(), true);
-                    foreach ($pageData as $page) {
-                        $pageList[] = $page;
-                    }
-                }
-
                 $pages[$site->getSiteId()]['name'] = $site->getName();
                 $pages[$site->getSiteId()]['id'] = $site->getSiteId();
-                $pages[$site->getSiteId()]['data'] = $pageList;
+
+                foreach ($this->pageClient->all($pageSize) as $page) {
+                    $pages[$site->getSiteId()]['data'][] = $page;
+                }
             } catch (ExceptionInterface $exception) {
                 $this->logger->error($exception->getMessage());
 
@@ -125,11 +107,10 @@ class RemotePageRepository
         }
 
         $site = $this->siteRepository->get($siteId);
-        $client = $this->clientFactory->get($site->getBaseurl());
+        $this->pageClient->setBaseUrl($site->getBaseurl());
 
         try {
-            $response = $client->request('GET', '/wp-json/wp/v2/pages/' . $pageId);
-            $result = json_decode($response->getContent(), true);
+            $page = $this->pageClient->get($pageId);
         } catch (ExceptionInterface $exception) {
             $this->logger->error($exception->getMessage());
 
@@ -141,10 +122,10 @@ class RemotePageRepository
         }
 
         if ($cacheEnabled) {
-            $this->cache->save(json_encode($result), $cacheKey, [CacheType::TYPE_IDENTIFIER]);
+            $this->cache->save(json_encode($page), $cacheKey, [CacheType::TYPE_IDENTIFIER]);
         }
 
-        return $result;
+        return $page;
     }
 
     /**
