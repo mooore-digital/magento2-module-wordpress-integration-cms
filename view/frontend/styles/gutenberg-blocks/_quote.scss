@@ -23,7 +23,7 @@ $enable-quote-border: true !default;
     cite,
     footer {
         color: map-get($pallet-gray, 600);
-        font-size: .8rem;
+        font-size: .8em;
         text-transform: uppercase;
     }
 }
