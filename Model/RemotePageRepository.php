@@ -65,14 +65,36 @@ class RemotePageRepository
     {
         $pages = [];
 
+        $pageSize = 10; // @Hardcoded value: create a configuration for this value.
+
         foreach ($this->getSites() as $site) {
             $client = $this->clientFactory->get($site->getBaseurl());
 
             try {
-                $response = $client->request('GET', '/wp-json/wp/v2/pages');
+                $pageNumber = 1;
+                $pageList = [];
+
+                $peekResponse = $client->request('HEAD', '/wp-json/wp/v2/pages?per_page=' . $pageSize);
+                $peekHeaders = $peekResponse->getHeaders();
+                $totalPages = (int) $peekHeaders['x-wp-total'][0] ?? 0;
+
+                while (count($pageList) < $totalPages) {
+                    $response = $client->request(
+                        'GET',
+                        '/wp-json/wp/v2/pages?' . http_build_query([
+                            'page' => $pageNumber++,
+                            'per_page' => $pageSize
+                        ])
+                    );
+                    $pageData = json_decode($response->getContent(), true);
+                    foreach ($pageData as $page) {
+                        $pageList[] = $page;
+                    }
+                }
+
                 $pages[$site->getSiteId()]['name'] = $site->getName();
                 $pages[$site->getSiteId()]['id'] = $site->getSiteId();
-                $pages[$site->getSiteId()]['data'] = json_decode($response->getContent(), true);
+                $pages[$site->getSiteId()]['data'] = $pageList;
             } catch (ExceptionInterface $exception) {
                 $this->logger->error($exception->getMessage());
 
