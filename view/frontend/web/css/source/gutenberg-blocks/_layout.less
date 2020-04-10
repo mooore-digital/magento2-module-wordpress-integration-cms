@@ -33,28 +33,28 @@
         }
     }
 
-    > .wp-block-quote,
-    > .has-background {
-        @container-gap-x: if(
-            length(@container-gap) > 1,
-            nth(@container-gap, 2),
-            @container-gap
-        );
-        max-width: calc(~"@{wp-container-width} - (@{container-gap-x} * 2)");
-    }
+    //> .wp-block-quote,
+    //> .has-background {
+    //    @container-gap-x: if(
+    //        length(@container-gap) > 1,
+    //        nth(@container-gap, 2),
+    //        @container-gap
+    //    );
+    //    max-width: calc(~"@{wp-container-width} - (@{container-gap-x} * 2)");
+    //}
 
-    > .wp-block-pullquote,
-    > .wp-block-cover,
-    > .wp-block-cover-image {
-        @container-gap-x: if(
-            length(@container-gap) > 1,
-            nth(@container-gap, 2),
-            @container-gap
-        );
-        max-width: calc(~"@{wp-container-width} - (@{container-gap-x} * 2)");
-        padding-right: 0;
-        padding-left: 0;
-    }
+    //> .wp-block-pullquote,
+    //> .wp-block-cover,
+    //> .wp-block-cover-image {
+    //    @container-gap-x: if(
+    //        length(@container-gap) > 1,
+    //        nth(@container-gap, 2),
+    //        @container-gap
+    //    );
+    //    max-width: calc(~"@{wp-container-width} - (@{container-gap-x} * 2)");
+    //    padding-right: 0;
+    //    padding-left: 0;
+    //}
 }
 
 *[class*="_inner-container"] > :last-child {

@@ -16,14 +16,16 @@
 
 .wp-block-latest-posts__post-date {
     display: block;
-    color: map-get($pallet-gray, 300);
+    color: extract(@pallet-gray, 4);
     font-size: .8rem;
 }
 
-@media ($mq-min) {
-    @for $i from 2 to 6 {
-        .wp-block-latest-posts.columns-#{$i} li {
-            width: calc((100% / #{$i}) - 16px);
+@media (@mq-min) {
+    .each-post-col(6);
+    .each-post-col(@n, @i: 1) when (@i <= @n) {
+        .wp-block-latest-posts.columns-@{i} li {
+            width: calc(~"(100% / @{i}) - 16px");
         }
+        .each-post-col(@n, (@i + 1)); // iterator
     }
 }

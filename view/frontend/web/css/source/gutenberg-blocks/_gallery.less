@@ -13,7 +13,7 @@
         flex-grow: 1;
         flex-direction: column;
         justify-content: center;
-        width: calc(100% / 2 - 16px); // Responsive fallback value, 2 columns
+        width: calc(~"100% / 2 - 16px"); // Responsive fallback value, 2 columns
         margin: 0 16px 16px 0;
 
         &:last-child {
@@ -45,8 +45,8 @@
             background:
                 linear-gradient(
                     0deg,
-                    rgba(black, .7) 0,
-                    rgba(black, .3) 60%,
+                    fade(black, 70%) 0,
+                    fade(black, 30%) 60%,
                     transparent
                 );
 
@@ -70,7 +70,7 @@
 
     &.columns-1 .blocks-gallery-image,
     &.columns-1 .blocks-gallery-item {
-        width: calc(100% / 1 - 16px);
+        width: calc(~"100% / 1 - 16px");
     }
 
     // Make the "Add new Gallery item" button full-width (so it always appears
@@ -86,20 +86,22 @@
     [data-align="right"] &,
     &.alignleft,
     &.alignright {
-        max-width: $wp-container-width / 2;
+        max-width: @wp-container-width / 2;
         width: 100%;
     }
 }
 
-@media ($mq-min) {
-    @for $i from 2 to 8 {
-        .wp-block-gallery.columns-#{$i} .blocks-gallery-image,
-        .wp-block-gallery.columns-#{$i} .blocks-gallery-item {
-            width: calc(100% / #{$i} - 16px);
+@media (@mq-min) {
+    .each-gallery-col(8);
+    .each-gallery-col(@n, @i: 1) when (@i <= @n) {
+        .wp-block-gallery.columns-@{i} .blocks-gallery-image,
+        .wp-block-gallery.columns-@{i} .blocks-gallery-item {
+            width: calc(~"100% / @{i} - 16px");
 
-            &:nth-of-type(#{$i + n}) {
+            &:nth-of-type(@{i}n) {
                 margin-right: 0;
             }
         }
+        .each-gallery-col(@n, (@i + 1)); // iterator
     }
 }

@@ -13,10 +13,10 @@
     &.alignleft,
     &.alignright {
         width: 100%;
-        max-width: ($wp-container-width / 2);
+        max-width: (@wp-container-width / 2);
     }
 
     figcaption {
-        @extend %caption-style;
+        @caption-style();
     }
 }

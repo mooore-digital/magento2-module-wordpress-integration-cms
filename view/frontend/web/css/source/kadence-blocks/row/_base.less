@@ -11,13 +11,15 @@
 
 .kt-row-has-bg > .kt-row-column-wrap,
 .alignfull .kt-row-column-wrap {
-    $gap: if(
-        length($container-gap) > 1,
-        nth($container-gap, 2),
-        $container-gap
-    );
-    padding-left: $gap;
-    padding-right: $gap;
+    & when (length(@container-gap) > 1) {
+        padding-left: extract(@container-gap, 2);
+        padding-right: extract(@container-gap, 2);
+    }
+
+    & when (length(@container-gap) = 1) {
+        padding-left: @container-gap;
+        padding-right: @container-gap;
+    }
 }
 
 .wp-block-kadence-column {

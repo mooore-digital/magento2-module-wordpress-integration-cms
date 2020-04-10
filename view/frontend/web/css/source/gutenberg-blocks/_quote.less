@@ -1,13 +1,14 @@
-$enable-quote-border: true !default;
+// TODO: Fix outcommented lines
+@enable-quote-border: true;
 
 .wp-block-pullquote {
     margin-top: 2rem;
     margin-bottom: 2rem;
     padding-top: 3em;
     padding-bottom: 3em;
-    border-top: 4px solid map-get($pallet-gray, 200);
-    border-bottom: 4px solid map-get($pallet-gray, 200);
-    color: map-get($pallet-gray, 600);
+    border-top: 4px solid extract(@pallet-gray, 3);
+    border-bottom: 4px solid extract(@pallet-gray, 3);
+    color: extract(@pallet-gray, 7);
     text-align: center;
 
     blockquote {
@@ -22,7 +23,7 @@ $enable-quote-border: true !default;
 
     cite,
     footer {
-        color: map-get($pallet-gray, 600);
+        color: extract(@pallet-gray, 7);
         font-size: 0.8em;
         text-transform: uppercase;
     }
@@ -37,7 +38,7 @@ $enable-quote-border: true !default;
     footer {
         position: relative;
         margin-top: 1rem;
-        color: rgba(black, 0.6);
+        color: fade(black, 60%);
         font-size: 0.8em;
         font-style: normal;
     }
@@ -61,7 +62,7 @@ $enable-quote-border: true !default;
     }
 }
 
-@if $enable-quote-border {
+& when (@enable-quote-border) {
     .wp-block-quote:not(.is-large):not(.is-style-large) {
         border-left: 4px solid currentColor;
         padding-left: 1em;

@@ -1,4 +1,4 @@
-%wp-btn-alignment {
+@wp-btn-alignment: {
     &.aligncenter {
         text-align: center;
     }
@@ -6,17 +6,17 @@
     &.alignright {
         text-align: right;
     }
-}
+};
 
-%btn-gutenberg {
+@btn-gutenberg: {
     display: inline-block;
     margin: 0;
     padding: 12px 24px;
     border-radius: 28px;
     border: 0;
     box-shadow: none;
-    background-color: $color-theme;
-    color: $color-on-theme;
+    background-color: @color-theme;
+    color: @color-on-theme;
     font-size: 18px;
     text-align: center;
     overflow-wrap: break-word;
@@ -24,21 +24,21 @@
 
     &:focus,
     &:hover {
-        background-color: adjust-color($color-theme, $lightness: -10%);
-        color: $color-on-theme;
+        background-color: lighten(@color-theme, -10%);
+        color: @color-on-theme;
         text-decoration: none;
     }
-}
+};
 
-$enable-gutenberg-btn: true !default;
+@enable-gutenberg-btn: true;
 
 .wp-block-button {
-    @extend %wp-btn-alignment;
+    @wp-btn-alignment();
     margin-bottom: 1.5em;
 
     &__link {
-        @if $enable-gutenberg-btn {
-            @extend %btn-gutenberg;
+        & when (@enable-gutenberg-btn) {
+            @btn-gutenberg();
         }
     }
 
@@ -50,13 +50,13 @@ $enable-gutenberg-btn: true !default;
 // File
 a.wp-block-file__button,
 .wp-block-file__button {
-    @if $enable-gutenberg-btn {
-        @extend %btn-gutenberg;
+    & when (@enable-gutenberg-btn) {
+        @btn-gutenberg();
     }
 }
 
 .wp-block-file {
-    @extend %wp-btn-alignment;
+    @wp-btn-alignment();
     margin-bottom: 1.5em;
 }
 
