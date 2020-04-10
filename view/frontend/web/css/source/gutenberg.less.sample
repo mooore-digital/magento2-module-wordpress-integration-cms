@@ -1,0 +1,12 @@
+// Get core assets
+@import "variables";
+@import "vendor/magento-ui/variables"; // Magento UI
+@import "blocks/variables";
+
+// @enable-quote-border: false;
+@enable-gutenberg-btn: false;
+@container-width: @layout__max-width;
+@container-gap: @layout__width-xs-indent;
+
+// Will be a npm pkg later
+@import "../Mooore_WordpressIntegrationCms/styles/module";
