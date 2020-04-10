@@ -1,42 +1,42 @@
-$pallet-gray: (
-    50: #f2f2f2,
-    100: #eee,
-    200: #e0e0e0,
-    300: #bdbdbd,
-    400: #9e9e9e,
-    500: #757575,
-    600: #616161,
-    700: #424242,
-    800: #2d2d2d,
-    900: #151515
-) !default;
+@pallet-gray: (
+    #f2f2f2,
+    #eee,
+    #e0e0e0,
+    #bdbdbd,
+    #9e9e9e,
+    #757575,
+    #616161,
+    #424242,
+    #2d2d2d,
+    #151515
+);
 
-$color-theme: #2196f3 !default;
-$color-on-theme: #fff !default;
+@color-theme: #2196f3;
+@color-on-theme: #fff;
 
-$gap-size: 1.5rem !default;
+@gap-size: 1.5rem;
 
-$container-width: 1280px !default;
-$container-gap: $gap-size !default;
-$wp-container-width: $container-width !default;
-$wp-container-width-wide: ($container-width + ($container-width / 4)) !default;
+@container-width: 1280px;
+@container-gap: @gap-size;
+@wp-container-width: @container-width;
+@wp-container-width-wide: (@container-width + (@container-width / 4));
 
-$mq-max: "max-width: 767px" !default;
-$mq-min: "min-width: 768px" !default;
+@mq-max: "max-width: 767px";
+@mq-min: "min-width: 768px";
 
-%caption-style {
+@caption-style: {
     margin-top: .5em;
     color: #6d6d6d;
     text-align: center;
     font-size: 1rem;
-}
+};
 
-%container {
+@container: {
     box-sizing: border-box;
     width: 100%;
-    max-width: $container-width;
+    max-width: @container-width;
     margin-right: auto;
     margin-left: auto;
-    padding-right: $container-gap;
-    padding-left: $container-gap;
-}
+    padding-right: @container-gap;
+    padding-left: @container-gap;
+};

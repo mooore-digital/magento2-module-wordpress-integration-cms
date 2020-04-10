@@ -1,24 +1,24 @@
 // stylelint-disable
 
-@import "codemirror/module";
+@import "codemirror/_module";
 
-$status-success: #349633;
-$status-warning: #ffb02f;
-$status-error: #d41e1e;
+@status-success: #349633;
+@status-warning: #ffb02f;
+@status-error: #d41e1e;
 
 .frm_fields_container {
-    $gap: 1rem 0.9375rem;
+    @gap: 1rem 0.9375rem;
     display: flex;
     flex-flow: row wrap;
-    margin-right: (nth($gap, 2) / -1);
-    margin-left: (nth($gap, 2) / -1);
+    margin-right: (extract(@gap, 2) / -1);
+    margin-left: (extract(@gap, 2) / -1);
 
     > * {
         width: 100%;
         flex: 0 1 auto;
-        margin-bottom: nth($gap, 1);
-        padding-right: nth($gap, 2);
-        padding-left: nth($gap, 2);
+        margin-bottom: extract(@gap, 1);
+        padding-right: extract(@gap, 2);
+        padding-left: extract(@gap, 2);
     }
 }
 
@@ -52,7 +52,7 @@ $status-error: #d41e1e;
 }
 
 .frm_required {
-    color: $status-error;
+    color: @status-error;
 }
 
 // From formidable
@@ -81,7 +81,7 @@ $status-error: #d41e1e;
     }
 }
 
-@if $enable-gutenberg-btn {
+@if @enable-gutenberg-btn {
     .frm_submit button {
         @extend %btn-gutenberg;
     }
