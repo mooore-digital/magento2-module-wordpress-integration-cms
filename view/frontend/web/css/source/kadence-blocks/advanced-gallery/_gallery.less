@@ -15,9 +15,7 @@
 .kt-gallery-item(@count, @bp) {
     .each-gallery-item(@count);
     .each-gallery-item(@n, @i: 0) when (@i <= @n) {
-        &[data-columns-@{bp}="@{i}"] .kadence-blocks-gallery-item {
-            width: (~"100% / @{i}");
-        }
+
         .each-gallery-item(@n, (@i + 1)); // iterator
     }
 }
@@ -32,7 +30,10 @@
     margin: -5px;
 
     @media (min-width: 543px) {
-        .kt-gallery-item(8, "sm");
+        // TODO make as CSS 8x
+        &[data-columns-sm="1"] .kadence-blocks-gallery-item {
+            width: (100% / 1);
+        }
     }
     @media (min-width: 768px) {
         .kt-gallery-item(8, "md");
