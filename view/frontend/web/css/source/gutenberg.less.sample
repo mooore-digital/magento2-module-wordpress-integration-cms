@@ -9,4 +9,4 @@
 @container-gap: @layout__width-xs-indent;
 
 // Will be a npm pkg later
-@import "../Mooore_WordpressIntegrationCms/styles/module";
+@import "../Mooore_WordpressIntegrationCms/styles/_module";

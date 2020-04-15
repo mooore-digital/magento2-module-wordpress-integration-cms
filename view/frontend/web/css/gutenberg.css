@@ -680,7 +680,7 @@ a.wp-block-file__button:hover,
 .wp-block-cover .wp-block-cover__inner-container,
 .wp-block-cover-image .wp-block-cover__inner-container {
   z-index: 1;
-  width: calc(30%);
+  width: calc(100% - 70px);
   color: #757575;
 }
 .has-very-light-gray-color {
