@@ -1,7 +1,7 @@
 // Get core assets
-@import "variables";
-@import "vendor/magento-ui/variables"; // Magento UI
-@import "blocks/variables";
+@import "_variables";
+@import "vendor/magento-ui/_variables"; // Magento UI
+@import "blocks/_variables";
 
 // @enable-quote-border: false;
 @enable-gutenberg-btn: false;
