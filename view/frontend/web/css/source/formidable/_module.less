@@ -1,0 +1,88 @@
+// stylelint-disable
+
+@import "codemirror/_module";
+
+@status-success: #349633;
+@status-warning: #ffb02f;
+@status-error: #d41e1e;
+
+.frm_fields_container {
+    @gap: 1rem 0.9375rem;
+    display: flex;
+    flex-flow: row wrap;
+    margin-right: (extract(@gap, 2) / -1);
+    margin-left: (extract(@gap, 2) / -1);
+
+    > * {
+        width: 100%;
+        flex: 0 1 auto;
+        margin-bottom: extract(@gap, 1);
+        padding-right: extract(@gap, 2);
+        padding-left: extract(@gap, 2);
+    }
+}
+
+.form-field {
+    @media (min-width: 768px) {
+        &.frm_half {
+            width: calc(100% / 2);
+        }
+        &.frm_third {
+            width: calc(100% / 3);
+        }
+        &.frm_fourth {
+            width: calc(100% / 4);
+        }
+        &.frm_fifth {
+            width: calc(100% / 5);
+        }
+        &.frm_sixth {
+            width: calc(100% / 6);
+        }
+        &.frm_two_thirds {
+            width: calc(100% / 3 * 2);
+        }
+        &.frm_three_fourths {
+            width: calc(100% / 4 * 3);
+        }
+        &.frm10 {
+            width: calc(100% / 6 * 5);
+        }
+    }
+}
+
+.frm_required {
+    color: @status-error;
+}
+
+// From formidable
+.frm_hidden,
+.frm_add_form_row.frm_hidden,
+.frm_remove_form_row.frm_hidden,
+.with_frm_style .frm_button.frm_hidden {
+    display: none !important;
+}
+
+.frm_screen_reader {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal !important;
+
+    &.frm_hidden {
+        display: initial;
+    }
+}
+
+@if @enable-gutenberg-btn {
+    .frm_submit button {
+        @extend %btn-gutenberg;
+    }
+}

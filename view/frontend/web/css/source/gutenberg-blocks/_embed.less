@@ -1,0 +1,22 @@
+.wp-block-embed {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    &__wrapper {
+        embed,
+        iframe,
+        object {
+            max-width: 100%;
+        }
+    }
+
+    &.alignleft,
+    &.alignright {
+        width: 100%;
+        max-width: (@wp-container-width / 2);
+    }
+
+    figcaption {
+        @caption-style();
+    }
+}

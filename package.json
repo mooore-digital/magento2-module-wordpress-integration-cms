@@ -16,9 +16,11 @@
   ],
   "scripts": {
     "dev": "sass view/frontend/web/css/gutenberg.scss view/frontend/web/css/gutenberg.css --watch ",
-    "build": "sass view/frontend/web/css/gutenberg.scss view/frontend/web/css/gutenberg.css -s compressed"
+    "build": "sass view/frontend/web/css/gutenberg.scss view/frontend/web/css/gutenberg.css -s compressed",
+    "less": "lessc view/frontend/web/css/gutenberg.less view/frontend/web/css/gutenberg.css"
   },
   "dependencies": {
+    "less": "^2.7.3",
     "sass": "^1.25.0"
   }
 }

@@ -1,0 +1,29 @@
+.wp-block-media-text {
+    display: grid;
+    grid-column-gap: @gap-size;
+    grid-template: auto / 50% auto;
+    grid-template-areas: "media-text-media media-text-content";
+    align-items: center;
+
+    &.has-media-on-the-right {
+        grid-template-areas: "media-text-content media-text-media";
+    }
+
+    &.is-stacked-on-mobile {
+        @media (@mq-max) {
+            grid-template-columns: 100%;
+            grid-template-areas: "media-text-media" "media-text-content";
+        }
+    }
+
+    &__media {
+        grid-area: media-text-media;
+        margin: 0;
+        text-align: center;
+    }
+
+    &__content {
+        grid-area: media-text-content;
+        word-break: break-word;
+    }
+}
