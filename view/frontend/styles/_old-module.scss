@@ -1,0 +1,64 @@
+// All gutenberg styles
+@import "gutenberg-blocks/module";
+@import "kadence-blocks/module";
+@import "mooore-blocks/module";
+@import "formidable/module";
+
+.entry-content {
+    box-sizing: border-box;
+
+    * {
+        box-sizing: inherit;
+    }
+}
+
+// Magento layout fixes
+.page-layout-1column,
+.page-layout-2columns-right,
+.page-layout-2columns-left,
+.page-layout-3columns {
+    .entry-content > *,
+    .entry-header,
+    .entry-meta {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+// Kadence Row alignment
+.wp-block-kadence-rowlayout {
+    &.column-fill {
+        .wp-block-kadence-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: stretch;
+        }
+
+        .kt-inside-inner-col {
+            flex: 1 1 auto;
+        }
+    }
+}
+
+.kt-inside-inner-col {
+    .center-content & {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
+
+    @media ($md-min) {
+        .max-content & {
+            max-width: 600px;
+        }
+
+        .push-right & {
+            margin-left: auto;
+        }
+
+        .push-left & {
+            margin-right: auto;
+        }
+    }
+}
