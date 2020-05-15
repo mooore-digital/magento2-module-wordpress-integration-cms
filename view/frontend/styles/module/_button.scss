@@ -16,6 +16,10 @@ $enable-wp-btn-primary: true !default;
 .wp-block-button__link,
 .wp-block-file__button {
     @extend %wp-btn;
+    transition:
+        border-color 0.15s linear,
+        background-color 0.15s linear,
+        color 0.15s linear;
 }
 
 @if $enable-kt-blocks {
