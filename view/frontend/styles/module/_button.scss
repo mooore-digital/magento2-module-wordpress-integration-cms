@@ -1,0 +1,44 @@
+$enable-wp-btn-primary: true !default;
+
+%wp-btn {
+    @include lib-button();
+
+    @if $enable-wp-btn-primary {
+        @include lib-button-primary();
+    }
+}
+
+.wp-block-button,
+.wp-block-file {
+    @extend %wp-text-alignment;
+}
+
+.wp-block-button__link,
+.wp-block-file__button {
+    @extend %wp-btn;
+}
+
+@if $enable-kt-blocks {
+    .kt-button {
+        @extend %wp-btn;
+    }
+}
+
+.wp-block-button {
+    .wp-block-buttons & {
+        margin-right: $indent__s;
+        margin-bottom: $indent__s;
+    }
+    // TODO: add option?
+    // &.is-style-outline {}
+}
+
+.wp-block-file {
+    @extend %wp-btn-alignment;
+    margin-bottom: $indent__base;
+}
+
+* + .wp-block-file__button {
+    margin-left: $indent__s;
+}
+
