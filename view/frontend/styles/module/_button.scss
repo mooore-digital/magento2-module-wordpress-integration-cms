@@ -1,4 +1,8 @@
 $enable-wp-btn-primary: true !default;
+$wp-btn-transition:
+    border-color 0.15s linear,
+    background-color 0.15s linear,
+    color 0.15s linear !default;
 
 %wp-btn {
     @include lib-button();
@@ -16,10 +20,7 @@ $enable-wp-btn-primary: true !default;
 .wp-block-button__link,
 .wp-block-file__button {
     @extend %wp-btn;
-    transition:
-        border-color 0.15s linear,
-        background-color 0.15s linear,
-        color 0.15s linear;
+    transition: $wp-btn-transition;
 }
 
 @if $enable-kt-blocks {
@@ -45,4 +46,3 @@ $enable-wp-btn-primary: true !default;
 * + .wp-block-file__button {
     margin-left: $indent__s;
 }
-
