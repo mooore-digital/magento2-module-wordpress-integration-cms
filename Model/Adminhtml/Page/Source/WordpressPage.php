@@ -42,7 +42,7 @@ class WordpressPage implements OptionSourceInterface
             foreach ($this->remotePageRepository->getList() as $site) {
                 if (!array_key_exists('data', $site)) {
                     $options[] = [
-                        'label' => __('Could not fetch pages from ') . $site['name'],
+                        'label' => __('Could not fetch pages from %1', $site['name']),
                         'value' => $site['id']
                     ];
                     continue;
