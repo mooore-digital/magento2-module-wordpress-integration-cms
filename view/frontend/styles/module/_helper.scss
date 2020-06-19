@@ -23,6 +23,10 @@
     text-align: center;
 }
 
+%text-has-bg {
+    padding: $block-bg-padding--v $block-bg-padding--h;
+}
+
 // If the block is a direct child of entry-content
 // And has padding set directly on not via child element.
 %wp-block-has-padding {

@@ -8,19 +8,20 @@ $status-success: #349633 !default;
 $status-warning: #ffb02f !default;
 $status-error: #d41e1e !default;
 
+$wp-gap-size: 16px !default;
 $container-width: $layout__max-width !default;
 $container-gap: $layout__width-xs-indent !default;
 
 $enable-wp-btn-primary: true !default;
-$wp-btn-transition:
-    border-color 0.15s linear,
-    background-color 0.15s linear,
+$wp-btn-transition: border-color 0.15s linear, background-color 0.15s linear,
     color 0.15s linear !default;
+$wp-btn-outline-color: $primary__color !default;
 
 $wp-block-cover-index: 1 !default;
 $wp-block-cover-min-height: 430px !default;
 $wp-block-cover-inner-width: calc(100% - 70px) !default;
 
+$wp-content-width: 580px;
 $wp-block-embed-wrapper-min-width: 280px !default;
 
 $caption-style-theme-color: $color-gray37 !default;

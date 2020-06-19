@@ -29,7 +29,7 @@
 }
 
 p.has-background {
-    padding: $block-bg-padding--v $block-bg-padding--h;
+    @extend %text-has-bg;
 }
 
 p.has-text-color a {
