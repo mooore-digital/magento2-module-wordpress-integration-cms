@@ -33,7 +33,7 @@ class LayoutLoadBefore implements ObserverInterface
     {
         $action = $observer->getData('full_action_name');
 
-        if ($action !== 'cms_page_view') {
+        if ($action !== 'cms_page_view' && $action !== 'cms_index_index') {
             return;
         }
 

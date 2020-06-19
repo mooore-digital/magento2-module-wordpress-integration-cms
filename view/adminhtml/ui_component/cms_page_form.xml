@@ -1,10 +1,22 @@
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <fieldset name="general">
-        <field name="wordpress_page" sortOrder="100" formElement="select">
+        <field name="wordpress_page" component="Mooore_WordpressIntegrationCms/js/components/select-site" sortOrder="100" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filterOptions" xsi:type="boolean">true</item>
+                    <item name="multiple" xsi:type="boolean">false</item>
+                    <item name="showCheckbox" xsi:type="boolean">false</item>
+                    <item name="disableLabel" xsi:type="boolean">true</item>
+                </item>
+            </argument>
             <settings>
                 <label translate="true">Wordpress Page</label>
+                <elementTmpl>ui/grid/filters/elements/ui-select</elementTmpl>
                 <dataScope>wordpress_page_id</dataScope>
+                <listens>
+                    <link name="${ $.namespace }.${ $.namespace }:responseData">setParsed</link>
+                </listens>
             </settings>
             <formElements>
                 <select>
