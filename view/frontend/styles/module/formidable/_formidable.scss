@@ -1,29 +1,24 @@
-// stylelint-disable
-
-@import "codemirror/module";
-
-$status-success: #349633;
-$status-warning: #ffb02f;
-$status-error: #d41e1e;
+$frm-mq: "min-width: 768px" !default;
+$frm-required-color: $status-error !default;
+$frm-gap-size: 1rem 0.9375rem !default;
 
 .frm_fields_container {
-    $gap: 1rem 0.9375rem;
     display: flex;
     flex-flow: row wrap;
-    margin-right: (nth($gap, 2) / -1);
-    margin-left: (nth($gap, 2) / -1);
+    margin-right: (nth($frm-gap-size, 2) / -1);
+    margin-left: (nth($frm-gap-size, 2) / -1);
 
     > * {
         width: 100%;
         flex: 0 1 auto;
-        margin-bottom: nth($gap, 1);
-        padding-right: nth($gap, 2);
-        padding-left: nth($gap, 2);
+        margin-bottom: nth($frm-gap-size, 1);
+        padding-right: nth($frm-gap-size, 2);
+        padding-left: nth($frm-gap-size, 2);
     }
 }
 
 .form-field {
-    @media (min-width: 768px) {
+    @media ($frm-mq) {
         &.frm_half {
             width: calc(100% / 2);
         }
@@ -64,25 +59,13 @@ $status-error: #d41e1e;
 }
 
 .frm_screen_reader {
-    border: 0;
-    clip: rect(1px, 1px, 1px, 1px);
-    -webkit-clip-path: inset(50%);
-    clip-path: inset(50%);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-    word-wrap: normal !important;
+    @extend .abs-visually-hidden;
 
     &.frm_hidden {
         display: initial;
     }
 }
 
-@if $enable-gutenberg-btn {
-    .frm_submit button {
-        @extend %btn-gutenberg;
-    }
+.frm_submit button {
+    @extend %wp-btn;
 }

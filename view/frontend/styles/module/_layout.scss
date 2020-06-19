@@ -1,0 +1,64 @@
+.entry-header,
+.entry-meta,
+.entry-content > * {
+    @extend %container !optional;
+    max-width: $wp-container-width;
+}
+
+.entry-content {
+    box-sizing: border-box;
+
+    * {
+        box-sizing: inherit;
+    }
+
+    > .alignfull {
+        max-width: none;
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    > .alignwide {
+        max-width: $wp-container-width-wide;
+
+        @media (min-width: $wp-container-width-wide) {
+            padding-right: 0;
+            padding-left: 0;
+        }
+    }
+
+    > ul,
+    > ol {
+        margin: 1.5em auto;
+    }
+
+    > .wp-block-quote,
+    > .has-background {
+        @extend %wp-block-has-padding;
+    }
+
+    > .wp-block-pullquote,
+    > .wp-block-cover,
+    > .wp-block-cover-image {
+        @extend %wp-block-has-padding;
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+// Magento layout fixes
+.page-layout-1column,
+.page-layout-2columns-right,
+.page-layout-2columns-left,
+.page-layout-3columns {
+    .entry-content > *,
+    .entry-header,
+    .entry-meta {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+*[class*="_inner-container"] > :last-child {
+    margin-bottom: 0;
+}

@@ -1,1 +1,44 @@
+$color-theme: $color-orange-red1 !default;
+$color-on-theme: #fff !default;
+
+$color-accent: $color-dark-green !default;
+$color-on-accent: #fff !default;
+
+$status-success: #349633 !default;
+$status-warning: #ffb02f !default;
+$status-error: #d41e1e !default;
+
+$container-width: $layout__max-width !default;
+$container-gap: $layout__width-xs-indent !default;
+
+$enable-wp-btn-primary: true !default;
+$wp-btn-transition:
+    border-color 0.15s linear,
+    background-color 0.15s linear,
+    color 0.15s linear !default;
+
+$wp-block-cover-index: 1 !default;
+$wp-block-cover-min-height: 430px !default;
+$wp-block-cover-inner-width: calc(100% - 70px) !default;
+
+$wp-block-embed-wrapper-min-width: 280px !default;
+
+$caption-style-theme-color: $color-gray37 !default;
+
+// WP Gutenberg specific block vars
+$block-padding: 14px !default;
+$block-spacing: 4px !default;
+$block-side-ui-width: $button-size !default;
+$block-side-ui-clearance: 2px !default;
+$block-container-side-padding: $block-side-ui-width + $block-padding + 2 *
+    $block-side-ui-clearance !default;
+$block-bg-padding--v: $block-padding + $block-spacing + $block-side-ui-clearance !default;
+$block-bg-padding--h: $block-side-ui-width + $block-side-ui-clearance !default;
+
+// Formidable
+$frm-mq: "min-width: 768px" !default;
+$frm-required-color: $status-error !default;
+$frm-gap-size: 1rem 0.9375rem !default;
+
+// Kadence
 $enable-kt-blocks: true !default;

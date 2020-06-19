@@ -11,3 +11,21 @@
         text-align: right;
     }
 }
+
+%caption-style {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+%caption-style-theme {
+    color: $caption-style-theme;
+    font-size: $font-size__base;
+    text-align: center;
+}
+
+// If the block is a direct child of entry-content
+// And has padding set directly on not via child element.
+%wp-block-has-padding {
+    $gap: ($container-gap * 2);
+    max-width: calc(#{$wp-container-width} - #{$gap});
+}

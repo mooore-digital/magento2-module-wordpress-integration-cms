@@ -1,9 +1,17 @@
 @import "config";
 
 // Blocks
-@import "blocks/helper";
-@import "blocks/button";
-@import "blocks/cover";
+@import "module/helper";
+@import "module/button";
+@import "module/columns";
+@import "module/cover";
+@import "module/media-text";
+
+// Vendor
+@import "module/mooore/group";
+@import "module/mooore/card";
+// @import "module/formidable/codemirror/index";
+@import "module/formidable/formidable";
 
 // Modifier
-@import "modifiers";
+@import "module/modifiers";

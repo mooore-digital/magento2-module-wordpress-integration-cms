@@ -30,8 +30,7 @@
     overflow-wrap: break-word; // New standard.
 
     // Between mobile and large viewports, allow 2 columns.
-    // TODO convert to m2 mq
-    @media (min-width: #{ ($break-small) }) and (max-width: #{ ($break-medium - 1) }) {
+    @include screen($break-small, ($break-medium - 1)) {
         // As with mobile styles, this must be important since the Column
         // assigns its own width as an inline style, which should take effect
         // starting at `break-medium`.
