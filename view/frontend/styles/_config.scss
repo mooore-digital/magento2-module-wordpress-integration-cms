@@ -26,6 +26,15 @@ $wp-block-embed-wrapper-min-width: 280px !default;
 
 $caption-style-theme-color: $color-gray37 !default;
 
+$breakpoints: (
+    xs: 0,
+    sm: 480px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    sl: 1440px
+) !default;
+
 // WP Gutenberg specific block vars
 $block-padding: 14px !default;
 $block-spacing: 4px !default;
@@ -37,9 +46,15 @@ $block-bg-padding--v: $block-padding + $block-spacing + $block-side-ui-clearance
 $block-bg-padding--h: $block-side-ui-width + $block-side-ui-clearance !default;
 
 // Formidable
-$frm-mq: "min-width: 768px" !default;
+$frm-mq: map-get($breakpoints, md) !default; // same as screen-m
 $frm-required-color: $status-error !default;
 $frm-gap-size: 1rem 0.9375rem !default;
 
 // Kadence
-$enable-kt-blocks: true !default;
+$kt-sm: map-get($breakpoints, sm) !default;
+$kt-md: map-get($breakpoints, md) !default; // same as screen-m
+$kt-lg: map-get($breakpoints, lg) !default;
+$kt-xl: map-get($breakpoints, xl) !default;
+$kt-sl: 1500px !default;
+
+$kt-advancedheading-mark-color: $color-theme;

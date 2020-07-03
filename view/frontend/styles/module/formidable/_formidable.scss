@@ -1,4 +1,4 @@
-$frm-mq: "min-width: 768px" !default;
+$frm-mq: 768px !default;
 $frm-required-color: $status-error !default;
 $frm-gap-size: 1rem 0.9375rem !default;
 
@@ -18,7 +18,7 @@ $frm-gap-size: 1rem 0.9375rem !default;
 }
 
 .form-field {
-    @media ($frm-mq) {
+    @include min-screen($frm-mq) {
         &.frm_half {
             width: calc(100% / 2);
         }

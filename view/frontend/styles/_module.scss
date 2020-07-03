@@ -24,12 +24,20 @@
 @import "module/video";
 
 // Vendor
+// Mooore Blocks
 @import "module/mooore/group";
 @import "module/mooore/card";
-// @import "module/formidable/codemirror/index";
+
+// Formidable Forms
+// @import "module/formidable/codemirror/index"; // Optional
 @import "module/formidable/formidable";
-@import "module/kadence/button";
+
+// Kadence Blocks
+// @import "module/kadence/button";
+@import "module/kadence/row-layout/index";
 @import "module/kadence/spacer";
+// @import "module/kadence/tabs";
+// @import "module/kadence/testimonials";
 
 // Modifier
 @import "module/modifiers";
