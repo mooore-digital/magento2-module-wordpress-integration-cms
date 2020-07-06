@@ -33,11 +33,17 @@
 @import "module/formidable/formidable";
 
 // Kadence Blocks
-// @import "module/kadence/button";
+@import "module/kadence/accordion";
+@import "module/kadence/advanced-btn";
+@import "module/kadence/advanced-gallery";
+@import "module/kadence/advanced-heading";
+@import "module/kadence/icon";
+@import "module/kadence/icon-list";
+@import "module/kadence/info-box";
 @import "module/kadence/row-layout/index";
 @import "module/kadence/spacer";
-// @import "module/kadence/tabs";
-// @import "module/kadence/testimonials";
+@import "module/kadence/tabs";
+@import "module/kadence/testimonials";
 
 // Modifier
 @import "module/modifiers";
