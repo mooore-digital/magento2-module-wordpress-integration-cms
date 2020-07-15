@@ -68,3 +68,43 @@
         }
     }
 }
+
+/**
+ * All Columns Alignment
+ */
+.wp-block-columns {
+    &.are-vertically-aligned-top {
+        align-items: flex-start;
+    }
+
+    &.are-vertically-aligned-center {
+        align-items: center;
+    }
+
+    &.are-vertically-aligned-bottom {
+        align-items: flex-end;
+    }
+}
+
+/**
+ * Individual Column Alignment
+ */
+.wp-block-column {
+    &.is-vertically-aligned-top {
+        align-self: flex-start;
+    }
+
+    &.is-vertically-aligned-center {
+        align-self: center;
+    }
+
+    &.is-vertically-aligned-bottom {
+        align-self: flex-end;
+    }
+
+    &.is-vertically-aligned-top,
+    &.is-vertically-aligned-center,
+    &.is-vertically-aligned-bottom {
+        width: 100%;
+    }
+}
