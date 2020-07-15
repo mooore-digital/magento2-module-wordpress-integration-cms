@@ -10,8 +10,8 @@ $wp-block-cover-inner-width: calc(100% - 70px) !default;
     align-items: center;
     width: 100%;
     min-height: $wp-block-cover-min-height;
-    margin-top: $indent_l;
-    margin-bottom: $indent_l;
+    margin-top: $indent__l;
+    margin-bottom: $indent__l;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -34,7 +34,7 @@ $wp-block-cover-inner-width: calc(100% - 70px) !default;
     }
 
     &.has-background-dim {
-        background-color: $black;
+        background-color: $color-black;
 
         &::before {
             content: "";

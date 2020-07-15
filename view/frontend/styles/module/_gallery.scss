@@ -52,13 +52,13 @@
             max-height: 100%;
             overflow: auto;
             padding: 40px 10px 9px;
-            color: $white;
+            color: $color-white;
             text-align: center;
             font-size: $font-size__base;
             background: linear-gradient(
                 0deg,
-                rgba($black, 0.7) 0,
-                rgba($black, 0.3) 70%,
+                rgba($color-black, 0.7) 0,
+                rgba($color-black, 0.3) 70%,
                 transparent
             );
 
@@ -103,7 +103,7 @@
     }
 
     // Beyond mobile viewports, we allow up to 8 columns.
-    @include break-small {
+    @include min-screen($screen__s) {
         @for $i from 3 through 8 {
             &.columns-#{$i} {
                 .blocks-gallery-image,

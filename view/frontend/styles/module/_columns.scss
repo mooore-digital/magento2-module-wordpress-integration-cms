@@ -16,7 +16,7 @@
 .wp-block-column {
     flex: 1;
 
-    @include min-screen($screen__s) {
+    @include max-screen($screen__s) {
         // Responsiveness: Show at most one columns on mobile. This must be
         // important since the Column assigns its own width as an inline style.
         flex-basis: 100% !important;
@@ -30,7 +30,7 @@
     overflow-wrap: break-word; // New standard.
 
     // Between mobile and large viewports, allow 2 columns.
-    @include screen($break-small, ($break-medium - 1)) {
+    @include screen($screen__s, $screen__m) {
         // As with mobile styles, this must be important since the Column
         // assigns its own width as an inline style, which should take effect
         // starting at `break-medium`.

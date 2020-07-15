@@ -1,3 +1,6 @@
+$kt-md: 768px !default;
+$kt-lg: 992px !default;
+
 .kt-button {
     @extend %wp-btn;
 }
@@ -62,7 +65,7 @@
     justify-content: center;
 }
 
-@include screen($md-min, $lg-max) {
+@include screen($kt-md, $kt-lg) {
     .kt-btn-tablet-align-center {
         text-align: center;
     }
@@ -74,7 +77,7 @@
     }
 }
 
-@include max-screen($md-max) {
+@include max-screen($kt-md) {
     .kt-btn-mobile-align-center {
         text-align: center;
     }

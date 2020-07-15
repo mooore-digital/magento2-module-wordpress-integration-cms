@@ -1,50 +1,53 @@
-.has-primary-background-color {
-    background-color: $color-theme;
-    color: $color-on-theme;
-}
+// stylelint-disable declaration-no-important
 
-.has-accent-background-color {
-    background-color: $color-accent;
-    color: $color-on-accent;
-}
+$has-background-color: #fff !default;
 
-.has-very-light-gray-color {
-    color: $color-gray90;
-}
+:root .editor-styles-wrapper,
+:root {
+    .has-theme-background-color {
+        background-color: $color-theme;
+        color: $color-on-theme;
+    }
 
-.has-very-light-gray-background-color {
-    background-color: $color-gray90;
-}
+    .has-accent-background-color {
+        background-color: $color-accent;
+        color: $color-on-accent;
+    }
 
-.has-very-dark-gray-color {
-    color: $color-gray34;
-}
+    .has-theme-color.has-text-color {
+        color: $color-theme;
+    }
 
-.has-very-dark-gray-background-color {
-    background-color: $color-gray34;
-}
+    .has-accent-color.has-text-color {
+        color: $color-accent;
+    }
 
-// Font sizes.
-.has-small-font-size {
-    font-size: 13px;
-}
+    .has-background-color.has-text-color {
+        color: $has-background-color;
+    }
 
-.has-regular-font-size, // Not used now, kept because of backward compatibility.
-.has-normal-font-size {
-    font-size: 16px;
-}
+    // Font sizes.
+    .has-small-font-size {
+        font-size: 13px;
+    }
 
-.has-medium-font-size {
-    font-size: 20px;
-}
+    .has-regular-font-size, // Not used now, kept because of backward compatibility.
+    .has-normal-font-size {
+        font-size: 16px;
+    }
 
-.has-large-font-size {
-    font-size: 36px;
-}
+    .has-medium-font-size {
+        font-size: 20px;
+    }
 
-.has-larger-font-size, // Not used now, kept because of backward compatibility.
-.has-huge-font-size {
-    font-size: 42px;
+    .has-large-font-size {
+        font-size: 36px;
+    }
+
+    .has-larger-font-size, // Not used now, kept because of backward compatibility.
+    .has-huge-font-size {
+        font-size: 42px;
+    }
 }
 
 // Text alignments.

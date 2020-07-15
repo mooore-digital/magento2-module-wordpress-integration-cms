@@ -115,7 +115,7 @@ $kt-sl: 1500px !default;
     }
 }
 
-@media screen($kt-lg, $kt-xl) {
+@include screen($kt-lg, $kt-xl) {
     .kt-t-lg-col-1 .kt-testimonial-grid-wrap {
         display: block;
     }

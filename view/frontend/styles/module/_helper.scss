@@ -18,7 +18,7 @@
 }
 
 %caption-style-theme {
-    color: $caption-style-theme;
+    color: $caption-style-theme-color;
     font-size: $font-size__base;
     text-align: center;
 }
@@ -27,9 +27,12 @@
     padding: $block-bg-padding--v $block-bg-padding--h;
 }
 
-// If the block is a direct child of entry-content
-// And has padding set directly on not via child element.
-%wp-block-has-padding {
-    $gap: ($container-gap * 2);
-    max-width: calc(#{$wp-container-width} - #{$gap});
+%container {
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $container-width;
+    padding-left: $container-gap;
+    padding-right: $container-gap;
+    width: 100%;
 }
