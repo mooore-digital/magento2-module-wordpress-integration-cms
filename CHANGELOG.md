@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2020-07-14
+### Added
+- Translations for nl_NL
+- Support for homepage
+- Fallback for Adminhtml page source if no pages could be found/fetched
+
 ## [0.2.0] - 2020-06-04
 ### Changed
 - HTTP client from Guzzle to Symfony HttpClient
