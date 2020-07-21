@@ -2,11 +2,13 @@
 
 namespace Mooore\WordpressIntegrationCms\Observer;
 
+use Magento\Cms\Model\Page;
 use Magento\Cms\Model\PageRepository;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Layout;
+use Magento\Framework\Event\Observer;
 
 class LayoutLoadBefore implements ObserverInterface
 {
@@ -18,18 +20,23 @@ class LayoutLoadBefore implements ObserverInterface
      * @var PageRepository
      */
     private $pageRepository;
+    /**
+     * @var Page
+     */
+    private $page;
 
-    public function __construct(Http $request, PageRepository $pageRepository)
+    public function __construct(Http $request, PageRepository $pageRepository, Page $page)
     {
         $this->request = $request;
         $this->pageRepository = $pageRepository;
+        $this->page = $page;
     }
 
     /**
-     * @param \Magento\Framework\Event\Observer $observer
+     * @param Observer $observer
      * @return void
      */
-    public function execute(\Magento\Framework\Event\Observer $observer)
+    public function execute(Observer $observer)
     {
         $action = $observer->getData('full_action_name');
 
@@ -37,7 +44,7 @@ class LayoutLoadBefore implements ObserverInterface
             return;
         }
 
-        $pageId = $this->request->getParam('page_id');
+        $pageId = $this->page->getId();
 
         if ($pageId === null) {
             return;
