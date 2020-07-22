@@ -1,0 +1,61 @@
+& when (@media-common = true) {
+    .wp-block-image {
+        // The image block is in a `figure` element, and many themes zero this out.
+        // This rule explicitly sets it, to ensure at least some bottom-margin in the flow.
+        margin-bottom: 1em;
+
+        img {
+            max-width: 100%;
+        }
+
+        &.aligncenter {
+            text-align: center;
+        }
+
+        &.alignfull img,
+        &.alignwide img {
+            width: 100%;
+        }
+
+        .alignleft,
+        .alignright,
+        .aligncenter,
+        &.is-resized {
+            display: table;
+
+            > figcaption {
+                display: table-caption;
+                caption-side: bottom;
+            }
+        }
+
+        .alignleft {
+            float: left;
+            margin: 0.5em 1em 0.5em 0;
+        }
+
+        .alignright {
+            float: right;
+            margin: 0.5em 0 0.5em 1em;
+        }
+
+        .aligncenter {
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        // Supply caption styles to images, even if the theme hasn't opted in.
+        // Reason being: the new markup, <figcaptions>, are not likely to be styled in the majority of existing themes,
+        // so we supply the styles so as to not appear broken or unstyled in those themes.
+        figcaption {
+            .lib-caption-style();
+        }
+    }
+
+    // Variations
+    .is-style-rounded img {
+        // We use an absolute pixel to prevent the oval shape that a value of 50% would give
+        // to rectangular images. A pill-shape is better than otherwise.
+        border-radius: 9999px;
+    }
+}
