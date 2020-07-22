@@ -1,0 +1,24 @@
+// Styles for when using the full width layout
+
+// Add container to the page main content
+// Styles are the same from magento/blocks/_layout.{scss,less}
+.page-main-full-width {
+    > *:not(.columns) {
+        padding-right: $layout__width-xs-indent;
+        padding-left: $layout__width-xs-indent;
+    }
+}
+
+@include min-screen($screen__m) {
+    .page-main-full-width {
+        > *:not(.columns) {
+            box-sizing: border-box;
+            width: 100%;
+            max-width: $layout__max-width;
+            margin-right: auto;
+            margin-left: auto;
+            padding-right: $layout-indent__width;
+            padding-left: $layout-indent__width;
+        }
+    }
+}
