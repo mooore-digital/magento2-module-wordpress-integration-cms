@@ -303,8 +303,8 @@
 }
 
 @media not all and (min-resolution: 0.001dpcm) {
-    @supports (-webkit-appearance: none) {
-        @media (max-width: 767px) {
+    @media (max-width: 767px) {
+        @supports (-webkit-appearance: none) {
             .wp-block-kadence-rowlayout [id*="jarallax-container-"] {
                 clip: auto !important;
             }

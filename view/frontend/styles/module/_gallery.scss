@@ -101,9 +101,12 @@
         width: 100%;
         margin-right: 0;
     }
+}
 
-    // Beyond mobile viewports, we allow up to 8 columns.
-    @include min-screen($screen__s) {
+// Beyond mobile viewports, we allow up to 8 columns.
+@include min-screen($screen__s) {
+    .wp-block-gallery,
+    .blocks-gallery-grid {
         @for $i from 3 through 8 {
             &.columns-#{$i} {
                 .blocks-gallery-image,
@@ -124,11 +127,15 @@
             }
         }
     }
+}
 
+.wp-block-gallery,
+.blocks-gallery-grid {
     // Last item always needs margins reset.
     .blocks-gallery-image:last-child,
     .blocks-gallery-item:last-child {
-        margin-right: 0;
+        // stylelint-disable-next-line declaration-no-important
+        margin-right: 0 !important;
     }
 
     // Apply max-width to floated items that have no intrinsic width.

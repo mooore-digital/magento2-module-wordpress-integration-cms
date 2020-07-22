@@ -59,7 +59,7 @@ $frm-gap-size: 1rem 0.9375rem !default;
 }
 
 .frm_screen_reader {
-    @extend .abs-visually-hidden;
+    @include lib-visually-hidden;
 
     &.frm_hidden {
         display: initial;

@@ -3,6 +3,7 @@
 
 // Blocks
 @import "module/helper";
+@import "module/audio";
 @import "module/button";
 @import "module/columns";
 @import "module/cover";
@@ -45,5 +46,6 @@
 @import "module/kadence/tabs";
 @import "module/kadence/testimonials";
 
-// Modifier
+// Article layout en block modifiers
+@import "module/layout";
 @import "module/modifiers";
