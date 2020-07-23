@@ -1,7 +1,13 @@
 .entry-header,
 .entry-meta,
 .entry-content > * {
-    @extend %container;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: $container-width;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: $container-gap;
+    padding-right: $container-gap;
 }
 
 .entry-content {

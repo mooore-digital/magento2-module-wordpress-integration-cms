@@ -26,13 +26,3 @@
 %text-has-bg {
     padding: $block-bg-padding--v $block-bg-padding--h;
 }
-
-%container {
-    box-sizing: border-box;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: $container-width;
-    padding-left: $container-gap;
-    padding-right: $container-gap;
-    width: 100%;
-}
