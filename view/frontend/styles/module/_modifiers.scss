@@ -1,0 +1,69 @@
+// stylelint-disable declaration-no-important
+
+$has-background-color: #fff !default;
+
+:root .editor-styles-wrapper,
+:root {
+    .has-theme-background-color {
+        background-color: $color-theme;
+        color: $color-on-theme;
+    }
+
+    .has-accent-background-color {
+        background-color: $color-accent;
+        color: $color-on-accent;
+    }
+
+    .has-theme-color.has-text-color {
+        color: $color-theme;
+    }
+
+    .has-accent-color.has-text-color {
+        color: $color-accent;
+    }
+
+    .has-background-color.has-text-color {
+        color: $has-background-color;
+    }
+
+    // Font sizes.
+    .has-small-font-size {
+        font-size: 13px;
+    }
+
+    .has-regular-font-size, // Not used now, kept because of backward compatibility.
+    .has-normal-font-size {
+        font-size: 16px;
+    }
+
+    .has-medium-font-size {
+        font-size: 20px;
+    }
+
+    .has-large-font-size {
+        font-size: 36px;
+    }
+
+    .has-larger-font-size, // Not used now, kept because of backward compatibility.
+    .has-huge-font-size {
+        font-size: 42px;
+    }
+}
+
+// Text alignments.
+.has-text-align-center {
+    text-align: center;
+}
+
+.has-text-align-left {
+    text-align: left;
+}
+
+.has-text-align-right {
+    text-align: right;
+}
+
+// Block alignments.
+.aligncenter {
+    clear: both;
+}

@@ -1,0 +1,59 @@
+@wp-block-quote-border: 4px solid @blockquote__border-color;
+@wp-block-quote-border-offset: 1em;
+@wp-block-quote-large-font-size: 24px;
+@wp-block-quote-large-font-size-cite: 18px;
+
+& when (@media-common = true) {
+    .wp-block-quote {
+        border-left: @wp-block-quote-border;
+        margin: 0 0 @indent__base 0;
+        padding-left: 1em;
+
+        cite,
+        footer,
+        &__citation {
+            color: @blockquote-small__color;
+            font-size: @blockquote-small__font-size;
+            margin-top: 1em;
+            position: relative;
+            font-style: normal;
+        }
+
+        &.has-text-align-right,
+        &.has-text-align-right {
+            border-left: none;
+            border-right: @wp-block-quote-border;
+            padding-left: 0;
+            padding-right: @wp-block-quote-border-offset;
+        }
+
+        &.has-text-align-center,
+        &.has-text-align-center {
+            border: none;
+            padding-left: 0;
+        }
+
+        &.is-style-large,
+        &.is-large {
+            border: none;
+        }
+
+        &.is-style-large,
+        &.is-large {
+            margin: 0 0 16px;
+            padding: 0 1em;
+
+            p {
+                font-size: @wp-block-quote-large-font-size;
+                font-style: italic;
+                line-height: 1.6;
+            }
+
+            cite,
+            footer {
+                font-size: @wp-block-quote-large-font-size-cite;
+                text-align: right;
+            }
+        }
+    }
+}

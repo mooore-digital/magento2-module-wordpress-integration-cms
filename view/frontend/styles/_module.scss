@@ -1,64 +1,51 @@
-// All gutenberg styles
-@import "gutenberg-blocks/module";
-@import "kadence-blocks/module";
-@import "mooore-blocks/module";
-@import "formidable/module";
+@import "config";
+@import "layout"; // Magento specific
 
-.entry-content {
-    box-sizing: border-box;
+// Blocks
+@import "module/helper";
+@import "module/audio";
+@import "module/button";
+@import "module/columns";
+@import "module/cover";
+@import "module/embed";
+@import "module/gallery";
+@import "module/heading";
+@import "module/image";
+@import "module/media-text";
+@import "module/paragraph";
+@import "module/pullquote";
+@import "module/quote";
+@import "module/rss";
+@import "module/separator";
+@import "module/social-links";
+@import "module/spacer";
+@import "module/subhead";
+@import "module/table";
+@import "module/text-columns";
+@import "module/video";
 
-    * {
-        box-sizing: inherit;
-    }
-}
+// Vendor
+// Mooore Blocks
+@import "module/mooore/group";
+@import "module/mooore/card";
 
-// Magento layout fixes
-.page-layout-1column,
-.page-layout-2columns-right,
-.page-layout-2columns-left,
-.page-layout-3columns {
-    .entry-content > *,
-    .entry-header,
-    .entry-meta {
-        padding-right: 0;
-        padding-left: 0;
-    }
-}
+// Formidable Forms
+// @import "module/formidable/codemirror/index"; // Optional
+@import "module/formidable/formidable";
 
-// Kadence Row alignment
-.wp-block-kadence-rowlayout {
-    &.column-fill {
-        .wp-block-kadence-column {
-            display: flex;
-            flex-direction: column;
-            justify-content: stretch;
-        }
+// Kadence Blocks
+@import "module/kadence/accordion";
+@import "module/kadence/advanced-btn";
+@import "module/kadence/advanced-gallery";
+@import "module/kadence/advanced-heading";
+@import "module/kadence/icon";
+@import "module/kadence/icon-list";
+@import "module/kadence/info-box";
+@import "module/kadence/row-layout/index";
+@import "module/kadence/spacer";
+@import "module/kadence/tabs";
+@import "module/kadence/testimonials";
 
-        .kt-inside-inner-col {
-            flex: 1 1 auto;
-        }
-    }
-}
-
-.kt-inside-inner-col {
-    .center-content & {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-content: center;
-    }
-
-    @media ($md-min) {
-        .max-content & {
-            max-width: 600px;
-        }
-
-        .push-right & {
-            margin-left: auto;
-        }
-
-        .push-left & {
-            margin-right: auto;
-        }
-    }
-}
+// Article layout en block modifiers
+@import "module/layout";
+@import "module/modifiers";

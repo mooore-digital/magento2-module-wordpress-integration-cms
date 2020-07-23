@@ -1,0 +1,42 @@
+%wp-text-alignment {
+    &.alignleft {
+        text-align: left;
+    }
+
+    &.aligncenter {
+        text-align: center;
+    }
+
+    &.alignright {
+        text-align: right;
+    }
+}
+
+%caption-style {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+%caption-style-theme {
+    color: $caption-style-theme-color;
+    font-size: $font-size__base;
+    text-align: center;
+}
+
+%text-has-bg {
+    padding: $block-bg-padding--v $block-bg-padding--h;
+}
+
+%wp-btn {
+    @include lib-button();
+
+    @if $enable-wp-btn-primary {
+        @include lib-button-primary();
+    }
+}
+
+%wp-btn-outline {
+    border: 2px solid;
+    background-color: transparent;
+    color: $wp-btn-outline-color;
+}

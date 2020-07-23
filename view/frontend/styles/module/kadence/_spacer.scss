@@ -1,0 +1,40 @@
+.kt-block-spacer {
+    position: relative;
+    height: 60px;
+}
+
+.kt-block-spacer .kt-divider,
+.kt-divider-stripe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    transform: perspective(1px) translate(-50%, -50%);
+}
+
+.kt-block-spacer .kt-divider {
+    border-top: 1px solid $color-gray90;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+}
+
+.kt-divider-stripe {
+    height: 20px;
+    border: 0;
+}
+
+.kt-block-spacer.kt-block-spacer-halign-left .kt-divider,
+.kt-block-spacer.kt-block-spacer-halign-left .kt-divider-stripe {
+    left: 0;
+    transform: perspective(1px) translate(0%, -50%);
+}
+
+.kt-block-spacer.kt-block-spacer-halign-right .kt-divider,
+.kt-block-spacer.kt-block-spacer-halign-right .kt-divider-stripe {
+    right: 0;
+    left: auto;
+    transform: perspective(1px) translate(0%, -50%);
+}

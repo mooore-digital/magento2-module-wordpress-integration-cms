@@ -1,0 +1,90 @@
+$kt-md: 768px !default;
+$kt-lg: 992px !default;
+
+.kt-button {
+    @extend %wp-btn;
+}
+
+.kt-btn-size-small {
+    @include lib-button-s();
+}
+
+.kt-btn-size-large {
+    @include lib-button-l();
+}
+
+.kt-btn-svg-icon.kt-btn-side-right {
+    padding-left: 5px;
+}
+
+.kt-btn-svg-icon.kt-btn-side-left {
+    padding-right: 5px;
+}
+
+.kt-btn-has-text-false .kt-btn-svg-icon {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.kt-btn-wrap {
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.kt-btn-align-center {
+    text-align: center;
+}
+
+.kt-btn-align-right {
+    text-align: right;
+}
+
+.kt-btn-align-left {
+    text-align: left;
+}
+
+
+.wp-block-kadence-advancedbtn .kt-btn-wrap:last-child {
+    margin-right: 0;
+}
+
+.wp-block-kadence-advancedbtn .kt-btn-wrap {
+    margin-right: 5px;
+}
+
+.kt-force-btn-fullwidth {
+    display: flex;
+}
+
+.kt-force-btn-fullwidth .kt-btn-wrap {
+    display: block;
+    flex-grow: 1;
+}
+
+.kt-force-btn-fullwidth .kt-btn-wrap .kt-button {
+    justify-content: center;
+}
+
+@include screen($kt-md, $kt-lg) {
+    .kt-btn-tablet-align-center {
+        text-align: center;
+    }
+    .kt-btn-tablet-align-left {
+        text-align: left;
+    }
+    .kt-btn-tablet-align-right {
+        text-align: right;
+    }
+}
+
+@include max-screen($kt-md) {
+    .kt-btn-mobile-align-center {
+        text-align: center;
+    }
+    .kt-btn-mobile-align-left {
+        text-align: left;
+    }
+    .kt-btn-mobile-align-right {
+        text-align: right;
+    }
+}

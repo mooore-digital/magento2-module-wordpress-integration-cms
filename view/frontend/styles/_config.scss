@@ -1,0 +1,60 @@
+$color-theme: $color-orange-red1 !default;
+$color-on-theme: #fff !default;
+
+$color-accent: $color-dark-green !default;
+$color-on-accent: #fff !default;
+
+$has-background-color: #fff !default;
+
+$status-success: #349633 !default;
+$status-warning: #ffb02f !default;
+$status-error: #d41e1e !default;
+
+$wp-gap-size: 16px !default;
+$container-width: $layout__max-width !default;
+$container-width-wide: ($layout__max-width + 400px) !default;
+$container-gap: $layout__width-xs-indent !default;
+
+$enable-wp-btn-primary: true !default;
+$wp-btn-transition: border-color 0.15s linear, background-color 0.15s linear,
+    color 0.15s linear !default;
+$wp-btn-outline-color: $primary__color !default;
+
+$wp-block-cover-index: 1 !default;
+$wp-block-cover-min-height: 430px !default;
+$wp-block-cover-inner-width: calc(100% - 70px) !default;
+
+$wp-content-width: 580px;
+$wp-block-embed-wrapper-min-width: 280px !default;
+
+$caption-style-theme-color: $color-gray37 !default;
+
+$wp-block-quote-border: 4px solid $blockquote__border-color !default;
+$wp-block-quote-border-offset: 1em !default;
+$wp-block-quote-large-font-size: 24px !default;
+$wp-block-quote-large-font-size0-cite: 18px !default;
+
+// WP Gutenberg specific block vars
+$block-padding: 14px !default;
+$block-spacing: 4px !default;
+$block-side-ui-width: 640px !default;
+$block-side-ui-clearance: 2px !default;
+$block-container-side-padding: $block-side-ui-width + $block-padding + 2 *
+    $block-side-ui-clearance !default;
+$block-bg-padding--v: $block-padding + $block-spacing + $block-side-ui-clearance !default;
+$block-bg-padding--h: $block-side-ui-width + $block-side-ui-clearance !default;
+
+// Formidable
+$frm-mq: $screen__m !default; // same as screen-m
+$frm-required-color: $status-error !default;
+$frm-gap-size: 1rem 0.9375rem !default;
+
+// Kadence
+$kt-sm: $screen__xs !default;
+$kt-md: $screen__m !default;
+$kt-lg: $screen__lg !default;
+$kt-xl: 1200px !default;
+$kt-sl: 1500px !default;
+
+$kt-advancedheading-mark-color: $color-theme !default;
+

@@ -1,0 +1,71 @@
+$frm-mq: 768px !default;
+$frm-required-color: $status-error !default;
+$frm-gap-size: 1rem 0.9375rem !default;
+
+.frm_fields_container {
+    display: flex;
+    flex-flow: row wrap;
+    margin-right: (nth($frm-gap-size, 2) / -1);
+    margin-left: (nth($frm-gap-size, 2) / -1);
+
+    > * {
+        width: 100%;
+        flex: 0 1 auto;
+        margin-bottom: nth($frm-gap-size, 1);
+        padding-right: nth($frm-gap-size, 2);
+        padding-left: nth($frm-gap-size, 2);
+    }
+}
+
+.form-field {
+    @include min-screen($frm-mq) {
+        &.frm_half {
+            width: calc(100% / 2);
+        }
+        &.frm_third {
+            width: calc(100% / 3);
+        }
+        &.frm_fourth {
+            width: calc(100% / 4);
+        }
+        &.frm_fifth {
+            width: calc(100% / 5);
+        }
+        &.frm_sixth {
+            width: calc(100% / 6);
+        }
+        &.frm_two_thirds {
+            width: calc(100% / 3 * 2);
+        }
+        &.frm_three_fourths {
+            width: calc(100% / 4 * 3);
+        }
+        &.frm10 {
+            width: calc(100% / 6 * 5);
+        }
+    }
+}
+
+.frm_required {
+    color: $status-error;
+}
+
+// From formidable
+.frm_hidden,
+.frm_add_form_row.frm_hidden,
+.frm_remove_form_row.frm_hidden,
+.with_frm_style .frm_button.frm_hidden {
+    display: none !important;
+}
+
+.frm_screen_reader {
+    @include lib-visually-hidden;
+
+    &.frm_hidden {
+        display: initial;
+    }
+}
+
+.frm_submit button {
+    @extend %wp-btn;
+}
