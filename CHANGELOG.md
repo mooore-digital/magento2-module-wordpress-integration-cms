@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.3] - 2020-07-14
+### Fixed
+- Fixed the btn hover/focus state
+
 ## [0.3.2] - 2020-07-14
 ### Fixed
 - Fix btn group

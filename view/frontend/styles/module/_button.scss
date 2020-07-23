@@ -11,9 +11,10 @@ $wp-btn-outline-color: $primary__color !default;
 .wp-block-button__link,
 .wp-block-file__button {
     @extend %wp-btn;
+    text-decoration: none;
     transition: $wp-btn-transition;
 
-    &.is-style-outline {
+    .is-style-outline & {
         @extend %wp-btn-outline;
     }
 }

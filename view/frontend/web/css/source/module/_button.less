@@ -11,9 +11,10 @@
     .wp-block-button__link,
     .wp-block-file__button {
         .lib-wp-btn();
+        text-decoration: none;
         transition: @wp-btn-transition;
 
-        &.is-style-outline {
+        .is-style-outline & {
             .lib-wp-btn-outline();
         }
     }
