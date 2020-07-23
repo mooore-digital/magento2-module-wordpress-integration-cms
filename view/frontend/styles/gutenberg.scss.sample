@@ -1,6 +1,0 @@
-// Get base assets
-@import "variables";
-@import "vendor/magento-ui/variables"; // Magento UI
-
-// Get Module styles
-@import "../Mooore_WordpressIntegrationCms/styles/module";
