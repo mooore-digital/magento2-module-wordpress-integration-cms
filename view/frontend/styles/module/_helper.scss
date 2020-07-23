@@ -36,7 +36,7 @@
 }
 
 %wp-btn-outline {
-    border: 2px solid;
+    border: $wp-btn-outline-border;
     background-color: transparent;
     color: $wp-btn-outline-color;
 }
