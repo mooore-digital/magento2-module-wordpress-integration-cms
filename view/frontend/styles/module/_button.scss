@@ -3,20 +3,6 @@ $wp-btn-transition: border-color 0.15s linear, background-color 0.15s linear,
     color 0.15s linear !default;
 $wp-btn-outline-color: $primary__color !default;
 
-%wp-btn {
-    @include lib-button();
-
-    @if $enable-wp-btn-primary {
-        @include lib-button-primary();
-    }
-}
-
-%wp-btn-outline {
-    border: 2px solid;
-    background-color: transparent;
-    color: $wp-btn-outline-color;
-}
-
 .wp-block-button,
 .wp-block-file {
     @extend %wp-text-alignment;
