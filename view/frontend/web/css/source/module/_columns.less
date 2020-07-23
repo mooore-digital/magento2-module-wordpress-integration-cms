@@ -28,19 +28,19 @@
         word-break: break-word; // For back-compat.
         overflow-wrap: break-word; // New standard.
     }
-}
 
-.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
-    .wp-block-column {
-        // Responsiveness: Show at most one columns on mobile. This must be
-        // important since the Column assigns its own width as an inline style.
-        flex-basis: 100% !important;
+    @media (max-width: (@screen__s - 1)) {
+        .wp-block-column {
+            // Responsiveness: Show at most one columns on mobile. This must be
+            // important since the Column assigns its own width as an inline style.
+            flex-basis: 100% !important;
+        }
     }
 }
 
 // Between mobile and large viewports, allow 2 columns.
 & when (@media-common = true) {
-    @media (min-width: @screen__xs) and (max-width: (@screen__m - 1)) {
+    @media (min-width: @screen__s) and (max-width: (@screen__m - 1)) {
         .wp-block-column {
             // As with mobile styles, this must be important since the Column
             // assigns its own width as an inline style, which should take effect
