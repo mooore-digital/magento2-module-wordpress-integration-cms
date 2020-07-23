@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1] - 2020-07-14
+### Fixed
+- LESS version of column block not wrapping
+
 ## [0.3.0] - 2020-07-14
 ### Added
 - New page layout for 1column full width layout.
