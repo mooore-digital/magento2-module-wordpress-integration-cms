@@ -1,5 +1,21 @@
 & when (@media-common = true) {
     .wp-block-mooore-group {
         display: block;
+        position: relative;
+
+        &__link {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        &__inner-container {
+            a {
+                position: relative;
+                z-index: 1;
+            }
+        }
     }
 }
