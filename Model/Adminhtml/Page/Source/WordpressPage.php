@@ -49,7 +49,7 @@ class WordpressPage implements OptionSourceInterface
                 }
                 foreach ($site['data'] as $page) {
                     $options[] = [
-                        'label' => $page['title']['rendered'] . ' (' . $site['name'] . ')',
+                        'label' => $page['id'] . ' - ' . $page['modified_date_formatted'] . ' - ' . $page['title']['rendered'] . ' (' . $site['name'] . ')',
                         'value' => $site['id'] . '_' . $page['id'],
                     ];
                 }
