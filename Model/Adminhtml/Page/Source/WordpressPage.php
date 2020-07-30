@@ -48,9 +48,8 @@ class WordpressPage implements OptionSourceInterface
                     continue;
                 }
                 foreach ($site['data'] as $page) {
-                    $last_modified_formatted = date('j M y', strtotime($page['date']));
                     $options[] = [
-                        'label' => $page['id'] . ' - ' . $last_modified_formatted . ' - ' . $page['title']['rendered'] . ' (' . $site['name'] . ')',
+                        'label' => $page['id'] . ' - ' . $page['modified_date_formatted'] . ' - ' . $page['title']['rendered'] . ' (' . $site['name'] . ')',
                         'value' => $site['id'] . '_' . $page['id'],
                     ];
                 }
