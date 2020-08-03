@@ -18,7 +18,7 @@
         }
     }
 
-    @media (min-screen: @frm-mq) {
+    @media (min-width: @frm-mq) {
         .form-field {
             &.frm_half {
                 width: calc(~"100% / 2");
@@ -65,6 +65,15 @@
         &.frm_hidden {
             display: initial;
         }
+    }
+
+    // NOTE: the frm_none normally removed the element with a `display: none`.
+    // This is considered a bad A11Y practice and for that reason we hide it.
+    // Just as the frm_hidden.
+    .frm_none_container .frm_primary_label,
+    .frm_hidden_container .frm_primary_label,
+    .frm_verify {
+        .lib-visually-hidden();
     }
 
     .frm_submit button {

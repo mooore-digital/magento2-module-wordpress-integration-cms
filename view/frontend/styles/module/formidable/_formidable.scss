@@ -66,6 +66,15 @@ $frm-gap-size: 1rem 0.9375rem !default;
     }
 }
 
+// NOTE: the frm_none normally removed the element with a `display: none`.
+// This is considered a bad A11Y practice and for that reason we hide it.
+// Just as the frm_hidden.
+.frm_none_container .frm_primary_label,
+.frm_hidden_container .frm_primary_label,
+.frm_verify {
+    @include lib-visually-hidden;
+}
+
 .frm_submit button {
     @extend %wp-btn;
 }
