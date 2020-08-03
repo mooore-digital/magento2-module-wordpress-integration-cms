@@ -56,6 +56,7 @@ class Page
             );
 
             foreach (json_decode($response->getContent(), true) as $page) {
+                $page['modified_date_formatted'] = date('j M y', strtotime($page['modified']));
                 yield $page;
                 $pageCount++;
             }
