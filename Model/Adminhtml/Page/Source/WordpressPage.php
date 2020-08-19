@@ -31,12 +31,7 @@ class WordpressPage implements OptionSourceInterface
      */
     public function toOptionArray()
     {
-        $options = [
-            [
-                'label' => __('Select a page...'),
-                'value' => ''
-            ]
-        ];
+        $options = [];
 
         try {
             foreach ($this->remotePageRepository->getList() as $site) {

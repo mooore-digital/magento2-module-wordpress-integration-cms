@@ -12,7 +12,7 @@
             </argument>
             <settings>
                 <label translate="true">Wordpress Page</label>
-                <elementTmpl>ui/grid/filters/elements/ui-select</elementTmpl>
+                <elementTmpl>Mooore_WordpressIntegrationCms/ui/grid/filters/elements/ui-select</elementTmpl>
                 <dataScope>wordpress_page_id</dataScope>
                 <listens>
                     <link name="${ $.namespace }.${ $.namespace }:responseData">setParsed</link>

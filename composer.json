@@ -4,7 +4,7 @@
   "require": {
     "symfony/http-client": "^4.4",
     "magento/module-cms": "103.*",
-    "mooore/magento2-module-wordpress-integration": "dev-master"
+    "mooore/magento2-module-wordpress-integration": "^0.1"
   },
   "type": "magento2-module",
   "license": "MIT",
