@@ -6,12 +6,5 @@
     <body>
         <attribute name="class" value="wp-content"/>
         <referenceContainer name="content" htmlTag="div" htmlClass="entry-content"/>
-        <referenceContainer name="before.body.end">
-            <block
-                class="Magento\Framework\View\Element\Template"
-                name="mooore.wordpress.integration.cms.js"
-                template="Mooore_WordpressIntegrationCms::js/extra-js.phtml"
-            />
-        </referenceContainer>
     </body>
 </page>

@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Removed
 - Mooore Blocks CSS, this is now a separate plugin
+- Kadence Blocks JS and CSS, this is now a separate plugin
 
 ### Fixed
 - Fixed script syntax
