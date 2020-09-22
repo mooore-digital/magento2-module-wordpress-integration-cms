@@ -45,11 +45,6 @@ $block-container-side-padding: $block-side-ui-width + $block-padding + 2 *
 $block-bg-padding--v: $block-padding + $block-spacing + $block-side-ui-clearance !default;
 $block-bg-padding--h: $block-side-ui-width + $block-side-ui-clearance !default;
 
-// Formidable
-$frm-mq: $screen__m !default; // same as screen-m
-$frm-required-color: $status-error !default;
-$frm-gap-size: 1rem 0.9375rem !default;
-
 // Kadence
 $kt-sm: $screen__xs !default;
 $kt-md: $screen__m !default;

@@ -1,22 +1,26 @@
 {
   "name": "mooore/magento2-module-wordpress-integration-cms",
   "description": "Magento 2 module for integrating Wordpress pages in Magento CMS pages.",
+  "license": "MIT",
+  "type": "magento2-module",
+  "readme": "README.md",
+  "keywords": [
+    "magento2",
+    "magento2-module",
+    "wordpress-integration"
+  ],
+  "authors": [
+    {
+      "name": "Mooore Digital",
+      "email": "info@mooore.nl",
+      "homepage": "https://www.mooore.nl"
+    }
+  ],
   "require": {
     "symfony/http-client": "^4.4",
     "magento/module-cms": "103.*",
-    "mooore/magento2-module-wordpress-integration": "dev-master"
+    "mooore/magento2-module-wordpress-integration": "^0.1"
   },
-  "type": "magento2-module",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Mooore e-commerce",
-      "email": "info@mooore.nl",
-      "homepage": "https://www.mooore.nl",
-      "role": "Developer"
-    }
-  ],
-  "readme": "README.md",
   "autoload": {
     "files": [
       "registration.php"
