@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fixed script syntax
-- fix button hover
+- Fix button hover
 
 ## [0.4.0] - 2020-09-09
 ### Removed
