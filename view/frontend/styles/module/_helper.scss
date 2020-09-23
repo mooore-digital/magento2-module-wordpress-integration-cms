@@ -33,6 +33,11 @@
     @if $enable-wp-btn-primary {
         @include lib-button-primary();
     }
+
+    &:focus,
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 %wp-btn-outline {
