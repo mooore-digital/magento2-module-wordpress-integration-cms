@@ -44,13 +44,3 @@ $block-container-side-padding: $block-side-ui-width + $block-padding + 2 *
     $block-side-ui-clearance !default;
 $block-bg-padding--v: $block-padding + $block-spacing + $block-side-ui-clearance !default;
 $block-bg-padding--h: $block-side-ui-width + $block-side-ui-clearance !default;
-
-// Kadence
-$kt-sm: $screen__xs !default;
-$kt-md: $screen__m !default;
-$kt-lg: $screen__lg !default;
-$kt-xl: 1200px !default;
-$kt-sl: 1500px !default;
-
-$kt-advancedheading-mark-color: $color-theme !default;
-
