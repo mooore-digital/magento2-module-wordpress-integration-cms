@@ -42,6 +42,11 @@ class Page
     public function all(int $pageSize = 10): \Generator
     {
         $peekHeaders = $this->peek($pageSize);
+
+        if (empty($peekHeaders['x-wp-total'])) {
+            return false;
+        }
+
         $totalPages = (int) $peekHeaders['x-wp-total'][0] ?? 0;
         $pageNumber = 1;
         $pageCount = 0;
