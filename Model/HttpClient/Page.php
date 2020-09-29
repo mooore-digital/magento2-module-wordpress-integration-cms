@@ -8,6 +8,8 @@ use Symfony\Component\HttpClient\HttpClient;
 
 class Page
 {
+    const WP_JSON_URL_PREFIX = '/wp-json/wp/v2/';
+
     /**
      * @var \Symfony\Contracts\HttpClient\HttpClientInterface
      */
@@ -42,6 +44,11 @@ class Page
     public function all(int $pageSize = 10): \Generator
     {
         $peekHeaders = $this->peek($pageSize);
+
+        if (empty($peekHeaders['x-wp-total'])) {
+            return false;
+        }
+
         $totalPages = (int) $peekHeaders['x-wp-total'][0] ?? 0;
         $pageNumber = 1;
         $pageCount = 0;
@@ -49,7 +56,7 @@ class Page
         while ($pageCount < $totalPages) {
             $response = $this->client->request(
                 'GET',
-                '/wp-json/wp/v2/pages?' . http_build_query([
+                self::WP_JSON_URL_PREFIX . 'pages?' . http_build_query([
                     'page' => $pageNumber++,
                     'per_page' => $pageSize
                 ])
@@ -75,7 +82,7 @@ class Page
      */
     public function get(int $id): array
     {
-        $response = $this->client->request('GET', '/wp-json/wp/v2/pages/' . $id);
+        $response = $this->client->request('GET', self::WP_JSON_URL_PREFIX . 'pages' . $id);
 
         return json_decode($response->getContent(), true);
     }
@@ -92,7 +99,7 @@ class Page
      */
     public function peek(int $pageSize): array
     {
-        $peekResponse = $this->client->request('HEAD', '/wp-json/wp/v2/pages?per_page=' . $pageSize);
+        $peekResponse = $this->client->request('HEAD', self::WP_JSON_URL_PREFIX . 'pages?per_page=' . $pageSize);
 
         return $peekResponse->getHeaders();
     }
