@@ -82,7 +82,7 @@ class Page
      */
     public function get(int $id): array
     {
-        $response = $this->client->request('GET', self::WP_JSON_URL_PREFIX . 'pages' . $id);
+        $response = $this->client->request('GET', self::WP_JSON_URL_PREFIX . 'pages/' . $id);
 
         return json_decode($response->getContent(), true);
     }
