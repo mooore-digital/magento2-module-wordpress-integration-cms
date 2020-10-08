@@ -10,13 +10,6 @@ Magento 2 module for integrating Wordpress pages in Magento CMS pages.
 
 ![Magento screenshot](docs/magento-screenshot.png)
 
-## TOC
-
-- [TOC](#toc)
-- [Installation](#installation)
-- [How to use](#how-to-use)
-  - [Styles/Script](#stylesscript)
-
 ## Installation
 
 ```bash
