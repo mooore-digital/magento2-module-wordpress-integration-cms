@@ -31,3 +31,8 @@ For a more in dept instruction please see the [wiki](https://github.com/mooore-d
 All styles and script are loaded by default with you theme.
 We also offer a SCSS version of the styles.
 Which you can use with tools like [Snowdog Frontools](https://github.com/SnowdogApps/magento2-frontools).
+
+### Contribute
+
+Is something missing or found a bug.
+Feel free to support this Module by adding a Issue or Pull Request.
