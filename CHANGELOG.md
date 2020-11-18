@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.3] - 2020-11-18
+### Fixed
+Button alignment styles
+
 ## [0.6.2] - 2020-10-08
 ### Added
 - Missing translations
