@@ -3,7 +3,7 @@ $wp-btn-transition: border-color 0.15s linear, background-color 0.15s linear,
     color 0.15s linear !default;
 $wp-btn-outline-color: $primary__color !default;
 
-.wp-block-button,
+.wp-block-buttons,
 .wp-block-file {
     @extend %wp-text-alignment;
 }
