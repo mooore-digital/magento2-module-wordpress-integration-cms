@@ -128,6 +128,25 @@ class RemotePageRepository
         return $page;
     }
 
+    public function postMagentoUrlToPage(int $siteId, int $pageId, string $magentoUrl)
+    {
+        $site = $this->siteRepository->get($siteId);
+        $this->pageClient->setBaseUrl($site->getBaseurl());
+        $authentication = $site->getApiUsername().':'.$site->getApiPassword();
+
+        try {
+            $this->pageClient->postMagentoUrl($pageId, $magentoUrl, $authentication);
+        } catch (ExceptionInterface $exception) {
+            $this->logger->error($exception->getMessage());
+
+            throw new LocalizedException(
+                __('Something went wrong with requesting a Wordpress resource. See logs for more information.'),
+                $exception,
+                $exception->getCode()
+            );
+        }
+    }
+
     /**
      * @return SiteInterface[]
      */
