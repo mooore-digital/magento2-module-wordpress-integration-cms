@@ -5,4 +5,8 @@
         <plugin sortOrder="1" name="moooreWordpressIntegrationCmsPostUrlToWordpress"
                 type="Mooore\WordpressIntegrationCms\Plugin\Model\SavePlugin"/>
     </type>
+    <type name="Magento\Cms\Controller\Adminhtml\Page\Delete">
+        <plugin sortOrder="1" name="moooreWordpressIntegrationCmsDeleteUrlToWordpress"
+                type="Mooore\WordpressIntegrationCms\Plugin\Controller\Adminhtml\Page\DeletePlugin"/>
+    </type>
 </config>

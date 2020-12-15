@@ -10,6 +10,7 @@ use Mooore\WordpressIntegrationCms\Model\HttpClient\Page as PageClient;
 use Mooore\WordpressIntegrationCms\Model\RemotePageRepository;
 use Magento\Cms\Model\Page;
 use Magento\Cms\Helper\Page as PageHelper;
+use Magento\Cms\Api\Data\PageInterface;
 
 class SavePlugin
 {
@@ -40,12 +41,12 @@ class SavePlugin
 
     public function afterSave(PageRepository $subject, Page $result)
     {
-        $wordrdpressPageId = $result->getData('wordpress_page_id');
-        if (!$wordrdpressPageId) {
+        $wordpressPageId = $result->getData('wordpress_page_id');
+        if (!$wordpressPageId) {
             return $result;
         }
 
-        $explodedwordpressPageId = explode("_", $wordrdpressPageId);
+        $explodedwordpressPageId = explode("_", $wordpressPageId);
         $this->remotePageRepository->postMagentoUrlToPage(
             (int) $explodedwordpressPageId[0],
             (int) $explodedwordpressPageId[1],
