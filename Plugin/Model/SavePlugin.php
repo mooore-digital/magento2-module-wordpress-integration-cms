@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mooore\WordpressIntegrationCms\Plugin\Controller\Adminhtml\Page;
+namespace Mooore\WordpressIntegrationCms\Plugin\Model;
 
 use Magento\Cms\Model\PageRepository;
 use Magento\Framework\Controller\ResultInterface;
