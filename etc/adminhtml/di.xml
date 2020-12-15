@@ -9,4 +9,8 @@
         <plugin sortOrder="1" name="moooreWordpressIntegrationCmsDeleteUrlToWordpress"
                 type="Mooore\WordpressIntegrationCms\Plugin\Controller\Adminhtml\Page\DeletePlugin"/>
     </type>
+    <type name="Magento\Cms\Controller\Adminhtml\Page\MassDelete">
+        <plugin sortOrder="1" name="moooreWordpressIntegrationCmsMassDeleteUrlToWordpress"
+                type="Mooore\WordpressIntegrationCms\Plugin\Controller\Adminhtml\Page\MassDeletePlugin"/>
+    </type>
 </config>
