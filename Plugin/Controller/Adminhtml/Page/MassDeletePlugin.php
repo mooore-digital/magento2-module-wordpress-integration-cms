@@ -49,7 +49,7 @@ class MassDeletePlugin
                 continue;
             }
 
-            $wordpressSiteAndPageId = explode("_", $page['wordpress_page_id']);
+            $wordpressSiteAndPageId = explode('_', $page['wordpress_page_id']);
             $this->remotePageRepository->postMetaData(
                 (int) $wordpressSiteAndPageId[0],
                 (int) $wordpressSiteAndPageId[1],

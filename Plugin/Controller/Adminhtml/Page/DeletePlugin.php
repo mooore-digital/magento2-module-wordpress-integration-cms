@@ -42,7 +42,7 @@ class DeletePlugin
             return;
         }
 
-        $explodedWordpressSiteAndPageId = explode("_", $wordpressSiteAndPageId);
+        $explodedWordpressSiteAndPageId = explode('_', $wordpressSiteAndPageId);
         $this->remotePageRepository->postMetaData(
             (int) $explodedWordpressSiteAndPageId[0],
             (int) $explodedWordpressSiteAndPageId[1],
