@@ -49,10 +49,11 @@ class MassDeletePlugin
                 continue;
             }
 
-            $explodedwordpressPageId = explode("_", $page['wordpress_page_id']);
-            $this->remotePageRepository->postMagentoUrlToPage(
-                (int) $explodedwordpressPageId[0],
-                (int) $explodedwordpressPageId[1],
+            $wordpressSiteAndPageId = explode("_", $page['wordpress_page_id']);
+            $this->remotePageRepository->postMetaData(
+                (int) $wordpressSiteAndPageId[0],
+                (int) $wordpressSiteAndPageId[1],
+                'mooore_magento_cms_url',
                 ''
             );
         }

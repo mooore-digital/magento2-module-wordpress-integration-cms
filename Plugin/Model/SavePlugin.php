@@ -41,15 +41,16 @@ class SavePlugin
 
     public function afterSave(PageRepository $subject, Page $result)
     {
-        $wordpressPageId = $result->getData('wordpress_page_id');
-        if (!$wordpressPageId) {
+        $wordpressSiteAndPageId = $result->getData('wordpress_page_id');
+        if (!$wordpressSiteAndPageId) {
             return $result;
         }
 
-        $explodedwordpressPageId = explode("_", $wordpressPageId);
-        $this->remotePageRepository->postMagentoUrlToPage(
-            (int) $explodedwordpressPageId[0],
-            (int) $explodedwordpressPageId[1],
+        $explodedWordpressSiteAndPageId = explode("_", $wordpressSiteAndPageId);
+        $this->remotePageRepository->postMetaData(
+            (int) $explodedWordpressSiteAndPageId[0],
+            (int) $explodedWordpressSiteAndPageId[1],
+            'mooore_magento_cms_url',
             $this->pageHelper->getPageUrl($result->getData('page_id'))
         );
 

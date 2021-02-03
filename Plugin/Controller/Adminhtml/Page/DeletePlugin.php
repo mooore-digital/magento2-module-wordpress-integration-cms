@@ -34,17 +34,19 @@ class DeletePlugin
      */
     public function beforeExecute(DeleteController $subject)
     {
-        $wordpressPageId = $this->pageRepository->getById(
+        $wordpressSiteAndPageId = $this->pageRepository->getById(
             $subject->getRequest()->getParam('page_id')
         )->getData('wordpress_page_id');
-        if (!$wordpressPageId) {
+
+        if (!$wordpressSiteAndPageId) {
             return;
         }
 
-        $explodedwordpressPageId = explode("_", $wordpressPageId);
-        $this->remotePageRepository->postMagentoUrlToPage(
-            (int) $explodedwordpressPageId[0],
-            (int) $explodedwordpressPageId[1],
+        $explodedWordpressSiteAndPageId = explode("_", $wordpressSiteAndPageId);
+        $this->remotePageRepository->postMetaData(
+            (int) $explodedWordpressSiteAndPageId[0],
+            (int) $explodedWordpressSiteAndPageId[1],
+            'mooore_magento_cms_url',
             ''
         );
     }

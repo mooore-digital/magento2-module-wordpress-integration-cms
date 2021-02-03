@@ -6,6 +6,7 @@ namespace Mooore\WordpressIntegrationCms\Model\HttpClient;
 
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Psr\Log\LoggerInterface;
 
 class Page
 {
@@ -15,6 +16,11 @@ class Page
      * @var \Symfony\Contracts\HttpClient\HttpClientInterface
      */
     private $client;
+
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
 
     /**
      * Set base url of client. This has to be done before querying any data.
@@ -88,18 +94,19 @@ class Page
         return json_decode($response->getContent(), true);
     }
 
-    public function postMagentoUrl(int $pageId, string $magentoUrl, string $authentication)
+    public function postMetaDataToPage(int $pageId, string $key, string $value, string $authentication)
     {
         try {
             $response = $this->client->request(
                 'POST',
-                self::WP_JSON_URL_PREFIX . 'pages/' . $pageId . '?mooore_magento_cms_url=' . $magentoUrl,
+                self::WP_JSON_URL_PREFIX . 'pages/' . $pageId . '?'. $key .'=' . $value,
+
                 [
                     'auth_basic' => $authentication
                 ]
             );
         } catch (TransportExceptionInterface $tce) {
-            // todo: Add a logger here
+            $this->logger->error('Error: Meta data could not be posted. Reason: ' . $tce->getMessage());
         }
     }
 

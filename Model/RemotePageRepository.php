@@ -128,14 +128,14 @@ class RemotePageRepository
         return $page;
     }
 
-    public function postMagentoUrlToPage(int $siteId, int $pageId, string $magentoUrl)
+    public function postMetaData(int $siteId, int $pageId, string $key, string $value)
     {
         $site = $this->siteRepository->get($siteId);
         $this->pageClient->setBaseUrl($site->getBaseurl());
         $authentication = $site->getApiUsername().':'.$site->getApiPassword();
 
         try {
-            $this->pageClient->postMagentoUrl($pageId, $magentoUrl, $authentication);
+            $this->pageClient->postMetaDataToPage($pageId, $key, $value, $authentication);
         } catch (ExceptionInterface $exception) {
             $this->logger->error($exception->getMessage());
 
