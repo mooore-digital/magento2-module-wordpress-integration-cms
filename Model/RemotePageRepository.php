@@ -146,7 +146,7 @@ class RemotePageRepository
             $this->logger->error($exception->getMessage());
 
             throw new LocalizedException(
-                __('Something went wrong with requesting a Wordpress resource. See logs for more information.'),
+                __('Something went wrong when posting metadata to the Wordpress resource. See logs for more information.'),
                 $exception,
                 $exception->getCode()
             );

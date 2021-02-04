@@ -78,7 +78,12 @@ class MassDeletePlugin
                     ''
                 );
             } catch (LocalizedException $exception) {
-                $this->messageManager->addErrorMessage($exception->getMessage());
+                // Only add message to the MessageManager if no error messages are found.
+                // Otherwise, you will get 'X' amount of error messages for 'X' amount of page-deletions.
+                // This can add up to a large amount of unnecessary extra error messages.
+                if (empty($this->messageManager->getMessages()->getItems())) {
+                    $this->messageManager->addErrorMessage($exception->getMessage());
+                }
                 continue;
             }
         }
