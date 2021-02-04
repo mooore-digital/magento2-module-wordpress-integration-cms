@@ -6,7 +6,10 @@ namespace Mooore\WordpressIntegrationCms\Plugin\Controller\Adminhtml\Page;
 
 use Magento\Cms\Controller\Adminhtml\Page\Delete as DeleteController;
 use Magento\Cms\Model\PageRepository;
+use Magento\Framework\Exception\LocalizedException;
 use Mooore\WordpressIntegrationCms\Model\RemotePageRepository;
+use Mooore\WordpressIntegrationCms\Model\Config;
+use Magento\Framework\Message\ManagerInterface as MessageManager;
 
 class DeletePlugin
 {
@@ -20,10 +23,26 @@ class DeletePlugin
      */
     private $remotePageRepository;
 
-    public function __construct(PageRepository $pageRepository, RemotePageRepository $remotePageRepository)
-    {
+    /**
+     * @var Config
+     */
+    private $config;
+
+    /**
+     * @var MessageManager
+     */
+    private $messageManager;
+
+    public function __construct(
+        PageRepository $pageRepository,
+        RemotePageRepository $remotePageRepository,
+        Config $config,
+        MessageManager $messageManager
+    ) {
         $this->pageRepository = $pageRepository;
         $this->remotePageRepository = $remotePageRepository;
+        $this->config = $config;
+        $this->messageManager = $messageManager;
     }
 
     /**
@@ -38,16 +57,21 @@ class DeletePlugin
             $subject->getRequest()->getParam('page_id')
         )->getData('wordpress_page_id');
 
-        if (!$wordpressSiteAndPageId) {
+        if (!$wordpressSiteAndPageId || !$this->config->magentoUrlPushBackEnabled()) {
             return;
         }
 
         $explodedWordpressSiteAndPageId = explode('_', $wordpressSiteAndPageId);
-        $this->remotePageRepository->postMetaData(
-            (int) $explodedWordpressSiteAndPageId[0],
-            (int) $explodedWordpressSiteAndPageId[1],
-            'mooore_magento_cms_url',
-            ''
-        );
+        try {
+            $this->remotePageRepository->postMetaData(
+                (int) $explodedWordpressSiteAndPageId[0],
+                (int) $explodedWordpressSiteAndPageId[1],
+                'mooore_magento_cms_url',
+                ''
+            );
+        } catch (LocalizedException $exception) {
+            $this->messageManager->addErrorMessage($exception->getMessage());
+            return;
+        }
     }
 }

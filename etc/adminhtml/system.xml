@@ -17,6 +17,16 @@
                        showInStore="0">
                     <label>Base URLs</label>
                 </field>
+                <field id="magentoUrlPushBack"
+                       type="select"
+                       translate="label"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="0"
+                       sortOrder="0">
+                    <label>Push Magento page-url back to Wordpress</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
             </group>
         </section>
     </system>
