@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Mooore\WordpressIntegrationCms\Model\HttpClient;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
-use Psr\Log\LoggerInterface;
 
 class Page
 {

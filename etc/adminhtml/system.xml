@@ -17,9 +17,10 @@
                        showInStore="0">
                     <label>Base URLs</label>
                 </field>
-                <field id="magentoUrlPushBack"
+                <field id="magento_url_push_back"
                        type="select"
                        translate="label"
+                       canRestore="1"
                        showInDefault="1"
                        showInWebsite="1"
                        showInStore="0"

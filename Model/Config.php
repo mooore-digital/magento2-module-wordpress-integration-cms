@@ -9,7 +9,7 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 
 class Config
 {
-    private const MAGENTO_URL_PUSHBACK = 'cms/wordpress_integration/magentoUrlPushBack';
+    private const CONFIG_PATH_MAGENTO_URL_PUSHBACK = 'cms/wordpress_integration/magento_url_push_back';
 
     /**
      * @var ScopeConfigInterface
@@ -28,7 +28,7 @@ class Config
     public function magentoUrlPushBackEnabled(): bool
     {
         return (bool)$this->scopeConfig->getValue(
-            self::MAGENTO_URL_PUSHBACK,
+            self::CONFIG_PATH_MAGENTO_URL_PUSHBACK,
             ScopeInterface::SCOPE_STORE
         );
     }

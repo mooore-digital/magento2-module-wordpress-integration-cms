@@ -132,16 +132,15 @@ class RemotePageRepository
     {
         $site = $this->siteRepository->get($siteId);
         $this->pageClient->setBaseUrl($site->getBaseurl());
-        $authentication = $site->getApiUsername().':'.$site->getApiPassword();
 
-        if (empty($authentication)) {
+        if (empty(($username = $site->getApiUsername())) || empty(($password = $site->getApiPassword()))) {
             throw new LocalizedException(
                 __('API credentials have not been found, meta data has not been written to page. Please check API credentials.')
             );
         }
 
         try {
-            $this->pageClient->postMetaDataToPage($pageId, $key, $value, $authentication);
+            $this->pageClient->postMetaDataToPage($pageId, $key, $value, $username.':'.$password);
         } catch (ExceptionInterface $exception) {
             $this->logger->error($exception->getMessage());
 

@@ -61,11 +61,12 @@ class MassDeletePlugin
      */
     public function beforeExecute(MassDeleteController $subject)
     {
+        if (!$this->config->magentoUrlPushBackEnabled()) {
+            return;
+        }
+
         foreach ($this->filter->getCollection($this->collectionFactory->create())->getData() as $page) {
-            if (!array_key_exists('wordpress_page_id', $page) ||
-                null === $page['wordpress_page_id'] ||
-                !$this->config->magentoUrlPushBackEnabled()
-            ) {
+            if (!array_key_exists('wordpress_page_id', $page) || null === $page['wordpress_page_id']) {
                 continue;
             }
 

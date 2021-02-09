@@ -4,7 +4,7 @@
     <default>
         <cms>
             <wordpress_integration>
-                <magentoUrlPushBack>0</magentoUrlPushBack>
+                <magento_url_push_back>0</magento_url_push_back>
             </wordpress_integration>
         </cms>
     </default>

@@ -57,7 +57,7 @@ class DeletePlugin
             $subject->getRequest()->getParam('page_id')
         )->getData('wordpress_page_id');
 
-        if (!$wordpressSiteAndPageId || !$this->config->magentoUrlPushBackEnabled()) {
+        if (!$this->config->magentoUrlPushBackEnabled() || !$wordpressSiteAndPageId) {
             return;
         }
 
