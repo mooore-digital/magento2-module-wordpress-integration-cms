@@ -48,8 +48,19 @@ class PagePlugin
             return $proceed();
         }
 
-        $this->remotePageContentCache[$remotePageId] = $remotePage['content']['rendered'];
+        $html = $remotePage['content']['rendered'];
 
-        return $remotePage['content']['rendered'];
+        $html = preg_replace_callback("{{(.*)}}", function ($matches) {
+            $match = $matches[0];
+
+            $match = html_entity_decode($match);
+            $match = str_replace("”", "\"", $match); // Opening quote
+            $match = str_replace("″", "\"", $match); // Ending quote
+            return $match;
+        }, $html);
+
+        $this->remotePageContentCache[$remotePageId] = $html;
+
+        return $html;
     }
 }
