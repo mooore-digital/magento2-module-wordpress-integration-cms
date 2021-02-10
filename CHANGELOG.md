@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## Improvement
+- Update dependency for mooore/magento2-module-wordpress-integration to ^0.3
+
 ## [0.6.3] - 2020-11-18
 ### Fixed
 Button alignment styles
