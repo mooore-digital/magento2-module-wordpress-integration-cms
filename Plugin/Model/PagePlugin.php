@@ -64,6 +64,7 @@ class PagePlugin
             $match = html_entity_decode($match);
             $match = str_replace("”", "\"", $match); // Opening quote
             $match = str_replace("″", "\"", $match); // Ending quote
+            $match = str_replace("“", "``", $match); // Double quotes
             return $match;
         }, $html);
 
