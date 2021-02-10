@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Cms\Model\PageRepository">
+        <plugin sortOrder="1" name="moooreWordpressIntegrationCmsPostUrlToWordpress"
+                type="Mooore\WordpressIntegrationCms\Plugin\Model\SavePlugin"/>
+    </type>
+    <type name="Magento\Cms\Controller\Adminhtml\Page\Delete">
+        <plugin sortOrder="1" name="moooreWordpressIntegrationCmsDeleteUrlToWordpress"
+                type="Mooore\WordpressIntegrationCms\Plugin\Controller\Adminhtml\Page\DeletePlugin"/>
+    </type>
+    <type name="Magento\Cms\Controller\Adminhtml\Page\MassDelete">
+        <plugin sortOrder="1" name="moooreWordpressIntegrationCmsMassDeleteUrlToWordpress"
+                type="Mooore\WordpressIntegrationCms\Plugin\Controller\Adminhtml\Page\MassDeletePlugin"/>
+    </type>
+</config>

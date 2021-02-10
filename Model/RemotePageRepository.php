@@ -128,6 +128,30 @@ class RemotePageRepository
         return $page;
     }
 
+    public function postMetaData(int $siteId, int $pageId, string $key, string $value)
+    {
+        $site = $this->siteRepository->get($siteId);
+        $this->pageClient->setBaseUrl($site->getBaseurl());
+
+        if (empty(($username = $site->getApiUsername())) || empty(($password = $site->getApiPassword()))) {
+            throw new LocalizedException(
+                __('API credentials have not been found, meta data has not been written to page. Please check API credentials.')
+            );
+        }
+
+        try {
+            $this->pageClient->postMetaDataToPage($pageId, $key, $value, $username.':'.$password);
+        } catch (ExceptionInterface $exception) {
+            $this->logger->error($exception->getMessage());
+
+            throw new LocalizedException(
+                __('Something went wrong when posting metadata to the Wordpress resource. See logs for more information.'),
+                $exception,
+                $exception->getCode()
+            );
+        }
+    }
+
     /**
      * @return SiteInterface[]
      */
