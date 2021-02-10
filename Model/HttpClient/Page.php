@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Mooore\WordpressIntegrationCms\Model\HttpClient;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 class Page
 {
@@ -14,6 +16,11 @@ class Page
      * @var \Symfony\Contracts\HttpClient\HttpClientInterface
      */
     private $client;
+
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
 
     /**
      * Set base url of client. This has to be done before querying any data.
@@ -85,6 +92,22 @@ class Page
         $response = $this->client->request('GET', self::WP_JSON_URL_PREFIX . 'pages/' . $id);
 
         return json_decode($response->getContent(), true);
+    }
+
+    public function postMetaDataToPage(int $pageId, string $key, string $value, string $authentication)
+    {
+        try {
+            $response = $this->client->request(
+                'POST',
+                self::WP_JSON_URL_PREFIX . 'pages/' . $pageId . '?'. $key .'=' . $value,
+
+                [
+                    'auth_basic' => $authentication
+                ]
+            );
+        } catch (TransportExceptionInterface $tce) {
+            $this->logger->error('Error: Meta data could not be posted. Reason: ' . $tce->getMessage());
+        }
     }
 
     /**
