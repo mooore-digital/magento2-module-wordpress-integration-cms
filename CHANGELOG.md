@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2021-02-10
 ## Improvement
 - Update dependency for mooore/magento2-module-wordpress-integration to ^0.3
 
