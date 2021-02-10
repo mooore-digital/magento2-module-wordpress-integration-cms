@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Mooore\WordpressIntegrationCms\Plugin\Model;
 
 use Magento\Cms\Model\Page;
-use Magento\Cms\Model\Template\FilterProvider;
 use Magento\Framework\Exception\LocalizedException;
 use Mooore\WordpressIntegrationCms\Model\RemotePageRepository;
 
@@ -15,21 +14,15 @@ class PagePlugin
      * @var RemotePageRepository
      */
     private $pageRepository;
-
-    /**
-     * @var FilterProvider
-     */
-    private $filterProvider;
     /**
      * @var array
      */
     private $remotePageContentCache = [];
 
 
-    public function __construct(RemotePageRepository $pageRepository, FilterProvider $filterProvider)
+    public function __construct(RemotePageRepository $pageRepository)
     {
         $this->pageRepository = $pageRepository;
-        $this->filterProvider = $filterProvider;
     }
 
     public function aroundGetContent(Page $subject, callable $proceed)
@@ -62,13 +55,11 @@ class PagePlugin
             $match = $matches[0];
 
             $match = html_entity_decode($match);
-            $match = str_replace("”", "\"", $match); // Opening quote
-            $match = str_replace("″", "\"", $match); // Ending quote
-            $match = str_replace("“", "``", $match); // Double quotes
+            $match = str_replace('”', '"', $match); // Opening quote
+            $match = str_replace('″', '"', $match); // Ending quote
+            $match = str_replace('“', '``', $match); // Double quotes
             return $match;
         }, $html);
-
-        $html = $this->filterProvider->getPageFilter()->filter($html);
 
         $this->remotePageContentCache[$remotePageId] = $html;
 
