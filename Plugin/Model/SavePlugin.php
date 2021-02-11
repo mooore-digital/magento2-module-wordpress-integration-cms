@@ -10,10 +10,11 @@ use Magento\Framework\Exception\LocalizedException;
 use Mooore\WordpressIntegrationCms\Model\HttpClient\Page as PageClient;
 use Mooore\WordpressIntegrationCms\Model\RemotePageRepository;
 use Magento\Cms\Model\Page;
-use Magento\Cms\Helper\Page as PageHelper;
 use Magento\Cms\Api\Data\PageInterface;
 use Mooore\WordpressIntegrationCms\Model\Config;
 use Magento\Framework\Message\ManagerInterface as MessageManager;
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
 
 class SavePlugin
 {
@@ -28,11 +29,6 @@ class SavePlugin
     private $remotePageRepository;
 
     /**
-     * @var PageHelper
-     */
-    private $pageHelper;
-
-    /**
      * @var Config
      */
     private $config;
@@ -42,18 +38,23 @@ class SavePlugin
      */
     private $messageManager;
 
+    /**
+     * @var StoreManagerInterface
+     */
+    private $storeManager;
+
     public function __construct(
         PageClient $pageClient,
         RemotePageRepository $remotePageRepository,
-        PageHelper $pageHelper,
         Config $config,
-        MessageManager $messageManager
+        MessageManager $messageManager,
+        StoreManagerInterface $storeManager
     ) {
         $this->pageClient = $pageClient;
         $this->remotePageRepository = $remotePageRepository;
-        $this->pageHelper = $pageHelper;
         $this->config = $config;
         $this->messageManager = $messageManager;
+        $this->storeManager = $storeManager;
     }
 
     public function afterSave(PageRepository $subject, Page $result)
@@ -70,7 +71,7 @@ class SavePlugin
                 (int) $explodedWordpressSiteAndPageId[0],
                 (int) $explodedWordpressSiteAndPageId[1],
                 'mooore_magento_cms_url',
-                $this->pageHelper->getPageUrl($result->getData('page_id'))
+                $this->buildUrlFromPage($result)
             );
         } catch (LocalizedException $exception) {
             $this->messageManager->addErrorMessage($exception->getMessage());
@@ -78,5 +79,20 @@ class SavePlugin
         }
 
         return $result;
+    }
+
+    private function buildUrlFromPage(Page $page): string
+    {
+        if (!array_key_exists(0, $page->getStoreId())) {
+            return '';
+        }
+
+        try {
+            $storeFromPage = $this->storeManager->getStore($page->getStoreId()[0]);
+        } catch (NoSuchEntityException $e) {
+            return '';
+        }
+
+        return $storeFromPage->getBaseUrl() . $page->getIdentifier();
     }
 }
