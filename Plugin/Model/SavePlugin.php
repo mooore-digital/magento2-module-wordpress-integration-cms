@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace Mooore\WordpressIntegrationCms\Plugin\Model;
 
 use Magento\Cms\Model\PageRepository;
-use Magento\Framework\Controller\ResultInterface;
-use Magento\Framework\Exception\LocalizedException;
-use Mooore\WordpressIntegrationCms\Model\HttpClient\Page as PageClient;
-use Mooore\WordpressIntegrationCms\Model\RemotePageRepository;
 use Magento\Cms\Model\Page;
 use Magento\Cms\Api\Data\PageInterface;
-use Mooore\WordpressIntegrationCms\Model\Config;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\ManagerInterface as MessageManager;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Store\Model\StoreManagerInterface;
+use Mooore\WordpressIntegrationCms\Model\HttpClient\Page as PageClient;
+use Mooore\WordpressIntegrationCms\Model\RemotePageRepository;
+use Mooore\WordpressIntegrationCms\Model\Config;
 
 class SavePlugin
 {
@@ -92,11 +92,11 @@ class SavePlugin
             if (!count($storeIds)) {
                 return '';
             }
-            
+
             try {
                 $firstStoreId = $storeIds[0];
                 $storeFromPage = $this->storeManager->getStore($firstStoreId);
-                
+
                 return $storeFromPage->getBaseUrl() . $page->getIdentifier();
             } catch (NoSuchEntityException $e) {
                 return '';

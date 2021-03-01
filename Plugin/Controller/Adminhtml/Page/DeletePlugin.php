@@ -7,9 +7,9 @@ namespace Mooore\WordpressIntegrationCms\Plugin\Controller\Adminhtml\Page;
 use Magento\Cms\Controller\Adminhtml\Page\Delete as DeleteController;
 use Magento\Cms\Model\PageRepository;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Message\ManagerInterface as MessageManager;
 use Mooore\WordpressIntegrationCms\Model\RemotePageRepository;
 use Mooore\WordpressIntegrationCms\Model\Config;
-use Magento\Framework\Message\ManagerInterface as MessageManager;
 
 class DeletePlugin
 {
