@@ -83,24 +83,18 @@ class SavePlugin
 
     private function buildUrlFromPage(Page $page): string
     {
-        try {
-            $storeIds = $page->getStoreId();
-            if (!count($storeIds)) {
-                return '';
-            }
-
-            try {
-                $firstStoreId = $storeIds[0];
-                $storeFromPage = $this->storeManager->getStore($firstStoreId);
-
-                return $storeFromPage->getBaseUrl() . $page->getIdentifier();
-            } catch (NoSuchEntityException $e) {
-                return '';
-            }
-        } catch (NoSuchEntityException $e) {
+        $storeIds = $page->getStoreId();
+        if (!count($storeIds)) {
             return '';
         }
 
-        return $storeFromPage->getBaseUrl() . $page->getIdentifier();
+        try {
+            $firstStoreId = $storeIds[0];
+            $storeFromPage = $this->storeManager->getStore($firstStoreId);
+
+            return $storeFromPage->getBaseUrl() . $page->getIdentifier();
+        } catch (NoSuchEntityException $e) {
+            return '';
+        }
     }
 }
