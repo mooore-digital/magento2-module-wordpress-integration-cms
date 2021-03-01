@@ -88,7 +88,19 @@ class SavePlugin
         }
 
         try {
-            $storeFromPage = $this->storeManager->getStore($page->getStoreId()[0]);
+            $storeIds = $page->getStoreId();
+            if (!count($storeIds)) {
+                return '';
+            }
+            
+            try {
+                $firstStoreId = $storeIds[0];
+                $storeFromPage = $this->storeManager->getStore($firstStoreId);
+                
+                return $storeFromPage->getBaseUrl() . $page->getIdentifier();
+            } catch (NoSuchEntityException $e) {
+                return '';
+            }
         } catch (NoSuchEntityException $e) {
             return '';
         }
