@@ -83,10 +83,6 @@ class SavePlugin
 
     private function buildUrlFromPage(Page $page): string
     {
-        if (!array_key_exists(0, $page->getStoreId())) {
-            return '';
-        }
-
         try {
             $storeIds = $page->getStoreId();
             if (!count($storeIds)) {
