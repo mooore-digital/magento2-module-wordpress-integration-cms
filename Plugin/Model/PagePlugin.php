@@ -19,6 +19,7 @@ class PagePlugin
      */
     private $remotePageContentCache = [];
 
+
     public function __construct(RemotePageRepository $pageRepository)
     {
         $this->pageRepository = $pageRepository;
@@ -48,8 +49,20 @@ class PagePlugin
             return $proceed();
         }
 
-        $this->remotePageContentCache[$remotePageId] = $remotePage['content']['rendered'];
+        $html = $remotePage['content']['rendered'];
 
-        return $remotePage['content']['rendered'];
+        $html = preg_replace_callback("{{(.*)}}", function ($matches) {
+            $match = $matches[0];
+
+            $match = html_entity_decode($match);
+            $match = str_replace('”', '"', $match); // Opening quote
+            $match = str_replace('″', '"', $match); // Ending quote
+            $match = str_replace('“', '``', $match); // Double quotes
+            return $match;
+        }, $html);
+
+        $this->remotePageContentCache[$remotePageId] = $html;
+
+        return $html;
     }
 }
