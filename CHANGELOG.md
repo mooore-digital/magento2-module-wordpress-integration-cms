@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.1] - 2021-03-02
+### Fixed
+- Issue when pushing Magento URL to Wordpress for single-store view
+
+### Improvement
+- Magento 2 shortcodes are now usable in the Wordpress instance.
+
 ## [0.7.0] - 2021-02-10
 ### Improvement
 - Update dependency for mooore/magento2-module-wordpress-integration to ^0.3
