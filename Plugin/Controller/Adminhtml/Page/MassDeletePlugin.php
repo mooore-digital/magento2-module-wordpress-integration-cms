@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Mooore\WordpressIntegrationCms\Plugin\Controller\Adminhtml\Page;
 
 use Magento\Cms\Controller\Adminhtml\Page\MassDelete as MassDeleteController;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Ui\Component\MassAction\Filter;
 use Magento\Cms\Model\ResourceModel\Page\CollectionFactory;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Message\ManagerInterface as MessageManager;
+use Magento\Ui\Component\MassAction\Filter;
 use Mooore\WordpressIntegrationCms\Model\RemotePageRepository;
 use Mooore\WordpressIntegrationCms\Model\Config;
-use Magento\Framework\Message\ManagerInterface as MessageManager;
 
 class MassDeletePlugin
 {
