@@ -24,11 +24,11 @@ You can add your wordpress domain to the `Content > Wordpress Sites`.
 
 After this the dropdown in a page in `Content > Pages` will show all Wordpress pages.
 
-For a more in dept instruction please see the [wiki](https://github.com/mooore-digital/magento2-module-wordpress-integration-cms/wiki)
+For more in-depth instructions please see the [wiki](https://github.com/mooore-digital/magento2-module-wordpress-integration-cms/wiki)
 
 ### Styles/Script
 
-All styles and script are loaded by default with you theme.
+All styles and scripts are loaded by default with your theme.
 We also offer a SCSS version of the styles.
 Which you can use with tools like [Snowdog Frontools](https://github.com/SnowdogApps/magento2-frontools).
 
