@@ -25,7 +25,7 @@ $screen__l: 1024px !default;
 $screen__xl: 1440px !default;
 
 @mixin lib-button() {
-    @apply btn btn-primary;
+    @apply btn;
 }
 
 @mixin lib-button-primary() {
