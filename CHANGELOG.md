@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.2] - 2021-04-09
+### Added
+- Support for hyva theme
+
 ## [0.7.1] - 2021-03-02
 ### Fixed
 - Issue when pushing Magento URL to Wordpress for single-store view
