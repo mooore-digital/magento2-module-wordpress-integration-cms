@@ -6,8 +6,8 @@
   "homepage": "https://mooore.nl/",
   "private": true,
   "scripts": {
-    "build:dev": "npx sass view/frontend/styles/wp-blocks.scss view/frontend/web/css/wp-blocks.css --load-path=node_modules",
-    "build:prod": "npx sass view/frontend/styles/wp-blocks.scss view/frontend/web/css/wp-blocks.css -s compressed --load-path=node_modules"
+    "build:dev": "npx sass src/wp-blocks.scss view/frontend/web/css/wp-blocks.css --load-path=node_modules",
+    "build:prod": "npx sass src/wp-blocks.scss view/frontend/web/css/wp-blocks.css -s compressed --load-path=node_modules"
   },
   "repository": {
     "type": "git",

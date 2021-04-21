@@ -1,0 +1,84 @@
+// * From common.scss in blocks-library
+
+// Font sizes.
+.has-small-font-size {
+    font-size: 0.8125em;
+}
+
+.has-regular-font-size, // Not used now, kept because of backward compatibility.
+.has-normal-font-size {
+    font-size: 1em;
+}
+
+.has-medium-font-size {
+    font-size: 1.25em;
+}
+
+.has-large-font-size {
+    font-size: 2.25em;
+}
+
+.has-larger-font-size, // Not used now, kept because of backward compatibility.
+.has-huge-font-size {
+    font-size: 2.625em;
+}
+
+// Text alignments.
+.has-text-align-center {
+    text-align: center;
+}
+
+.has-text-align-left {
+    /*rtl:ignore*/
+    text-align: left;
+}
+
+.has-text-align-right {
+    /*rtl:ignore*/
+    text-align: right;
+}
+
+// Block alignments.
+.aligncenter {
+    clear: both;
+}
+
+// Justification.
+.items-justified-left {
+    justify-content: flex-start;
+}
+
+.items-justified-center {
+    justify-content: center;
+}
+
+.items-justified-right {
+    justify-content: flex-end;
+}
+
+.items-justified-space-between {
+    justify-content: space-between;
+}
+
+.screen-reader-text {
+    @extend .abs-visually-hidden;
+}
+
+.screen-reader-text:focus {
+    @extend .abs-visually-hidden-reset;
+    z-index: 100000;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    display: block;
+    padding: 15px 23px 14px;
+    background-color: $color-gray80;
+    color: $color-gray20;
+    font-size: 1em;
+    line-height: normal;
+    text-decoration: none;
+}
+
+// Colors
+// * Add your colors here
+// * This WP theme specific
