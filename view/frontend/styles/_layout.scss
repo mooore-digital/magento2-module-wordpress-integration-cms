@@ -1,8 +1,10 @@
 // Styles for when using the full width layout
 
 $layout__max-width: 1280px !default;
+$layout-wide__max-width: 1600px !default; // Not M2 default
 $layout-indent__width: 20px !default;
 $layout__width-xs-indent: 15px !default;
+$screen__xs: 480px !default;
 $screen__m: 768px !default;
 
 .entry-header,
@@ -18,11 +20,18 @@ $screen__m: 768px !default;
 }
 
 :root {
+    $align-max-width: calc(0.5 * (100vw - var(--layout-max-width)));
     --layout-indent: #{($layout__width-xs-indent * 2)};
     --layout-max-width: min(
         calc(100vw - var(--layout-indent)),
         calc(#{$layout__max-width} - var(--layout-indent))
     );
+    --layout-wide-max-width: min(
+        calc(100vw - var(--layout-indent)),
+        calc(#{$layout-wide__max-width} - var(--layout-indent))
+    );
+    --layout-max-width-alignright: #{$align-max-width};
+    --layout-max-width-alignleft: #{$align-max-width};
 
     @media (min-width: $screen__m) {
         --layout-indent: #{($layout-indent__width * 2)};
@@ -33,6 +42,47 @@ $screen__m: 768px !default;
     max-width: var(--layout-max-width);
     margin-right: auto;
     margin-left: auto;
+}
+
+%wp-container-wide {
+    max-width: var(--layout-wide-max-width);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.alignwide {
+    @extend %wp-container-wide;
+}
+
+.entry-content > .alignleft,
+.entry-content > .alignright {
+    @extend %wp-container;
+}
+
+@media (min-width: $screen__xs) {
+    .alignleft {
+        float: left;
+        margin-right: 2em;
+        margin-bottom: 2em;
+    }
+
+    .alignright {
+        float: right;
+        margin-left: 2em;
+        margin-bottom: 2em;
+    }
+
+    .entry-content > .alignleft {
+        max-width: calc(50% - var(--layout-max-width-alignleft));
+        margin-right: 2em;
+        margin-left: var(--layout-max-width-alignleft);
+    }
+
+    .entry-content > .alignright {
+        max-width: calc(50% - var(--layout-max-width-alignright));
+        margin-right: var(--layout-max-width-alignright);
+        margin-left: 2em;
+    }
 }
 
 .entry-content .wp-audio-shortcode {
