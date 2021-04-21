@@ -1,24 +1,52 @@
 // Styles for when using the full width layout
 
-// Add container to the page main content
-// Styles are the same from magento/blocks/_layout.{scss,less}
-.page-main-full-width {
-    > *:not(.columns) {
-        padding-right: $layout__width-xs-indent;
-        padding-left: $layout__width-xs-indent;
+$layout__max-width: 1280px !default;
+$layout-indent__width: 20px !default;
+$layout__width-xs-indent: 15px !default;
+$screen__m: 768px !default;
+
+.entry-header,
+.entry-meta,
+.entry-content {
+    box-sizing: border-box;
+
+    *,
+    ::before,
+    ::after {
+        box-sizing: inherit;
     }
 }
 
-@include min-screen($screen__m) {
-    .page-main-full-width {
-        > *:not(.columns) {
-            box-sizing: border-box;
-            width: 100%;
-            max-width: $layout__max-width;
-            margin-right: auto;
-            margin-left: auto;
-            padding-right: $layout-indent__width;
-            padding-left: $layout-indent__width;
-        }
+:root {
+    --layout-indent: #{($layout__width-xs-indent * 2)};
+    --layout-max-width: min(
+        calc(100vw - var(--layout-indent)),
+        calc(#{$layout__max-width} - var(--layout-indent))
+    );
+
+    @media (min-width: $screen__m) {
+        --layout-indent: #{($layout-indent__width * 2)};
+    }
+}
+
+%wp-container {
+    max-width: var(--layout-max-width);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.entry-content .wp-audio-shortcode {
+    @extend %wp-container;
+}
+
+.entry-content {
+    > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
+        @extend %wp-container;
+    }
+}
+
+*[class*="inner-container"] {
+    > *:not(.entry-content):not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
+        @extend %wp-container;
     }
 }
