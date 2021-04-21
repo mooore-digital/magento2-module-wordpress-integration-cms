@@ -1,0 +1,56 @@
+// Magento 2 layout helper
+@import "layout";
+
+// Base
+@import "@wordpress/base-styles/variables";
+@import "@wordpress/base-styles/mixins";
+@import "@wordpress/base-styles/breakpoints";
+@import "@wordpress/base-styles/animations";
+@import "@wordpress/base-styles/z-index";
+
+// Blocks
+// *1: Needs extra work, to work in Magento
+// *2: Does not work in Magento
+@import "@wordpress/block-library/src/audio/style";
+@import "@wordpress/block-library/src/button/style";
+@import "@wordpress/block-library/src/buttons/style";
+// @import "@wordpress/block-library/src/calendar/style"; // *1
+// @import "@wordpress/block-library/src/categories/style"; // *2
+@import "@wordpress/block-library/src/code/style";
+@import "@wordpress/block-library/src/columns/style";
+@import "@wordpress/block-library/src/cover/style";
+@import "@wordpress/block-library/src/embed/style";
+@import "@wordpress/block-library/src/file/style";
+@import "@wordpress/block-library/src/gallery/style";
+@import "@wordpress/block-library/src/group/style";
+@import "@wordpress/block-library/src/heading/style";
+@import "@wordpress/block-library/src/image/style";
+// @import "@wordpress/block-library/src/latest-comments/style"; // *2
+// @import "@wordpress/block-library/src/latest-posts/style"; // *2
+@import "@wordpress/block-library/src/list/style";
+@import "@wordpress/block-library/src/media-text/style";
+// @import "@wordpress/block-library/src/navigation/style"; // *2
+// @import "@wordpress/block-library/src/navigation-link/style"; // *2
+// @import "@wordpress/block-library/src/page-list/style"; // *2
+@import "@wordpress/block-library/src/paragraph/style";
+// @import "@wordpress/block-library/src/post-author/style"; // *1
+// @import "@wordpress/block-library/src/post-comments-form/style"; // *2
+// @import "@wordpress/block-library/src/post-excerpt/style"; // *1
+// @import "@wordpress/block-library/src/post-title/style"; // *1
+@import "@wordpress/block-library/src/preformatted/style";
+@import "@wordpress/block-library/src/pullquote/style";
+// @import "@wordpress/block-library/src/query-loop/style"; // *2
+// @import "@wordpress/block-library/src/query-pagination/style"; // *2
+@import "@wordpress/block-library/src/quote/style";
+@import "@wordpress/block-library/src/rss/style";
+// @import "@wordpress/block-library/src/search/style"; // *2
+@import "@wordpress/block-library/src/separator/style";
+// @import "@wordpress/block-library/src/site-logo/style"; // *2
+@import "@wordpress/block-library/src/social-links/style";
+@import "@wordpress/block-library/src/spacer/style";
+// @import "@wordpress/block-library/src/tag-cloud/style"; // *1
+@import "@wordpress/block-library/src/table/style";
+@import "@wordpress/block-library/src/text-columns/style";
+@import "@wordpress/block-library/src/verse/style";
+@import "@wordpress/block-library/src/video/style";
+// @import "@wordpress/block-library/src/post-featured-image/style"; // *1

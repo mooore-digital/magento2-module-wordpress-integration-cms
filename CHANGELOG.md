@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.8.0] - 2021-04-21
+### Added
+- Block styles via node dependency
+- Block styles as css file
+
+### Improvement
+- Make Button block as override for core version
 
 ## [0.7.2] - 2021-04-09
 ### Added
@@ -115,5 +122,4 @@ Button alignment styles
 - old gradient value from KT Slider, Closes #5
 
 ## [0.1.0] - 2020-03-25
-
-Initial release 🎉
+- Initial release 🎉
