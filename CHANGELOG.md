@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Block styles via node dependency
 - Block styles as css file
 
+### Improvement
+- Make Button block as override for core version
+
 ## [0.7.2] - 2021-04-09
 ### Added
 - Support for hyva theme
