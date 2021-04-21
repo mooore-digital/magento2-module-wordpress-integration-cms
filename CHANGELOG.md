@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Snowdog frontools compile errors
+  SCSS styles for CSS need to be outside the scope of frontools (view)
+
 ## [0.8.1] - 2021-04-21
 ### Added
 - alignment options
