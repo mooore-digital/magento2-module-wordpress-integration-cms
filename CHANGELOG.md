@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Improvement
 - readme
+
+### Fixed
+- Sass button class typo
+
 ## [0.8.0] - 2021-04-21
 ### Added
 - Block styles via node dependency

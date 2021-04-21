@@ -34,7 +34,7 @@ $wp-btn-outline-color: $primary__color !default;
     @extend %lib-wp-button;
 }
 
-.wp-block-buttons > .wp-block-button__link {
+.wp-block-button > .wp-block-button__link {
     @extend %lib-wp-button;
 }
 
