@@ -1,8 +1,10 @@
 {
   "name": "magento2-module-wordpress-integration-cms",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "NPM package to build the Block styles",
+  "author": "Mooore",
+  "homepage": "https://mooore.nl/",
+  "private": true,
   "scripts": {
     "build:dev": "npx sass view/frontend/styles/wp-blocks.scss view/frontend/web/css/wp-blocks.css --load-path=node_modules",
     "build:prod": "npx sass view/frontend/styles/wp-blocks.scss view/frontend/web/css/wp-blocks.css -s compressed --load-path=node_modules"
@@ -12,10 +14,6 @@
     "url": "git+https://github.com/mooore-digital/magento2-module-wordpress-integration-cms.git"
   },
   "bugs": "https://github.com/mooore-digital/magento2-module-wordpress-integration-cms/issues",
-  "keywords": [],
-  "author": "Mooore",
-  "license": "MIT",
-  "homepage": "https://mooore.nl/",
   "dependencies": {
     "@wordpress/base-styles": "^3.4.2",
     "@wordpress/block-library": "^2.29.2"
