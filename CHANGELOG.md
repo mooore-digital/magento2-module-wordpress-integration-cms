@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Snowdog frontools compile errors
   SCSS styles for CSS need to be outside the scope of frontools (view)
+- Corrected btn outline class
 
 ## [0.8.1] - 2021-04-21
 ### Added

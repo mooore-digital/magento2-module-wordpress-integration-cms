@@ -5,7 +5,6 @@
 @wp-btn-radius: 0;
 @wp-btn-outline-border: 1px solid;
 @wp-btn-outline-color: @primary__color;
-@wp-btn-outline-color: @primary__color;
 
 .lib-wp-button() {
     .lib-button();
@@ -21,12 +20,6 @@
     &:hover {
         text-decoration: none;
     }
-
-    .is-style-outline & {
-        border: @wp-btn-outline-border;
-        background-color: transparent;
-        color: @wp-btn-outline-color;
-    }
 }
 
 // Fallback for older versions
@@ -37,6 +30,12 @@
 & when (@media-common = true) {
     .wp-block-button > .wp-block-button__link {
         .lib-wp-button();
+    }
+
+    .wp-block-button.is-style-outline > .wp-block-button__link,
+    .wp-block-button .wp-block-button__link.is-style-outline {
+        border: @wp-btn-outline-border;
+        color: @wp-btn-outline-color;
     }
 
     .wp-block-file > .wp-block-file__button {
