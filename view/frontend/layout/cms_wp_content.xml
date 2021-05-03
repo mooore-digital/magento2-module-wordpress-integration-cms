@@ -7,6 +7,7 @@
     </head>
     <body>
         <attribute name="class" value="wp-content"/>
+        <attribute name="class" value="wp-embed-responsive"/>
         <referenceContainer name="content" htmlTag="div" htmlClass="entry-content"/>
     </body>
 </page>

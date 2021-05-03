@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.3] - 2021-05-03
+### Fixed
+- Fixed embedded videos not being properly sized by aspect ratio
+
 ## [0.8.2] - 2021-04-21
 ### Added
 - Common text and other util layout class
