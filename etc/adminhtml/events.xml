@@ -3,6 +3,6 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="cms_page_prepare_save">
         <observer instance="Mooore\WordpressIntegrationCms\Observer\Adminhtml\PageDetacher"
-                  name="mooore_wordpresspagenullifier"/>
+                  name="mooore_pagedetacher"/>
     </event>
 </config>
