@@ -1,8 +1,20 @@
 define([
-    'Magento_Ui/js/form/element/ui-select'
-], function (Select) {
+    'Magento_Ui/js/form/element/ui-select',
+    'ko',
+    'jquery'
+], function (Select, ko, $) {
     'use strict';
+
     return Select.extend({
+        editorLink: ko.observable(),
+
+        initialize: function () {
+            this._super();
+
+            this.loadEditorLink();
+
+            return this;
+        },
         /**
          * Parse data and set it to options.
          *
@@ -29,6 +41,44 @@ define([
                 value: data.customer.entity_id,
                 label: data.customer.name
             };
+        },
+
+        toggleOptionSelected: function (data) {
+            var isSelected = this.isSelected(data.value);
+
+            if (this.lastSelectable && data.hasOwnProperty(this.separator)) {
+                return this;
+            }
+
+            if (!this.multiple) {
+                if (!isSelected) {
+                    this.value(data.value);
+                }
+                this.listVisible(false);
+            } else {
+                if (!isSelected) { /*eslint no-lonely-if: 0*/
+                    this.value.push(data.value);
+                } else {
+                    this.value(_.without(this.value(), data.value));
+                }
+            }
+
+            this.loadEditorLink();
+
+            return this;
+        },
+
+        loadEditorLink: function() {
+            const [site_id, page_id] = this.value().split("_");
+
+            // TODO: Make AJAX request here
+            const url = `http://wpci.localhost/wp-admin/post.php?post=${page_id}&action=edit&magento-referer=${window.location.href}`;
+
+            this.editorLink(url);
+        },
+
+        openEditor: function() {
+            window.open(this.editorLink(), 'WPCI Editor');
         }
     });
 });
