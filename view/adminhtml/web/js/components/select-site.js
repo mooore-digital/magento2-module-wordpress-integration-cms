@@ -71,8 +71,9 @@ define([
         loadEditorLink: function() {
             const [site_id, page_id] = this.value().split("_");
 
-            // TODO: Make AJAX request here
-            const url = `http://wpci.localhost/wp-admin/post.php?post=${page_id}&action=edit&magento-referer=${window.location.href}`;
+            const auto_login_url = window.userlogintoken ? `&autologin_code=${window.userlogintoken}` : '';
+
+            const url = `${window.wordpressurl}wp-admin/post.php?post=${page_id}&action=edit&magento-referer=${window.location.href}${auto_login_url}`;
 
             this.editorLink(url);
         },
