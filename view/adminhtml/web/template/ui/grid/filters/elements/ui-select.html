@@ -147,7 +147,6 @@
         <ul class="admin__action-multiselect-menu-inner _root"
             data-bind="
                 event: {
-                    mousemove: function(data, event){onMousemove($data, $index(), event)},
                     scroll: function(data, event){onScrollDown(data, event)}
                 }
             ">
@@ -221,6 +220,14 @@
             click: function () {
                 toggleOptionSelected({ value: '' })
             }
-            ">
+            "
+            style="width: auto;">
     <span data-bind="i18n: 'Detach Wordpress Page'">Detach Wordpress Page</span>
+</button>
+
+<button class="admin__field-fallback-reset" type="button" data-bind="
+            visible: hasData() && editorLink(),
+            click: openEditor"
+            style="width: auto;">
+    <span data-bind="i18n: 'Edit Wordpress Page'">Edit Wordpress Page</span>
 </button>
