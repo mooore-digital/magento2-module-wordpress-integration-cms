@@ -31,7 +31,7 @@ When the module is installed.
 You can add your wordpress domain to the `Content > Wordpress Sites`.
 _This is the base URL._
 
-After all page will be available in a dropdown the the Magento CMS pages.
+After this, all pages will be available as dropdown in your Magento CMS pages.
 
 For more in-depth instructions please see the [wiki](https://github.com/mooore-digital/magento2-module-wordpress-integration-cms/wiki)
 
