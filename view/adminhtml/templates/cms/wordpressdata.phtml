@@ -1,0 +1,18 @@
+<?php
+/** @var $viewModel \Mooore\WordpressIntegrationCms\ViewModel\WPCIData */
+
+$viewModel = $block->getViewModel();
+
+$wordPressUrl = $viewModel->getWordPressUrl();
+?>
+<?php if ($wordPressUrl):?>
+<script>
+    require([
+        'jquery'
+    ], function($){
+        $(document).ready(function() {
+            window.wordpressurl = '<?php echo $wordPressUrl; ?>';
+        } );
+    })
+</script>
+<?php endif; ?>
