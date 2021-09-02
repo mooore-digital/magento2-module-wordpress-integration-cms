@@ -5,8 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.8.4] - 2021-09-02
 ### Fixed
-- Potential security issue with path-parse from @wordpress/block-library
+- Potential security issue with path-parse from @wordpress/block-library #57
+- Detach Wordpress page does not work #49
 
 ## [0.8.3] - 2021-05-03
 ### Fixed
