@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.4] - 2021-09-02
+### Fixed
+- Potential security issue with path-parse from @wordpress/block-library #57
+- Detach Wordpress page does not work #49
+
 ## [0.8.3] - 2021-05-03
 ### Fixed
 - Fixed embedded videos not being properly sized by aspect ratio
