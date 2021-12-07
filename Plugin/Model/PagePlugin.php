@@ -12,15 +12,10 @@ use Mooore\WordpressIntegrationCms\Resolver\RemotePageResolver;
 class PagePlugin
 {
     /**
-     * @var array
-     */
-    private $remotePageContentCache = [];
-    /**
      * @var RemotePageResolver
      */
     private $remotePageResolver;
-
-
+    
     public function __construct(
         RemotePageResolver $remotePageResolver
     ) {
