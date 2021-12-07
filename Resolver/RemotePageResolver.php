@@ -31,7 +31,7 @@ class RemotePageResolver
         }
 
         try {
-            $remotePage = $this->pageRepository->get((int) $siteId, (int) $pageId);
+            $remotePage = $this->pageRepository->get($siteId, $pageId);
         } catch (LocalizedException $e) {
             return null;
         }
