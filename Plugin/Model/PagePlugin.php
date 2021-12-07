@@ -26,7 +26,13 @@ class PagePlugin
     {
         $remotePageId = $subject->getData('wordpress_page_id');
         
-        $html = $this->remotePageResolver->resolve($remotePageId);
+        if (empty($remotePageId)) {
+            return $proceed();
+        }
+
+        [$siteId, $pageId] = explode('_', $remotePageId);
+        
+        $html = $this->remotePageResolver->resolve((int) $siteId, (int)$pageId);
 
         if ($html === null) {
             return $proceed();

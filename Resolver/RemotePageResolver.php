@@ -22,17 +22,13 @@ class RemotePageResolver
         $this->pageRepository = $pageRepository;
     }
 
-    public function resolve(string $remotePageId)
+    public function resolve(int $siteId, int $pageId)
     {
-        if (empty($remotePageId)) {
-            return null;
-        } 
-        
-        if (isset($this->remotePageContentCache[$remotePageId])) {
-            return $this->remotePageContentCache[$remotePageId];
-        }
+        $cacheKey = sprintf('page_%s_%s', $siteId, $pageId);
 
-        [$siteId, $pageId] = explode('_', $remotePageId);
+        if (isset($this->remotePageContentCache[$cacheKey])) {
+            return $this->remotePageContentCache[$cacheKey];
+        }
 
         try {
             $remotePage = $this->pageRepository->get((int) $siteId, (int) $pageId);
@@ -56,8 +52,8 @@ class RemotePageResolver
             return str_replace('“', '``', $match);  // Double quotes
         }, $html);
 
-        $this->remotePageContentCache[$remotePageId] = $html;
+        $this->remotePageContentCache[$cacheKey] = $html;
 
-        return $this->remotePageContentCache[$remotePageId];
+        return $this->remotePageContentCache[$cacheKey];
     }
 }
