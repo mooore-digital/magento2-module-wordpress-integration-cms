@@ -15,7 +15,7 @@ class PagePlugin
      * @var RemotePageResolver
      */
     private $remotePageResolver;
-    
+
     public function __construct(
         RemotePageResolver $remotePageResolver
     ) {
@@ -31,8 +31,8 @@ class PagePlugin
         }
 
         [$siteId, $pageId] = explode('_', $remotePageId);
-        
-        $html = $this->remotePageResolver->resolve((int) $siteId, (int)$pageId);
+
+        $html = $this->remotePageResolver->resolve((int)$siteId, (int)$pageId);
 
         if ($html === null) {
             return $proceed();
