@@ -25,7 +25,7 @@ class PagePlugin
     public function aroundGetContent(Page $subject, callable $proceed)
     {
         $remotePageId = $subject->getData('wordpress_page_id');
-        
+
         if (empty($remotePageId)) {
             return $proceed();
         }
