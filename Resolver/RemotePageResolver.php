@@ -22,7 +22,7 @@ class RemotePageResolver
         $this->pageRepository = $pageRepository;
     }
 
-    public function resolve(int $siteId, int $pageId)
+    public function resolve(int $siteId, int $pageId): ?string
     {
         $cacheKey = sprintf('page_%s_%s', $siteId, $pageId);
 
