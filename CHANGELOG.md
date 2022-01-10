@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.6] - 2022-01-10
+### Fixed
+- Sometimes double-dashes gets encoded to one from API
+
+## [0.8.5] - 2021-12-07
+### Improvement
+- Code split the PagePlugin so the remote page resolving becomes reusable
+
 ## [0.8.4] - 2021-09-02
 ### Fixed
 - Potential security issue with path-parse from @wordpress/block-library #57
