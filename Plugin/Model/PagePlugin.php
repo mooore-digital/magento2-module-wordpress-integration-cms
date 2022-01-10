@@ -7,22 +7,19 @@ namespace Mooore\WordpressIntegrationCms\Plugin\Model;
 use Magento\Cms\Model\Page;
 use Magento\Framework\Exception\LocalizedException;
 use Mooore\WordpressIntegrationCms\Model\RemotePageRepository;
+use Mooore\WordpressIntegrationCms\Resolver\RemotePageResolver;
 
 class PagePlugin
 {
     /**
-     * @var RemotePageRepository
+     * @var RemotePageResolver
      */
-    private $pageRepository;
-    /**
-     * @var array
-     */
-    private $remotePageContentCache = [];
+    private $remotePageResolver;
 
-
-    public function __construct(RemotePageRepository $pageRepository)
-    {
-        $this->pageRepository = $pageRepository;
+    public function __construct(
+        RemotePageResolver $remotePageResolver
+    ) {
+        $this->remotePageResolver = $remotePageResolver;
     }
 
     public function aroundGetContent(Page $subject, callable $proceed)
@@ -33,19 +30,11 @@ class PagePlugin
             return $proceed();
         }
 
-        if (isset($this->remotePageContentCache[$remotePageId])) {
-            return $this->remotePageContentCache[$remotePageId];
-        }
-
         [$siteId, $pageId] = explode('_', $remotePageId);
 
-        try {
-            $remotePage = $this->pageRepository->get((int) $siteId, (int) $pageId);
-        } catch (LocalizedException $e) {
-            return $proceed();
-        }
+        $html = $this->remotePageResolver->resolve((int)$siteId, (int)$pageId);
 
-        if ($remotePage === null || empty($remotePage['content'])) {
+        if ($html === null) {
             return $proceed();
         }
 
