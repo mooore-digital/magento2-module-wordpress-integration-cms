@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.7] - 2022-01-11
+### Fixed
+- Resolved wrongly fixed merge conflict
+
 ## [0.8.6] - 2022-01-10
 ### Fixed
 - Sometimes double-dashes gets encoded to one from API
