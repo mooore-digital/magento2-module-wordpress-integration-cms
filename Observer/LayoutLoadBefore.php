@@ -14,8 +14,7 @@ use Magento\Framework\Event\Observer;
 
 class LayoutLoadBefore implements ObserverInterface
 {
-    // TODO: check where contact_index_index is used for
-    // And make sure this is needed in either array
+    // TODO: check if contact_index_index is used with CMS pages, if so, add the following code
     const DISALLOWED_PAGES = [
         'cms_page_view',
         'cms_index_index',
