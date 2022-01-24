@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - noindex and nocookie pages now support WPCI pages and style
 
+### Fixed
+- Cleanup code by improving formatting
+
 ## [0.8.7] - 2022-01-11
 ### Fixed
 - Resolved wrongly fixed merge conflict

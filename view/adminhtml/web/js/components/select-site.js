@@ -1,7 +1,5 @@
-define([
-    'Magento_Ui/js/form/element/ui-select'
-], function (Select) {
-    'use strict';
+define(["Magento_Ui/js/form/element/ui-select"], function (Select) {
+    "use strict";
     return Select.extend({
         /**
          * Parse data and set it to options.
@@ -16,8 +14,9 @@ define([
             }
             this.options([]);
             this.setOption(option);
-            this.set('newOption', option);
+            this.set("newOption", option);
         },
+
         /**
          * Normalize option object.
          *
@@ -27,8 +26,8 @@ define([
         parseData: function (data) {
             return {
                 value: data.customer.entity_id,
-                label: data.customer.name
+                label: data.customer.name,
             };
-        }
+        },
     });
 });

@@ -1,7 +1,14 @@
-<?xml version="1.0" ?>
-<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+<?xml version="1.0"?>
+<schema
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
     <table name="cms_page">
-        <column name="wordpress_page_id" comment="Wordpress Page Id" nullable="true" xsi:type="varchar" length="64"/>
+        <column
+            name="wordpress_page_id"
+            comment="Wordpress Page Id"
+            nullable="true"
+            xsi:type="varchar"
+            length="64"
+        />
     </table>
 </schema>
