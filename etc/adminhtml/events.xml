@@ -1,8 +1,11 @@
 <?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+<config
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="cms_page_prepare_save">
-        <observer instance="Mooore\WordpressIntegrationCms\Observer\Adminhtml\PageDetacher"
-                  name="mooore_pagedetacher"/>
+        <observer
+            instance="Mooore\WordpressIntegrationCms\Observer\Adminhtml\PageDetacher"
+            name="mooore_pagedetacher"
+        />
     </event>
 </config>
