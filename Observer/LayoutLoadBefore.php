@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mooore\WordpressIntegrationCms\Observer;
 
 use Magento\Cms\Model\Page;
@@ -12,6 +14,16 @@ use Magento\Framework\Event\Observer;
 
 class LayoutLoadBefore implements ObserverInterface
 {
+    // TODO: check if contact_index_index is used with CMS pages, if so, add the following code
+    const DISALLOWED_PAGES = [
+        'cms_page_view',
+        'cms_index_index',
+    ];
+
+    const ALLOWED_PAGES = [
+        'cms_index_noroute',
+        'cms_index_nocookies',
+    ];
     /**
      * @var Http
      */
@@ -40,7 +52,7 @@ class LayoutLoadBefore implements ObserverInterface
     {
         $action = $observer->getData('full_action_name');
 
-        if ($action !== 'cms_page_view' && $action !== 'cms_index_index') {
+        if (!in_array($action, self::DISALLOWED_PAGES) && in_array($action, self::ALLOWED_PAGES)) {
             return;
         }
 

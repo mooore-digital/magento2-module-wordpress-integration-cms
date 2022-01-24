@@ -1,30 +1,35 @@
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+<?xml version="1.0"?>
+<config
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
         <section id="cms">
-            <group id="wordpress_integration"
-                   translate="label"
-                   sortOrder="100"
-                   showInDefault="1"
-                   showInWebsite="0"
-                   showInStore="0">
+            <group
+                id="wordpress_integration"
+                translate="label"
+                sortOrder="100"
+                showInDefault="1"
+                showInWebsite="0"
+                showInStore="0">
                 <label>Wordpress Integration</label>
-                <field id="baseurls"
-                       translate="label"
-                       type="textarea"
-                       showInDefault="1"
-                       showInWebsite="0"
-                       showInStore="0">
+                <field
+                    id="baseurls"
+                    translate="label"
+                    type="textarea"
+                    showInDefault="1"
+                    showInWebsite="0"
+                    showInStore="0">
                     <label>Base URLs</label>
                 </field>
-                <field id="magento_url_push_back"
-                       type="select"
-                       translate="label"
-                       canRestore="1"
-                       showInDefault="1"
-                       showInWebsite="1"
-                       showInStore="0"
-                       sortOrder="0">
+                <field
+                    id="magento_url_push_back"
+                    type="select"
+                    translate="label"
+                    canRestore="1"
+                    showInDefault="1"
+                    showInWebsite="1"
+                    showInStore="0"
+                    sortOrder="0">
                     <label>Push Magento page-url back to Wordpress</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
