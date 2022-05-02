@@ -37,7 +37,7 @@ For more in-depth instructions please see the [wiki](https://github.com/mooore-d
 
 ### Styles/Script
 
-All styles are loaded by default with your theme, as separate CSS file,
+All styles are loaded by default with your theme, as a separate CSS file,
 and the CSS is only loaded for Wordpress Integration pages.
 
 We also offer some additional styles to hook into the main styles via LESS, SCSS or Hyva;
