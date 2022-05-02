@@ -59,7 +59,7 @@
 }
 
 .screen-reader-text {
-    @aply sr-only;
+    @apply sr-only;
 }
 
 .screen-reader-text:focus {
