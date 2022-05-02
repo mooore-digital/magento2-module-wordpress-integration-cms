@@ -1,0 +1,75 @@
+/* * From common.scss in blocks-library */
+
+/* Font sizes. */
+.has-small-font-size {
+    @apply text-sm;
+}
+
+.has-regular-font-size,
+.has-normal-font-size {
+    @apply text-base;
+}
+
+.has-medium-font-size {
+    @apply text-xl;
+}
+
+.has-large-font-size {
+    @apply text-4xl;
+}
+
+.has-larger-font-size,
+.has-huge-font-size {
+    font-size: 2.625em;
+}
+
+/* Text alignments. */
+.has-text-align-center {
+    @apply text-center;
+}
+
+.has-text-align-left {
+    @apply text-left;
+}
+
+.has-text-align-right {
+    @apply text-right;
+}
+
+/* Block alignments. */
+.aligncenter {
+    @apply clear-both;
+}
+
+/* Justification. */
+.items-justified-left {
+    @apply justify-start;
+}
+
+.items-justified-center {
+    @apply justify-center;
+}
+
+.items-justified-right {
+    @apply justify-end;
+}
+
+.items-justified-space-between {
+    @apply justify-between;
+}
+
+.screen-reader-text {
+    @aply sr-only;
+}
+
+.screen-reader-text:focus {
+    @apply not-sr-only z-50 absolute top-1.5 left-1.5 block bg-gray-400 text-gray-800;
+    padding: 15px 23px 14px;
+    font-size: 1em;
+    line-height: normal;
+    text-decoration: none;
+}
+
+// Colors
+// * Add your colors here
+// * This WP theme specific
