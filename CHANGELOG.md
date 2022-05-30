@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Updated WPCI dependencies (thanks to @allrude)
 
+### Fixed
+- Full page layout styles with Hyva
+
 ## [0.8.8] - 2022-01-24
 ### Added
 - noindex and nocookie pages now support WPCI pages and style

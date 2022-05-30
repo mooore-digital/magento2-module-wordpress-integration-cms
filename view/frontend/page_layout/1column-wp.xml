@@ -4,5 +4,5 @@
     xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
     <update handle="1column"/>
     <!-- Replaced page-main class with page-main-wp for full-width layout -->
-    <referenceContainer name="main.content" htmlClass="page-main-wp"/>
+    <referenceContainer name="main.content" htmlClass="page-main-wp page-main-full-width"/>
 </layout>
