@@ -2,11 +2,13 @@
 /* stylelint-disable declaration-no-important */
 
 .entry-content {
-    @apply prose;
-}
+    @apply prose max-w-full;
 
-/* If gallery don't show cusotm list */
-.entry-content {
+    & .wp-block-button__link {
+        @apply no-underline;
+    }
+
+    /* If gallery don't show cusotm list */
     & ul.wp-block-gallery,
     & ul.blocks-gallery-grid {
         & > li {
