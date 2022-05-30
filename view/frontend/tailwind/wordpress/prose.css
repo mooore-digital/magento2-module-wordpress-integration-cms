@@ -1,0 +1,20 @@
+/* Tailwind specific styles to help or unset prose rules with WPCI */
+/* stylelint-disable declaration-no-important */
+
+.entry-content {
+    @apply prose;
+}
+
+/* If gallery don't show cusotm list */
+.entry-content {
+    & ul.wp-block-gallery,
+    & ul.blocks-gallery-grid {
+        & > li {
+            @apply p-0;
+
+            &::before {
+                content: none;
+            }
+        }
+    }
+}

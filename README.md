@@ -37,13 +37,14 @@ For more in-depth instructions please see the [wiki](https://github.com/mooore-d
 
 ### Styles/Script
 
-All styles are loaded by default with your theme, as a separate CSS file,
-and the CSS is only loaded for Wordpress Integration pages.
+All styles are loaded by default with your theme.
 
-We also offer some additional styles to hook into the main styles via LESS, SCSS or Hyva;
+The blocks are loaded as an separate style for only Wordpress Integration pages.
 
-- For SCSS, you can use it via tools like [Snowdog Frontools](https://github.com/SnowdogApps/magento2-frontools).
-- For Hyva copy the styles from the `web/tailwind` to your theme.
+The custom styles are loaded with your main theme styles,
+which offers an option to hook in to the Wordpress block styles.
+
+_This works for the Luma (LESS), Snowdog Blank (SCSS) and Hyva themes._
 
 ## Support
 
