@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Hyva boilerplate for setup styles for common en button, same as LESS and SCSS version
 
 ## [0.8.8] - 2022-01-24
 ### Added

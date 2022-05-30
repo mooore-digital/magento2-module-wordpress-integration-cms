@@ -37,12 +37,13 @@ For more in-depth instructions please see the [wiki](https://github.com/mooore-d
 
 ### Styles/Script
 
-All styles and scripts are loaded by default with your theme.
-As a separate CSS file so the CSS is only loaded for Wordpress Integration pages.
+All styles are loaded by default with your theme, as a separate CSS file,
+and the CSS is only loaded for Wordpress Integration pages.
 
-We also offer some aditionl styles to hook into the main styles via LESS or SCSS.
+We also offer some additional styles to hook into the main styles via LESS, SCSS or Hyva;
 
-The SCSS version can be used via tools like [Snowdog Frontools](https://github.com/SnowdogApps/magento2-frontools).
+- For SCSS, you can use it via tools like [Snowdog Frontools](https://github.com/SnowdogApps/magento2-frontools).
+- For Hyva copy the styles from the `web/tailwind` to your theme.
 
 ## Support
 
