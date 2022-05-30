@@ -1,3 +1,8 @@
+# Development
 /node_modules
 .idea
 .vscode
+
+# Build and cache
+src/*.css
+src/*.css.map
