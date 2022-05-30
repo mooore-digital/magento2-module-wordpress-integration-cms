@@ -52,3 +52,37 @@ Is something missing or found a bug.
 Feel free to support this Module by adding a Issue or Pull Request.
 
 Have something cool that extend on this module share it 
+
+### Block Compatibility Issues
+
+If a block does match your Wordpress styling or is missing a feature,
+please first check the following points before opening a issues;
+
+<details><summary>Your Wordpress theme is made for the new full page editing</summary>
+
+If this is the case,
+please take note these block styles are not compatible for any themes that support full page editing.
+
+This could be for example the TwentyTwentyTwo theme.
+
+You can do the following options;
+
+- Use an older theme like TwentyTwentyOne
+- Disable the block options
+
+</details>
+
+<details><summary>My theme has an option that does not show on the Magento 2 side</summary>
+
+This can mean 2 posible things;
+
+1. Your custom option has no styles on the Magento side
+2. Your custom option creates inline styles on the Wordpress side
+
+If it is option **1** you also have an class that with that custom option,
+simply add the required styles to that class.
+
+if it is options **2** then there is nothing you can do for now,
+except disable the option on the Wordpress side.
+
+</details>
