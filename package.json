@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "build:dev": "npx sass src/wp-blocks.scss view/frontend/web/css/wp-blocks.css --load-path=node_modules",
-    "build:prod": "npx sass src/wp-blocks.scss view/frontend/web/css/wp-blocks.css -s compressed --load-path=node_modules"
+    "build": "npx sass src/wp-blocks.scss view/frontend/web/css/wp-blocks.css -s compressed --load-path=node_modules"
   },
   "repository": {
     "type": "git",
@@ -15,8 +15,7 @@
   },
   "bugs": "https://github.com/mooore-digital/magento2-module-wordpress-integration-cms/issues",
   "dependencies": {
-    "@wordpress/base-styles": "^3.4.2",
-    "@wordpress/block-library": "^2.29.3"
-  },
-  "devDependencies": {}
+    "@wordpress/base-styles": "^4.4.0",
+    "@wordpress/block-library": "^7.4.0"
+  }
 }
