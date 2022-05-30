@@ -6,8 +6,11 @@
   "homepage": "https://mooore.nl/",
   "private": true,
   "scripts": {
-    "build:dev": "npx sass src/wp-blocks.scss view/frontend/web/css/wp-blocks.css --load-path=node_modules",
-    "build": "npx sass src/wp-blocks.scss view/frontend/web/css/wp-blocks.css -s compressed --load-path=node_modules"
+    "minify": "npx postcss src/wp-blocks.css > view/frontend/web/css/wp-blocks.css",
+    "copy": "cp src/wp-blocks.scss view/frontend/web/css/wp-blocks.css",
+    "sass": "npx sass src/wp-blocks.scss src/wp-blocks.css -I node_modules",
+    "build:dev": "npm run sass && npm run copy",
+    "build": "npm run sass && npm run minify"
   },
   "repository": {
     "type": "git",
@@ -17,5 +20,10 @@
   "dependencies": {
     "@wordpress/base-styles": "^4.4.0",
     "@wordpress/block-library": "^7.4.0"
+  },
+  "devDependencies": {
+    "cssnano": "^5.1.10",
+    "postcss": "^8.4.14",
+    "postcss-cli": "^9.1.0"
   }
 }
