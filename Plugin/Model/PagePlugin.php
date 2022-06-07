@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace Mooore\WordpressIntegrationCms\Plugin\Model;
 
 use Magento\Cms\Model\Page;
-use Magento\Framework\Exception\LocalizedException;
+use Magento\Store\Model\StoreManagerInterface;
+use Mooore\WordpressIntegration\Api\SiteRepositoryInterface;
 use Mooore\WordpressIntegrationCms\Resolver\RemotePageResolver;
 
 class PagePlugin
@@ -15,10 +16,24 @@ class PagePlugin
      */
     private $remotePageResolver;
 
+    /**
+     * @var SiteRepositoryInterface
+     */
+    private $siteRepository;
+
+    /**
+     * @var StoreManagerInterface
+     */
+    private $storeManager;
+
     public function __construct(
-        RemotePageResolver $remotePageResolver
+        RemotePageResolver $remotePageResolver,
+        SiteRepositoryInterface $siteRepository,
+        StoreManagerInterface $storeManager
     ) {
         $this->remotePageResolver = $remotePageResolver;
+        $this->siteRepository = $siteRepository;
+        $this->storeManager = $storeManager;
     }
 
     public function aroundGetContent(Page $subject, callable $proceed)
@@ -35,6 +50,16 @@ class PagePlugin
 
         if ($html === null) {
             return $proceed();
+        }
+
+        $site = $this->siteRepository->get($siteId);
+        if ($site->getReplaceMediaUrls()) {
+            /* Remap cms.store.com/wp-content to store.com/media/wp-content */
+            $html = str_replace(
+                $site->getBaseurl() . 'wp-content/uploads/',
+                $this->storeManager->getStore()->getBaseUrl() . 'media/wp-content/uploads/',
+                $html
+            );
         }
 
         return $html;
