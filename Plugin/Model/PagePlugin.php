@@ -7,6 +7,7 @@ namespace Mooore\WordpressIntegrationCms\Plugin\Model;
 use Magento\Cms\Model\Page;
 use Magento\Store\Model\StoreManagerInterface;
 use Mooore\WordpressIntegration\Api\SiteRepositoryInterface;
+use Mooore\WordpressIntegrationCms\Processors\AfterHtmlProcessor;
 use Mooore\WordpressIntegrationCms\Resolver\RemotePageResolver;
 
 class PagePlugin
@@ -16,24 +17,14 @@ class PagePlugin
      */
     private $remotePageResolver;
 
-    /**
-     * @var SiteRepositoryInterface
-     */
-    private $siteRepository;
-
-    /**
-     * @var StoreManagerInterface
-     */
-    private $storeManager;
+    private $afterHtmlProcessor;
 
     public function __construct(
         RemotePageResolver $remotePageResolver,
-        SiteRepositoryInterface $siteRepository,
-        StoreManagerInterface $storeManager
+        AfterHtmlProcessor $afterHtmlProcessor
     ) {
         $this->remotePageResolver = $remotePageResolver;
-        $this->siteRepository = $siteRepository;
-        $this->storeManager = $storeManager;
+        $this->afterHtmlProcessor = $afterHtmlProcessor;
     }
 
     public function aroundGetContent(Page $subject, callable $proceed)
@@ -52,15 +43,7 @@ class PagePlugin
             return $proceed();
         }
 
-        $site = $this->siteRepository->get($siteId);
-        if ($site->getReplaceMediaUrls()) {
-            /* Remap cms.store.com/wp-content to store.com/media/wp-content */
-            $html = str_replace(
-                $site->getBaseurl() . 'wp-content/uploads/',
-                $this->storeManager->getStore()->getBaseUrl() . 'media/wp-content/uploads/',
-                $html
-            );
-        }
+        $html = $this->afterHtmlProcessor->process($html, $subject);
 
         return $html;
     }
