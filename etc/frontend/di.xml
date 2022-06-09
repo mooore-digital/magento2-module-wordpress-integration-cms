@@ -9,4 +9,14 @@
             type="Mooore\WordpressIntegrationCms\Plugin\Model\PagePlugin"
         />
     </type>
+
+    <type name="Mooore\WordpressIntegrationCms\Processors\AfterHtmlProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="ReplaceMediaUrls" xsi:type="object">
+                    Mooore\WordpressIntegrationCms\Processors\AfterHtml\ReplaceMediaUrls
+                </item>
+            </argument>
+        </arguments>
+    </type>
 </config>
