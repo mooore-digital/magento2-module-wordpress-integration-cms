@@ -94,22 +94,6 @@ class Post
         return json_decode($response->getContent(), true);
     }
 
-    public function postMetaDataToPage(int $pageId, string $key, string $value, string $authentication)
-    {
-        try {
-            $response = $this->client->request(
-                'POST',
-                self::WP_JSON_URL_PREFIX . 'posts/' . $pageId . '?'. $key .'=' . $value,
-
-                [
-                    'auth_basic' => $authentication
-                ]
-            );
-        } catch (TransportExceptionInterface $tce) {
-            $this->logger->error('Error: Meta data could not be posted. Reason: ' . $tce->getMessage());
-        }
-    }
-
     /**
      * Peek pages headers. Useful for listing.
      *

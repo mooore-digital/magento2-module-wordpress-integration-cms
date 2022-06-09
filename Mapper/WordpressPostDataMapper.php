@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mooore\WordpressIntegrationCms\Mapper;
 
 use Magento\Framework\DataObject;
@@ -23,8 +25,7 @@ class WordpressPostDataMapper
      */
     public function __construct(
         WordpressPostInterfaceFactory $entityDtoFactory
-    )
-    {
+    ) {
         $this->entityDtoFactory = $entityDtoFactory;
     }
 

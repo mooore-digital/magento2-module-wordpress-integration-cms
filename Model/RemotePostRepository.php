@@ -61,11 +61,9 @@ class RemotePostRepository
      * @return array
      * @throws LocalizedException
      */
-    public function getList(): array
+    public function getList($pageSize = 10): array
     {
         $posts = [];
-
-        $pageSize = 10; // @Hardcoded value: create a configuration for this value.
 
         foreach ($this->getSites() as $site) {
             $this->postClient->setBaseUrl($site->getBaseurl());

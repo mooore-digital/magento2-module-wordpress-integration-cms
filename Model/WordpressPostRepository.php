@@ -68,7 +68,6 @@ class WordpressPostRepository
              * @psalm-suppress MixedArgument
              */
             $model->addData($wordpressPost->getData());
-            $model->setHasDataChanges(true);
 
             if (!$model->getData(WordpressPostInterface::WORDPRESS_POST_ID)) {
                 $model->isObjectNew(true);

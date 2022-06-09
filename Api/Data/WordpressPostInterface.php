@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mooore\WordpressIntegrationCms\Api\Data;
 
 interface WordpressPostInterface

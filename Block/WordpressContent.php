@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mooore\WordpressIntegrationCms\Block;
 
 use Magento\Framework\View\Element\Template;
@@ -29,7 +31,6 @@ class WordpressContent extends Template
         RemotePostRepository $remotePostRepository,
         RemotePageRepository $remotePageRepository,
         FilterProvider $filterProvider,
-
         array $data = []
     ) {
         $this->remotePostRepository = $remotePostRepository;
@@ -54,7 +55,7 @@ class WordpressContent extends Template
         if ($contentType === 'page') {
             $page = $this->remotePageRepository->get($siteId, $pageId);
         }
-        else if ($contentType === 'post') {
+        if ($contentType === 'post') {
             $page = $this->remotePostRepository->get($siteId, $pageId);
         }
 
