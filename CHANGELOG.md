@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Hyva boilerplate for setup styles for common en button,
   same as LESS and SCSS version
 - Hyva auto merge option for the styles
+- Media URL replace option
 
 ### Changed
 - Updated WPCI dependencies (thanks to @allrude)
