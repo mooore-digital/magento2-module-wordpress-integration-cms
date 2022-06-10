@@ -10,7 +10,6 @@ use Mooore\WordpressIntegration\Api\SiteRepositoryInterface;
 
 class ReplaceMediaUrls
 {
-
     /**
      * @var SiteRepositoryInterface
      */
@@ -29,10 +28,7 @@ class ReplaceMediaUrls
         $this->storeManager = $storeManager;
     }
 
-    public function process(string $html, Page $page): string {
-        $remotePageId = $page->getData('wordpress_page_id');
-        [$siteId] = explode('_', $remotePageId);
-
+    public function process(string $html, $siteId): string {
         $site = $this->siteRepository->get($siteId);
         if ($site->getReplaceMediaUrls()) {
             /* Remap cms.store.com/wp-content to store.com/media/wp-content */

@@ -8,6 +8,7 @@ use Magento\Framework\View\Element\Template;
 use Mooore\WordpressIntegrationCms\Model\RemotePostRepository;
 use Mooore\WordpressIntegrationCms\Model\RemotePageRepository;
 use Magento\Cms\Model\Template\FilterProvider;
+use Mooore\WordpressIntegrationCms\Processors\AfterHtmlProcessor;
 
 class WordpressContent extends Template
 {
@@ -26,16 +27,23 @@ class WordpressContent extends Template
      */
     protected $filterProvider;
 
+    /**
+     * @var AfterHtmlProcessor
+     */
+    protected $afterHtmlProcessor;
+
     public function __construct(
         Template\Context $context,
         RemotePostRepository $remotePostRepository,
         RemotePageRepository $remotePageRepository,
         FilterProvider $filterProvider,
+        AfterHtmlProcessor $afterHtmlProcessor,
         array $data = []
     ) {
         $this->remotePostRepository = $remotePostRepository;
         $this->remotePageRepository = $remotePageRepository;
         $this->filterProvider = $filterProvider;
+        $this->afterHtmlProcessor = $afterHtmlProcessor;
         parent::__construct($context, $data);
     }
 
@@ -59,21 +67,13 @@ class WordpressContent extends Template
             $page = $this->remotePostRepository->get($siteId, $pageId);
         }
 
-        $page['content']['rendered'] = preg_replace_callback("{{{(.*)}}}", function ($matches) {
-            $match = $matches[0];
-
-            // Solve wierd encoding from Wordpress API regarding double-dashes
-            $match = preg_replace('/([^\s])&#8211;([^\s])/m', '$1--$2', $match);
-
-            $match = html_entity_decode($match);
-            $match = str_replace('”', '"', $match); // Opening quote
-            $match = str_replace('″', '"', $match); // Ending quote
-            return str_replace('“', '``', $match);  // Double quotes
-        }, $page['content']['rendered']);
-
         $this->setData('page', $page);
 
-        $html = $this->filterProvider->getPageFilter()->filter($page['content']['rendered']);
+        $html = $page['content']['rendered'];
+
+        $html = $this->afterHtmlProcessor->process($html, $siteId);
+
+        $html = $this->filterProvider->getPageFilter()->filter($html);
 
         return $html;
     }
