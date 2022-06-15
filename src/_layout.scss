@@ -90,13 +90,13 @@ $screen__m: 768px !default;
 }
 
 .entry-content {
-    > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
+    > *:not(.alignwide, .alignfull, .alignleft, .alignright, .wp-block-separator, .woocommerce) {
         @extend %wp-container;
     }
 }
 
 *[class*="inner-container"] {
-    > *:not(.entry-content):not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
+    > *:not(.entry-content, .alignwide, .alignfull, .alignleft, .alignright, .wp-block-separator, .woocommerce) {
         @extend %wp-container;
     }
 }
