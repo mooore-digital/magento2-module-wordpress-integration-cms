@@ -10,7 +10,7 @@ use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Action\Context;
 use Mooore\WordpressIntegrationCms\Model\RemotePostRepository;
 use Magento\Framework\View\Result\Page as ResultPage;
-use \Magento\Framework\Controller\Result\ForwardFactory;
+use Magento\Framework\Controller\Result\ForwardFactory;
 use Magento\Framework\Controller\ResultFactory;
 
 class View extends Action implements HttpGetActionInterface
@@ -51,7 +51,6 @@ class View extends Action implements HttpGetActionInterface
 
     public function execute()
     {
-        // https://aic.aic.test/wpci/blog/view/site_id/2/page_id/1
         $siteId = (int)$this->getRequest()->getParam('site_id', false);
         $pageId = (int)$this->getRequest()->getParam('page_id', false);
 
