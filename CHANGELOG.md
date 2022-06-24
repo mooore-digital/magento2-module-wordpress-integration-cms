@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.0] - 2022-06-24
+### Added
+- Media URL replace option
+- Add basic blog functionality
+
 ## [0.9.1] - 2022-06-15
 ### Fixed
 - Specificity in alignment option using the `:not()` v4 selector

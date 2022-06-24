@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Mooore\WordpressIntegrationCms\Plugin\Model;
 
 use Magento\Cms\Model\Page;
-use Magento\Framework\Exception\LocalizedException;
+use Magento\Store\Model\StoreManagerInterface;
+use Mooore\WordpressIntegration\Api\SiteRepositoryInterface;
+use Mooore\WordpressIntegrationCms\Processors\AfterHtmlProcessor;
 use Mooore\WordpressIntegrationCms\Resolver\RemotePageResolver;
 
 class PagePlugin
@@ -15,10 +17,14 @@ class PagePlugin
      */
     private $remotePageResolver;
 
+    private $afterHtmlProcessor;
+
     public function __construct(
-        RemotePageResolver $remotePageResolver
+        RemotePageResolver $remotePageResolver,
+        AfterHtmlProcessor $afterHtmlProcessor
     ) {
         $this->remotePageResolver = $remotePageResolver;
+        $this->afterHtmlProcessor = $afterHtmlProcessor;
     }
 
     public function aroundGetContent(Page $subject, callable $proceed)
@@ -36,6 +42,8 @@ class PagePlugin
         if ($html === null) {
             return $proceed();
         }
+
+        $html = $this->afterHtmlProcessor->process($html, $siteId);
 
         return $html;
     }
