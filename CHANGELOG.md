@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.1] - 2022-06-24
+### Fixed
+- Fixed bug where URLS were not being correctly parsed
+
 ## [0.10.0] - 2022-06-24
 ### Added
 - Media URL replace option
