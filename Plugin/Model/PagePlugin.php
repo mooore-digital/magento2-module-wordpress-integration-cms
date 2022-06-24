@@ -43,7 +43,7 @@ class PagePlugin
             return $proceed();
         }
 
-        $html = $this->afterHtmlProcessor->process($html, $subject);
+        $html = $this->afterHtmlProcessor->process($html, $siteId);
 
         return $html;
     }

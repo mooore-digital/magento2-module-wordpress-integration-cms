@@ -16,6 +16,12 @@
                 <item name="ReplaceMediaUrls" xsi:type="object">
                     Mooore\WordpressIntegrationCms\Processors\AfterHtml\ReplaceMediaUrls
                 </item>
+                <item name="ReplaceWidgetCharacters" xsi:type="object">
+                    Mooore\WordpressIntegrationCms\Processors\AfterHtml\ReplaceWidgetCharacters
+                </item>
+                <item name="FixHrefUrls" xsi:type="object">
+                    Mooore\WordpressIntegrationCms\Processors\AfterHtml\FixHrefUrls
+                </item>
             </argument>
         </arguments>
     </type>

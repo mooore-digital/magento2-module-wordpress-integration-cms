@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Media URL replace option
+- Add basic blog functionality
 
 ## [0.9.1] - 2022-06-15
 ### Fixed

@@ -8,5 +8,12 @@
                 <magento_url_push_back>0</magento_url_push_back>
             </wordpress_integration>
         </cms>
+        <url_rewrite>
+            <entity_types>
+                <wpci-blog-post>
+                    <generator>Magento\Framework\DataObject</generator>
+                </wpci-blog-post>
+            </entity_types>
+        </url_rewrite>
     </default>
 </config>

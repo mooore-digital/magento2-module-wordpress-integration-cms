@@ -22,10 +22,10 @@ class AfterHtmlProcessor
         $this->processors = $processors;
     }
 
-    public function process($html, Page $page): string
+    public function process($html, $siteId): string
     {
         foreach ($this->processors as $processor) {
-            $html = $processor->process($html, $page);
+            $html = $processor->process($html, $siteId);
         }
 
         return $html;
