@@ -29,11 +29,11 @@ class FixHrefUrls
             $prefix = ltrim($prefix, '/');
 
             $html = preg_replace_callback(
-                '<a.*href="('.str_replace('/', '\\/', preg_quote($base_url)).'.*)".*>',
+                '<a.?href="('.str_replace('/', '\\/', preg_quote($base_url)).'.*?)".*?>',
                 function ($matches) use ($base_url, $prefix) {
                     return str_replace($base_url, '/' . $prefix . '/', $matches[0]);
                 },
-            $html);
+                $html);
         }
 
         return $html;
