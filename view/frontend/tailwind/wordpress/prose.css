@@ -10,7 +10,8 @@
 
     /* If gallery don't show cusotm list */
     & ul.wp-block-gallery,
-    & ul.blocks-gallery-grid {
+    & ul.blocks-gallery-grid,
+    & ul.wp-block-latest-posts {
         & > li {
             @apply p-0;
 
