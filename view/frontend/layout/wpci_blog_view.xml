@@ -5,14 +5,7 @@
     layout="1column-wp"
 >
     <update handle="cms_wp_content"/>
-
-    <referenceBlock name="page.main.title" remove="true" />
-
     <referenceContainer name="content">
-        <block
-            class="Mooore\WordpressIntegrationCms\Block\WordpressContent"
-            name="blog.content"
-            template="Mooore_WordpressIntegrationCms::blog/post.phtml"
-        />
+        <block class="Mooore\WordpressIntegrationCms\Block\WordpressContent" name="blog.content"/>
     </referenceContainer>
 </page>

@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **Possible breaking change** unwanted removal of page title for blog pages
+
 ## [0.10.2] - 2022-06-27
 ### Fixed
 - Fixed a bug where all URLS were parsed, changed for only hrefs
