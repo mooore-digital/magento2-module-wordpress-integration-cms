@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <layout
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd"
+>
     <update handle="1column"/>
     <!-- Replaced page-main class with page-main-wp for full-width layout -->
     <referenceContainer name="main.content" htmlClass="page-main-wp page-main-full-width"/>
