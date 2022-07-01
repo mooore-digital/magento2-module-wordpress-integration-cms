@@ -73,7 +73,7 @@ class View extends Action implements HttpGetActionInterface
         $this->resultPage->getConfig()->getTitle()->set($page['title']['rendered']);
         
         $descriptionRaw = $page['excerpt']['rendered'];
-        if($descriptionRaw) {
+        if ($descriptionRaw) {
             $description = trim(strip_tags($descriptionRaw));
             $this->resultPage->getConfig()->setDescription($description);
         }
