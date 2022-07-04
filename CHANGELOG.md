@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.4] - 2022-07-04
+### Added
+- Add meta description from post excerpt
+
 ## [0.10.3] - 2022-06-29
 ### Fixed
 - **Possible breaking change** unwanted removal of page title for blog pages
