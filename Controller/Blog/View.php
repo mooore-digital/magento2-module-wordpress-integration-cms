@@ -71,6 +71,12 @@ class View extends Action implements HttpGetActionInterface
         }
 
         $this->resultPage->getConfig()->getTitle()->set($page['title']['rendered']);
+        
+        $descriptionRaw = $page['excerpt']['rendered'];
+        if ($descriptionRaw) {
+            $description = trim(strip_tags($descriptionRaw));
+            $this->resultPage->getConfig()->setDescription($description);
+        }
 
         $page = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         $layout = $page->getLayout();
