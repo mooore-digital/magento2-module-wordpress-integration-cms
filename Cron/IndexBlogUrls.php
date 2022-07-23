@@ -99,7 +99,7 @@ class IndexBlogUrls
                     continue;
                 }
 
-                $dbPost = $dbPost[0];
+                $dbPost = reset($dbPost);
                 if ($dbPost->getSlug() !== $post['slug']) {
                     $urls = array_merge($urls, $this->updatePageSlug($dbPost, $post['slug']));
                 }
