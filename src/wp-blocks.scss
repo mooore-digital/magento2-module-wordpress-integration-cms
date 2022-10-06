@@ -16,8 +16,7 @@
 // *4: Or replaced with custom version
 // @import "@wordpress/block-library/src/archives/style"; // *1
 @import "@wordpress/block-library/src/audio/style";
-@import "@wordpress/block-library/src/button/style";
-@import "@wordpress/block-library/src/buttons/style";
+@import "block-library/buttons";
 // @import "@wordpress/block-library/src/calendar/style"; // *1
 // @import "@wordpress/block-library/src/categories/style"; // *2
 @import "@wordpress/block-library/src/code/style";
