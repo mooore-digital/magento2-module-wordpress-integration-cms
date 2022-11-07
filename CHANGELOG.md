@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.8] - 2022-11-07
+### Fixed
+- Small fix for href search pattern
+
 ## [0.10.7] - 2022-10-28
 ### Fixed
 - Missing flex container on btn group
