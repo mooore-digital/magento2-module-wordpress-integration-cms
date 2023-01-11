@@ -194,8 +194,12 @@ class IndexBlogUrls
         return $rewrites;
     }
 
-    public function createUrl($prefix = '', $slug)
+    public function createUrl($prefix = '', $slug = '')
     {
+        if (empty($slug)) {
+            throw new \InvalidArgumentException('Slug can not be empty');
+        }
+
         $prefix = ltrim($prefix, '/'); // Remove trailing slash
 
         return "$prefix/$slug";
