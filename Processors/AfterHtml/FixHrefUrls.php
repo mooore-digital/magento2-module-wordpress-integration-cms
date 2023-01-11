@@ -31,9 +31,13 @@ class FixHrefUrls
             $html = preg_replace_callback(
                 '<a.*?href="('.str_replace('/', '\\/', preg_quote($base_url)).'.*?)".*?>',
                 function ($matches) use ($base_url, $prefix) {
-                    return str_replace($base_url, '/' . $prefix . '/', $matches[0]);
+                    // * Only replace the matched string
+                    $new_url = str_replace($base_url, '/' . $prefix . '/', $matches[1]);
+
+                    return str_replace($matches[1], $new_url, $matches[0]);
                 },
-                $html);
+                $html
+            );
         }
 
         return $html;
