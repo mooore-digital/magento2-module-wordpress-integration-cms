@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.9] - 2023-01-11
+### Fixed
+- Additional fix for href search problem
+
 ## [0.10.8] - 2022-11-07
 ### Fixed
 - Small fix for href search pattern
