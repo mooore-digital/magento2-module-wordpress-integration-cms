@@ -11,6 +11,7 @@ use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Layout;
 use Magento\Framework\Event\Observer;
+use Mooore\WordpressIntegrationCms\Model\RemotePageRepository;
 
 class LayoutLoadBefore implements ObserverInterface
 {
@@ -37,11 +38,18 @@ class LayoutLoadBefore implements ObserverInterface
      */
     private $page;
 
-    public function __construct(Http $request, PageRepository $pageRepository, Page $page)
-    {
+    private RemotePageRepository $remotePageRepository;
+
+    public function __construct(
+        Http $request,
+        PageRepository $pageRepository,
+        RemotePageRepository $remotePageRepository,
+        Page $page
+    ) {
         $this->request = $request;
         $this->pageRepository = $pageRepository;
         $this->page = $page;
+        $this->remotePageRepository = $remotePageRepository;
     }
 
     /**
@@ -76,5 +84,22 @@ class LayoutLoadBefore implements ObserverInterface
         $layout = $observer->getData('layout');
 
         $layout->getUpdate()->addHandle('cms_wp_content');
+        $layout->getUpdate()->addHandle('wpci_page_view');
+
+        $this->addWordpressLayoutHandles($page->getData('wordpress_page_id'), $layout);
+    }
+
+    public function addWordpressLayoutHandles($wordpressPageId, $layout) {
+        [$siteId, $pageId] = explode('_', $wordpressPageId);
+        $siteId = (int)$siteId;
+        $pageId = (int)$pageId;
+
+        $wpPage = $this->remotePageRepository->get($siteId, $pageId);
+
+        if (!array_key_exists('page_layout', $wpPage) || is_null($wpPage['page_layout'])) {
+            return;
+        }
+
+        $layout->getUpdate()->addHandle(sprintf('wpci_page_view_%s', $wpPage['page_layout']));
     }
 }
