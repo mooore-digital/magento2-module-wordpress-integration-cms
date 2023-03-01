@@ -16,7 +16,7 @@ class Wordpress
     /**
      * @var \Symfony\Contracts\HttpClient\HttpClientInterface
      */
-    private $client;
+    public $client;
 
     /**
      * @var LoggerInterface
@@ -49,7 +49,7 @@ class Wordpress
      * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
      */
-    public function all(int $pageSize = 10): \Generator
+    public function all(int $pageSize = 10, array $filters = []): \Generator
     {
         $peekHeaders = $this->peek($pageSize);
 
@@ -64,14 +64,18 @@ class Wordpress
         while ($pageCount < $totalPages) {
             $response = $this->client->request(
                 'GET',
-                static::WP_JSON_URL_PREFIX . static::WP_JSON_URL_SUFFIX . '?' . http_build_query([
-                    'page' => $pageNumber++,
-                    'per_page' => $pageSize
-                ])
+                static::WP_JSON_URL_PREFIX .
+                static::WP_JSON_URL_SUFFIX .
+                '?' .
+                http_build_query(
+                    array_merge([
+                        'page' => $pageNumber++,
+                        'per_page' => $pageSize
+                    ], $filters)
+                )
             );
 
             foreach (json_decode($response->getContent(), true) as $page) {
-                $page['modified_date_formatted'] = date('j M y', strtotime($page['modified']));
                 yield $page;
                 $pageCount++;
             }
@@ -100,7 +104,7 @@ class Wordpress
         try {
             $response = $this->client->request(
                 'POST',
-                static::WP_JSON_URL_PREFIX . static::WP_JSON_URL_SUFFIX . '/' . $pageId . '?'. $key .'=' . $value,
+                static::WP_JSON_URL_PREFIX . static::WP_JSON_URL_SUFFIX . '/' . $pageId . '?' . $key . '=' . $value,
 
                 [
                     'auth_basic' => $authentication
