@@ -8,10 +8,11 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
-class Wordpress
+abstract class Wordpress
 {
     const WP_JSON_URL_PREFIX = '/wp-json/wp/v2/';
-    public const WP_JSON_URL_SUFFIX = '';
+
+    public $type = '';
 
     /**
      * @var \Symfony\Contracts\HttpClient\HttpClientInterface
@@ -65,7 +66,7 @@ class Wordpress
             $response = $this->client->request(
                 'GET',
                 static::WP_JSON_URL_PREFIX .
-                static::WP_JSON_URL_SUFFIX .
+                $this->type .
                 '?' .
                 http_build_query(
                     array_merge([
@@ -94,7 +95,7 @@ class Wordpress
      */
     public function get(int $id): array
     {
-        $response = $this->client->request('GET', static::WP_JSON_URL_PREFIX . static::WP_JSON_URL_SUFFIX . '/' . $id);
+        $response = $this->client->request('GET', static::WP_JSON_URL_PREFIX . $this->type . '/' . $id);
 
         return json_decode($response->getContent(), true);
     }
@@ -104,7 +105,7 @@ class Wordpress
         try {
             $response = $this->client->request(
                 'POST',
-                static::WP_JSON_URL_PREFIX . static::WP_JSON_URL_SUFFIX . '/' . $pageId . '?' . $key . '=' . $value,
+                static::WP_JSON_URL_PREFIX . $this->type . '/' . $pageId . '?' . $key . '=' . $value,
 
                 [
                     'auth_basic' => $authentication
@@ -127,7 +128,7 @@ class Wordpress
      */
     public function peek(int $pageSize): array
     {
-        $peekResponse = $this->client->request('HEAD', static::WP_JSON_URL_PREFIX . static::WP_JSON_URL_SUFFIX . '?per_page=' . $pageSize);
+        $peekResponse = $this->client->request('HEAD', static::WP_JSON_URL_PREFIX . $this->type . '?per_page=' . $pageSize);
 
         return $peekResponse->getHeaders();
     }
