@@ -7,6 +7,7 @@ namespace Mooore\WordpressIntegrationCms\Model\HttpClient;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Mooore\WordpressIntegrationCms\Exception\HTTPClientTypeRequiredException;
 
 abstract class Wordpress
 {
@@ -49,11 +50,12 @@ abstract class Wordpress
      * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     * @throws HTTPClientTypeRequiredException
      */
     public function all(int $pageSize = 10, array $filters = []): \Generator
     {
         if (is_null($this->type)) {
-            throw new \Exception("Type is required for HTTPClient");
+            throw new HTTPClientTypeRequiredException("Type is required for HTTPClient");
         }
         $peekHeaders = $this->peek($pageSize);
 
@@ -95,11 +97,12 @@ abstract class Wordpress
      * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     * @throws HTTPClientTypeRequiredException
      */
     public function get(int $id): array
     {
         if (is_null($this->type)) {
-            throw new \Exception("Type is required for HTTPClient");
+            throw new HTTPClientTypeRequiredException("Type is required for HTTPClient");
         }
 
         $response = $this->client->request('GET', static::WP_JSON_URL_PREFIX . $this->type . '/' . $id);
@@ -107,10 +110,13 @@ abstract class Wordpress
         return json_decode($response->getContent(), true);
     }
 
+    /**
+     * @throws HTTPClientTypeRequiredException
+     */
     public function postMetaDataToPage(int $pageId, string $key, string $value, string $authentication)
     {
         if (is_null($this->type)) {
-            throw new \Exception("Type is required for HTTPClient");
+            throw new HTTPClientTypeRequiredException("Type is required for HTTPClient");
         }
 
         try {
@@ -136,11 +142,12 @@ abstract class Wordpress
      * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     * @throws HTTPClientTypeRequiredException
      */
     public function peek(int $pageSize): array
     {
         if (is_null($this->type)) {
-            throw new \Exception("Type is required for HTTPClient");
+            throw new HTTPClientTypeRequiredException("Type is required for HTTPClient");
         }
 
         $peekResponse = $this->client->request('HEAD', static::WP_JSON_URL_PREFIX . $this->type . '?per_page=' . $pageSize);
