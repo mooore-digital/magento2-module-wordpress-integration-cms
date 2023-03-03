@@ -7,11 +7,13 @@ namespace Mooore\WordpressIntegrationCms\Model\HttpClient;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Mooore\WordpressIntegrationCms\Exception\HTTPClientTypeRequiredException;
 
-class Wordpress
+abstract class Wordpress
 {
     const WP_JSON_URL_PREFIX = '/wp-json/wp/v2/';
-    public const WP_JSON_URL_SUFFIX = '';
+
+    public ?string $type = null;
 
     /**
      * @var \Symfony\Contracts\HttpClient\HttpClientInterface
@@ -48,9 +50,13 @@ class Wordpress
      * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     * @throws HTTPClientTypeRequiredException
      */
     public function all(int $pageSize = 10, array $filters = []): \Generator
     {
+        if (is_null($this->type)) {
+            throw new HTTPClientTypeRequiredException("Type is required for HTTPClient");
+        }
         $peekHeaders = $this->peek($pageSize);
 
         if (empty($peekHeaders['x-wp-total'])) {
@@ -65,7 +71,7 @@ class Wordpress
             $response = $this->client->request(
                 'GET',
                 static::WP_JSON_URL_PREFIX .
-                static::WP_JSON_URL_SUFFIX .
+                $this->type .
                 '?' .
                 http_build_query(
                     array_merge([
@@ -91,20 +97,32 @@ class Wordpress
      * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     * @throws HTTPClientTypeRequiredException
      */
     public function get(int $id): array
     {
-        $response = $this->client->request('GET', static::WP_JSON_URL_PREFIX . static::WP_JSON_URL_SUFFIX . '/' . $id);
+        if (is_null($this->type)) {
+            throw new HTTPClientTypeRequiredException("Type is required for HTTPClient");
+        }
+
+        $response = $this->client->request('GET', static::WP_JSON_URL_PREFIX . $this->type . '/' . $id);
 
         return json_decode($response->getContent(), true);
     }
 
+    /**
+     * @throws HTTPClientTypeRequiredException
+     */
     public function postMetaDataToPage(int $pageId, string $key, string $value, string $authentication)
     {
+        if (is_null($this->type)) {
+            throw new HTTPClientTypeRequiredException("Type is required for HTTPClient");
+        }
+
         try {
             $response = $this->client->request(
                 'POST',
-                static::WP_JSON_URL_PREFIX . static::WP_JSON_URL_SUFFIX . '/' . $pageId . '?' . $key . '=' . $value,
+                static::WP_JSON_URL_PREFIX . $this->type . '/' . $pageId . '?' . $key . '=' . $value,
 
                 [
                     'auth_basic' => $authentication
@@ -124,10 +142,15 @@ class Wordpress
      * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     * @throws HTTPClientTypeRequiredException
      */
     public function peek(int $pageSize): array
     {
-        $peekResponse = $this->client->request('HEAD', static::WP_JSON_URL_PREFIX . static::WP_JSON_URL_SUFFIX . '?per_page=' . $pageSize);
+        if (is_null($this->type)) {
+            throw new HTTPClientTypeRequiredException("Type is required for HTTPClient");
+        }
+
+        $peekResponse = $this->client->request('HEAD', static::WP_JSON_URL_PREFIX . $this->type . '?per_page=' . $pageSize);
 
         return $peekResponse->getHeaders();
     }

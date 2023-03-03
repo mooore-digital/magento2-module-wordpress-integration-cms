@@ -8,7 +8,7 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 class Page extends Wordpress
 {
-    const WP_JSON_URL_SUFFIX = 'pages';
+    public ?string $type = 'pages';
 
     public function postMetaDataToPage(int $pageId, string $key, string $value, string $authentication)
     {
