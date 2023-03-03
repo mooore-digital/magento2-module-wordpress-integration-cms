@@ -12,7 +12,7 @@ abstract class Wordpress
 {
     const WP_JSON_URL_PREFIX = '/wp-json/wp/v2/';
 
-    public $type = '';
+    public ?string $type = null;
 
     /**
      * @var \Symfony\Contracts\HttpClient\HttpClientInterface
@@ -52,6 +52,9 @@ abstract class Wordpress
      */
     public function all(int $pageSize = 10, array $filters = []): \Generator
     {
+        if (is_null($this->type)) {
+            throw new \Exception("Type is required for HTTPClient");
+        }
         $peekHeaders = $this->peek($pageSize);
 
         if (empty($peekHeaders['x-wp-total'])) {
@@ -95,6 +98,10 @@ abstract class Wordpress
      */
     public function get(int $id): array
     {
+        if (is_null($this->type)) {
+            throw new \Exception("Type is required for HTTPClient");
+        }
+
         $response = $this->client->request('GET', static::WP_JSON_URL_PREFIX . $this->type . '/' . $id);
 
         return json_decode($response->getContent(), true);
@@ -102,6 +109,10 @@ abstract class Wordpress
 
     public function postMetaDataToPage(int $pageId, string $key, string $value, string $authentication)
     {
+        if (is_null($this->type)) {
+            throw new \Exception("Type is required for HTTPClient");
+        }
+
         try {
             $response = $this->client->request(
                 'POST',
@@ -128,6 +139,10 @@ abstract class Wordpress
      */
     public function peek(int $pageSize): array
     {
+        if (is_null($this->type)) {
+            throw new \Exception("Type is required for HTTPClient");
+        }
+
         $peekResponse = $this->client->request('HEAD', static::WP_JSON_URL_PREFIX . $this->type . '?per_page=' . $pageSize);
 
         return $peekResponse->getHeaders();
