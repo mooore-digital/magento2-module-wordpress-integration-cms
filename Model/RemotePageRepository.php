@@ -75,6 +75,7 @@ class RemotePageRepository
                 $pages[$site->getSiteId()]['id'] = $site->getSiteId();
 
                 foreach ($this->pageClient->all($pageSize) as $page) {
+                    $page['modified_date_formatted'] = date('j M y', strtotime($page['modified']));
                     $pages[$site->getSiteId()]['data'][] = $page;
                 }
             } catch (ExceptionInterface $exception) {

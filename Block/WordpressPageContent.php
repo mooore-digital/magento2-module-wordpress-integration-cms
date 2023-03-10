@@ -5,18 +5,12 @@ declare(strict_types=1);
 namespace Mooore\WordpressIntegrationCms\Block;
 
 use Magento\Framework\View\Element\Template;
-use Mooore\WordpressIntegrationCms\Model\RemotePostRepository;
 use Mooore\WordpressIntegrationCms\Model\RemotePageRepository;
 use Magento\Cms\Model\Template\FilterProvider;
 use Mooore\WordpressIntegrationCms\Processors\AfterHtmlProcessor;
 
-class WordpressContent extends Template
+class WordpressPageContent extends Template
 {
-    /**
-     * @var RemotePostRepository
-     */
-    protected $remotePostRepository;
-
     /**
      * @var RemotePageRepository
      */
@@ -34,13 +28,11 @@ class WordpressContent extends Template
 
     public function __construct(
         Template\Context $context,
-        RemotePostRepository $remotePostRepository,
         RemotePageRepository $remotePageRepository,
         FilterProvider $filterProvider,
         AfterHtmlProcessor $afterHtmlProcessor,
         array $data = []
     ) {
-        $this->remotePostRepository = $remotePostRepository;
         $this->remotePageRepository = $remotePageRepository;
         $this->filterProvider = $filterProvider;
         $this->afterHtmlProcessor = $afterHtmlProcessor;
@@ -62,9 +54,6 @@ class WordpressContent extends Template
         $page = null;
         if ($contentType === 'page') {
             $page = $this->remotePageRepository->get($siteId, $pageId);
-        }
-        if ($contentType === 'post') {
-            $page = $this->remotePostRepository->get($siteId, $pageId);
         }
 
         $this->setData('page', $page);
