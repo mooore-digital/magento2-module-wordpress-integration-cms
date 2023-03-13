@@ -2,31 +2,6 @@
 <schema
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
-    <table name="mooore_wordpressintegration_wordpress_post" resource="default" engine="innodb" comment="WordpressPost">
-        <column xsi:type="int" name="wordpress_post_id" padding="10" unsigned="true" nullable="false" identity="true"
-                comment="Wordpress Post Id"/>
-        <column xsi:type="int" name="site_id" padding="10" unsigned="true" nullable="false"
-                comment="Wordpress Site Id"/>
-        <column xsi:type="int" name="post_id" padding="10" unsigned="true" nullable="false"
-                comment="Wordpress Page Id"/>
-        <column xsi:type="varchar" name="slug" nullable="false" length="255"
-                comment="Wordpress Slug"/>
-        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
-                comment="Update Time"/>
-        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
-                comment="Creation Time"/>
-
-        <constraint xsi:type="primary" referenceId="PRIMARY">
-            <column name="wordpress_post_id"/>
-        </constraint>
-        <constraint xsi:type="unique" referenceId="SITE_POST_IDS">
-            <column name="site_id"/>
-            <column name="post_id"/>
-        </constraint>
-        <index referenceId="WORDPRESS_POST_WORDPRESS_POST_ID" indexType="btree">
-            <column name="wordpress_post_id"/>
-        </index>
-    </table>
     <table name="cms_page">
         <column
             name="wordpress_page_id"
