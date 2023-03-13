@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   Fix second parameter non-default error for Mooore\WordpressIntegrationCms\Cron\IndexBlogUrls::createUrl()
 
+## [0.11.1] - 2023-03-13
+
+### Fixed
+
+-   Bump mooore/magento2-module-wordpress-integration version
+
 ## [0.11.0] - 2023-03-13
 
 ### Fixed

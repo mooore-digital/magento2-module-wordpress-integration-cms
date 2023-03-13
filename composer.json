@@ -19,7 +19,7 @@
     "require": {
         "symfony/http-client": "^5.4",
         "magento/module-cms": "103.*|104.*",
-        "mooore/magento2-module-wordpress-integration": "^0.4"
+        "mooore/magento2-module-wordpress-integration": "^0.5"
     },
     "autoload": {
         "files": [
