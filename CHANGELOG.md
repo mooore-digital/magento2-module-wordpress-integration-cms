@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 -   Fix second parameter non-default error for Mooore\WordpressIntegrationCms\Cron\IndexBlogUrls::createUrl()
+-   Add caching to getList function in the RemotePageRepository
 
 ## [0.11.1] - 2023-03-13
 
