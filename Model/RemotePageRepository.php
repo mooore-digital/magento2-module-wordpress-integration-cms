@@ -63,6 +63,11 @@ class RemotePageRepository
      */
     public function getList(): array
     {
+        $cacheEnabled = $this->cacheState->isEnabled(CacheType::TYPE_IDENTIFIER);
+        if ($cacheEnabled && $cacheEntry = $this->cache->load('wordpress_page_list')) {
+            return json_decode($cacheEntry, true);
+        }
+
         $pages = [];
 
         $pageSize = 10; // @Hardcoded value: create a configuration for this value.
@@ -87,6 +92,10 @@ class RemotePageRepository
                     $exception->getCode()
                 );
             }
+        }
+        
+        if ($cacheEnabled) {
+            $this->cache->save(json_encode($pages), 'wordpress_page_list', [CacheType::TYPE_IDENTIFIER]);
         }
 
         return $pages;
