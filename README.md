@@ -24,7 +24,6 @@ bin/magento setup:upgrade
 > :warning: This module is still in its Beta phase.
 > So with any new version it might break something from the previous version.
 > Use at your own risk.
-
 ## How to use
 
 When the module is installed.
