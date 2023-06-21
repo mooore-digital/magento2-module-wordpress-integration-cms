@@ -70,7 +70,7 @@ class RemotePageRepository
 
         $pages = [];
 
-        $pageSize = 10; // @Hardcoded value: create a configuration for this value.
+        $pageSize = 100;
 
         foreach ($this->getSites() as $site) {
             $this->pageClient->setBaseUrl($site->getBaseurl());
