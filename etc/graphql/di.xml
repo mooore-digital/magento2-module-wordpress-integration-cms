@@ -1,0 +1,29 @@
+<!-- Copy of frontend/di.xml -->
+<?xml version="1.0"?>
+<config
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Cms\Model\Page">
+        <plugin
+            sortOrder="1"
+            name="moooreWordpressIntegrationCmsPage"
+            type="Mooore\WordpressIntegrationCms\Plugin\Model\PagePlugin"
+        />
+    </type>
+
+    <type name="Mooore\WordpressIntegrationCms\Processors\AfterHtmlProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="ReplaceMediaUrls" xsi:type="object">
+                    Mooore\WordpressIntegrationCms\Processors\AfterHtml\ReplaceMediaUrls
+                </item>
+                <item name="ReplaceWidgetCharacters" xsi:type="object">
+                    Mooore\WordpressIntegrationCms\Processors\AfterHtml\ReplaceWidgetCharacters
+                </item>
+                <item name="FixHrefUrls" xsi:type="object">
+                    Mooore\WordpressIntegrationCms\Processors\AfterHtml\FixHrefUrls
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>
