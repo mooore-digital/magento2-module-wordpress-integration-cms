@@ -11,7 +11,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add caching to getList function in the RemotePageRepository
 
 ### Fixed
-- Fix second parameter non-default error for Mooore\WordpressIntegrationCms\Cron\IndexBlogUrls::createUrl()
 - Set pagination for get page list to 100
 
 ## [0.11.1] - 2023-03-13
@@ -21,6 +20,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.11.0] - 2023-03-13
 ### Fixed
 - Additional fix for href search problem
+
+## [0.10.10] - 2023-01-11
+### Fixed
+- Fix second parameter non-default error for Mooore\WordpressIntegrationCms\Cron\IndexBlogUrls::createUrl()
 
 ## [0.10.9] - 2023-01-11
 ### Fixed
