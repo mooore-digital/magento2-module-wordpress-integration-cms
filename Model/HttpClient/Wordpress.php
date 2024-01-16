@@ -59,11 +59,11 @@ abstract class Wordpress
         }
         $peekHeaders = $this->peek($pageSize);
 
-        if (empty($peekHeaders['x-wp-total'])) {
+        if (empty($peekHeaders['x-wp-totalpages'])) {
             return false;
         }
 
-        $totalPages = (int) $peekHeaders['x-wp-total'][0] ?? 0;
+        $totalPages = (int) $peekHeaders['x-wp-totalpages'][0] ?? 0;
         $pageNumber = 1;
         $pageCount = 0;
 
