@@ -67,7 +67,6 @@ abstract class Wordpress
         $pageNumber = 1;
 
         while ($pageNumber <= $totalPages) {
-            var_dump($pageNumber. '/' .$totalPages);
             $response = $this->client->request(
                 'GET',
                 static::WP_JSON_URL_PREFIX .
