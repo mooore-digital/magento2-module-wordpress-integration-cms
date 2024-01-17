@@ -65,9 +65,9 @@ abstract class Wordpress
 
         $totalPages = (int) $peekHeaders['x-wp-totalpages'][0] ?? 0;
         $pageNumber = 1;
-        $pageCount = 0;
 
-        while ($pageCount < $totalPages) {
+        while ($pageNumber <= $totalPages) {
+            var_dump($pageNumber. '/' .$totalPages);
             $response = $this->client->request(
                 'GET',
                 static::WP_JSON_URL_PREFIX .
@@ -83,7 +83,6 @@ abstract class Wordpress
 
             foreach (json_decode($response->getContent(), true) as $page) {
                 yield $page;
-                $pageCount++;
             }
         }
     }
